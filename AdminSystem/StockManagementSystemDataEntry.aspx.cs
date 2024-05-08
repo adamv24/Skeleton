@@ -32,10 +32,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
+
         //capture the book name
         AStock.BookName = txtBookName.Text;
         //store the book name in the session object
         Session["AStock"] = AStock;
+      
+        //capture the book name
+        AStock.BookAuthor = txtBookAuthor.Text;
+        //store the book name in the session object
+        Session["AStock"] = AStock;
+
+        AStock.Price = Convert.ToDecimal(txtPrice.Text);
+        //store the book name in the session object
+        Session["AStock"] = AStock;
+
         //navigate to the view page
         Response.Redirect("StockManagementSystemViewer.aspx");
     }
