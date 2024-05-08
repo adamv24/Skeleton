@@ -23,8 +23,25 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the house number for this entry
         Response.Write(AStock.BookAuthor);
 
+        //get the data from the session object
         AStock = (clsStock)Session["AStock"];
         //display the house number for this entry
         Response.Write(AStock.Price);
+
+        //get the data from the session object
+        AStock = (clsStock)Session["AStock"];
+        //display the house number for this entry
+        Response.Write(AStock.DateAdded);
+
+        //get the data from the session object
+        AStock = (clsStock)Session["AStock"];
+        //display the house number for this entry
+        Response.Write(AStock.QuantityAvailable);
+
+        //get the data from the session object
+        AStock = (clsStock)Session["AStock"];
+        //display the house number for this entry
+        Response.Write(AStock.Active);
+
     }
 }

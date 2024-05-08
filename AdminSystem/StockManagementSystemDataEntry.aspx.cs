@@ -47,6 +47,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //store the book name in the session object
         Session["AStock"] = AStock;
 
+        AStock.DateAdded = Convert.ToDateTime(DateTime.Now);
+        //store the book name in the session object
+        Session["AStock"] = AStock;
+
+        AStock.QuantityAvailable = Convert.ToInt32(txtQuantityAvailable.Text);
+        //store the book name in the session object
+        Session["AStock"] = AStock;
+
+        AStock.Active = chkIsAvailable.Checked;
+        //store the book name in the session object
+        Session["AStock"] = AStock;
+        
         //navigate to the view page
         Response.Redirect("StockManagementSystemViewer.aspx");
     }
