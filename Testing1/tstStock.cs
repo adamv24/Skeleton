@@ -156,9 +156,9 @@ namespace Testing1
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 AddressId = 21;
+            Int32 IsbnID = 21;
             //invoke the method
-            Found = AStock.Find(AddressId);
+            Found = AStock.Find(IsbnID);
             //check the date added property
             if (AStock.DateAdded != Convert.ToDateTime("23/12/2022"))
             {
@@ -178,9 +178,9 @@ namespace Testing1
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 AddressId = 21;
+            Int32 IsbnID = 21;
             //invoke the method
-            Found = AStock.Find(AddressId);
+            Found = AStock.Find(IsbnID);
             //check the active property
             if (AStock.Active != true)
             {
@@ -200,9 +200,9 @@ namespace Testing1
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 AddressId = 21;
+            Int32 IsbnID = 21;
             //invoke the method
-            Found = AStock.Find(AddressId);
+            Found = AStock.Find(IsbnID);
             //check the town property
             if (AStock.BookName != "Book Name")
             {
@@ -223,9 +223,9 @@ namespace Testing1
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 AddressId = 21;
+            Int32 IsbnID = 21;
             //invoke the method
-            Found = AStock.Find(AddressId);
+            Found = AStock.Find(IsbnID);
             //check the town property
             if (AStock.BookAuthor != "Book Author")
             {
@@ -245,9 +245,9 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 QuantityAvailable = 3;
+            Int32 IsbnID = 21;
             //invoke the method
-            Found = AStock.Find(QuantityAvailable);
+            Found = AStock.Find(IsbnID);
             //check the address id property
             if (AStock.QuantityAvailable != 3)
             {
@@ -257,7 +257,29 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
 
-        
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int IsbnId = 21;
+            //invoke the method
+            Found = AStock.Find(IsbnId);
+            //check the price property
+            if (AStock.Price != 4.99m)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
 
     }
 }

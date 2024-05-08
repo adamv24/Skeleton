@@ -114,7 +114,23 @@ namespace ClassLibrary
         }
 
         //PRICE
-        public decimal Price { get; set; }
+        //private data member for the address id property
+        private Decimal mPrice;
+
+        //addressId public property
+        public Decimal Price
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mPrice;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mPrice = value;
+            }
+        }
 
 
         //Find method
@@ -127,6 +143,7 @@ namespace ClassLibrary
             mBookName = "Book Name";
             mBookAuthor = "Book Author";
             mQuantityAvailable = 3;
+            mPrice = 4.99m;
 
             //always return true
             return true;
