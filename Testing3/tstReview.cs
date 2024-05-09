@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Testing3
 {
+    [TestClass]
     public class tstReview
     {
     [TestMethod]

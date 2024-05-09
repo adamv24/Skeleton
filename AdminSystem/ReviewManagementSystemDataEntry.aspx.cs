@@ -15,8 +15,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        clsReview AnReview = new clsReview();
+
+        AnReview.Text = ReviewText.Text;
+
+        AnReview.BookId = BooksId.BookId;
+
+        Session["AnReview"] = AnReview;
+         
         //navigater to the view page
         Response.Redirect("ReviewManagementSystemViewer.aspx");
+
     }
 
     protected void TextBox4_TextChanged(object sender, EventArgs e)
