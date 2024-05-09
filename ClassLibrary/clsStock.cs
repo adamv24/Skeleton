@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
 
 namespace ClassLibrary
 {
@@ -201,12 +202,34 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The date was not a valid date";
             }
-           
-            
-            
-            
-            
 
+            //VALIDATION FOR BOOK NAME
+            //is the bookName blank
+            if (bookName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The book name may not be blank : ";
+            }
+            //if the BookName is too long
+            if (bookName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The book name must be less than 50 characters : ";
+            }
+
+            //VALIDATION FOR BOOK AUTHOR
+            //is the bookAuthor blank
+            if (bookAuthor.Length == 0)
+            {
+                //record the error
+                Error = Error + "The authors name may not be blank : ";
+            }
+            //if the town is too long
+            if (bookAuthor.Length > 50)
+            {
+                //record the error
+                Error = Error + "The authors name must be less than 50 characters : ";
+            }
 
             //reuturn any error messages
             return Error;
