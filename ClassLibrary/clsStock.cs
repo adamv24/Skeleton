@@ -166,5 +166,50 @@ namespace ClassLibrary
             }
  
         }
+
+        public string Valid(string bookName, string bookAuthor, string price, string dateAdded, string quantityAvailable)
+        {
+            //create a string variable to store the error
+            String Error = "";
+
+            //VALIDATION FOR DATEADDED
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statement
+            DateTime DateTemp;
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+
+
+                if (DateTemp < DateComp)//compare the dateAdded with Date
+                {
+                    Error = Error + "The date cannot be in the past: ";
+                }
+
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date";
+            }
+           
+            
+            
+            
+            
+
+
+            //reuturn any error messages
+            return Error;
+        }
     }
 }
