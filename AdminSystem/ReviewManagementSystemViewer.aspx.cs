@@ -17,9 +17,11 @@ public partial class _1Viewer : System.Web.UI.Page
         AnReview = (clsReview)Session["AnReview"];
 
         //display the house number for this entry
-        Response.Write(AnReview.Text);
-        Response.Write(AnReview.UserId);
-        Response.Write(AnReview.BookId);
+        Response.Write("User Id = " + AnReview.UserId + "<br>");
+        Response.Write("Book Id = " + AnReview.BookId + "<br>");
+        Response.Write("Review Id = " + AnReview.ReviewId + "<br>");
+        Response.Write("Review Text = " + AnReview.revText + "<br>");
+
 
 
     }

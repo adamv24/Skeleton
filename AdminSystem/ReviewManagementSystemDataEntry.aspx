@@ -5,32 +5,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        #form1 {
+            height: 442px;
+            width: 705px;
+        }
+    </style>
 </head>
-<body style="height: 369px; width: 386px">
+<body style="height: 367px; width: 528px">
+    
     <form id="form1" runat="server">
-        <div style="height: 324px">
-        </div>
-        <asp:Label ID="UserId" runat="server" style="z-index: 1; left: 14px; position: absolute; bottom: 810px" Text="User Id"></asp:Label>
-        <asp:TextBox ID="TxtUserId" runat="server" style="z-index: 1; left: 67px; top: 33px; position: absolute; bottom: 610px;"></asp:TextBox>
-        <p id="ReviewText">
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 67px; top: 308px; position: absolute" Text="Cancel" />
-        </p>
-        <p>
-            <asp:TextBox ID="BooksId" runat="server" style="z-index: 1; left: 67px; top: 62px; position: absolute"></asp:TextBox>
-        </p>
-        <p>
-            <asp:Label ID="BookId" runat="server" style="z-index: 1; left: 15px; top: 72px; position: absolute; width: 46px; height: 24px" Text="Book Id"></asp:Label>
-            <asp:Label ID="ReviewId" runat="server" style="z-index: 1; left: 15px; position: absolute; height: 22px; top: 107px; width: 46px" Text="Review Id"></asp:Label>
-        </p>
-        <asp:TextBox ID="IdReview" runat="server" style="z-index: 1; left: 67px; top: 102px; position: absolute"></asp:TextBox>
-        <asp:Label ID="RatingId" runat="server" style="z-index: 1; left: 10px; top: 143px; position: absolute; width: 46px; height: 27px" Text="Rating"></asp:Label>
-        <asp:TextBox ID="IdRating" runat="server" style="z-index: 1; left: 67px; top: 133px; position: absolute"></asp:TextBox>
-        <asp:Label ID="ReviewTextId" runat="server" style="z-index: 1; left: 15px; top: 169px; position: absolute" Text="Review Text" width="46px"></asp:Label>
-        <asp:TextBox ID="ReviewText" runat="server" OnTextChanged="TextBox4_TextChanged" style="z-index: 1; left: 67px; top: 167px; position: absolute"></asp:TextBox>
-        <asp:CheckBox ID="chkActive" runat="server" style="z-index: 1; left: 16px; top: 209px; position: absolute" Text="Active" />
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 18px; top: 256px; position: absolute"></asp:Label>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 11px; top: 309px; position: absolute" Text="OK" />
-        <asp:Label ID="UserrId" runat="server" style="z-index: 1; left: 15px; top: 39px; position: absolute; right: 506px;" Text="User Id"></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 13px; top: 20px; position: absolute" Text="User Id" height="21px"></asp:Label>
+        <asp:Label ID="Label4" runat="server" style="z-index: 1; left: 13px; top: 205px; position: absolute" Text="Review Text" height="21px"></asp:Label>
+        <asp:Label ID="Label5" runat="server" style="z-index: 1; left: 8px; top: 112px; position: absolute" Text="Review Id" height="21px"></asp:Label>
+        <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 12px; top: 68px; position: absolute; height: 21px" Text="Book Id"></asp:Label>
+        <asp:TextBox ID="txtBookId" runat="server" style="z-index: 1; left: 83px; top: 67px; position: absolute; height: 19px;"></asp:TextBox>
+        <asp:TextBox ID="txtReviewTextId" runat="server" style="z-index: 1; left: 101px; top: 203px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtReviewId" runat="server" style="z-index: 1; left: 83px; top: 112px; position: absolute; width: 128px;"></asp:TextBox>
+        <asp:TextBox ID="txtRatingId" runat="server" style="z-index: 1; left: 83px; top: 160px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtUser" runat="server" style="z-index: 1; left: 83px; top: 21px; position: absolute"></asp:TextBox>
+        <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 20px; top: 160px; position: absolute; height: 28px; width: 51px" Text="Rating"></asp:Label>
+        <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 120px; top: 261px; position: absolute" Text="Cancel" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 39px; top: 261px; position: absolute; right: 1399px; height: 26px;" Text="OK" width="60px" />
     </form>
-</body>
+    
+    </body>
 </html>

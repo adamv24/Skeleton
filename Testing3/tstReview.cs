@@ -43,6 +43,17 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AnReview.Text, TestData);
         }
+        public void ReviewText1OK()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create some test data to assign to the property
+            string TestData = "Review Text";
+            //assign the data to the property
+            AnReview.revText = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnReview.revText, TestData);
+        }
 
         [TestMethod]
         public void UserIdOK()
