@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 
 namespace ClassLibrary
 {
@@ -136,17 +137,34 @@ namespace ClassLibrary
         //Find method
         public bool Find(int isbnId)
         {
-            //set the private data members to the test value
-            mIsbnID = 21;
-            mDateAdded = Convert.ToDateTime("23/12/2022");
-            mActive = true;
-            mBookName = "Book Name";
-            mBookAuthor = "Book Author";
-            mQuantityAvailable = 3;
-            mPrice = 4.99m;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for
+            DB.AddParameter("@IsbnId", isbnId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByIsbnID");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mIsbnID = Convert.ToInt32(DB.DataTable.Rows[0]["IsbnId"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["IsAvailable"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mBookName = Convert.ToString(DB.DataTable.Rows[0]["BookName"]);
+                mBookAuthor = Convert.ToString(DB.DataTable.Rows[0]["BookAuthor"]);
+                mQuantityAvailable = Convert.ToInt32(DB.DataTable.Rows[0]["QuantityAvailable"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
 
-            //always return true
-            return true;
+                //return that everything worked Ok
+                return true;
+            }
+            //if no record was found
+            else
+            {
+               //return false indicating there is a problem
+               return false;
+            }
+ 
         }
     }
 }
