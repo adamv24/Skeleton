@@ -8,6 +8,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <fieldset>
+            <legend>Author Information</legend>
+            <div>
+                <asp:Label ID="lblAuthorId" runat="server" Text="Author ID" AssociatedControlID="txtAuthorId"></asp:Label>
+                <asp:TextBox ID="txtAuthorId" runat="server"></asp:TextBox>
+            </div>
+            <div>
+                <asp:Label ID="lblAuthorName" runat="server" Text="Author Name" AssociatedControlID="txtAuthorName"></asp:Label>
+                <asp:TextBox ID="txtAuthorName" runat="server"></asp:TextBox>
+            </div>
         <div>
         </div>
     </form>
