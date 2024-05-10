@@ -567,7 +567,7 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void BookAuthorPlusOne()
+        public void BookAuthorMinPlusOne()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
@@ -643,6 +643,70 @@ namespace Testing1
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
+
+        //QUANTITY AVAILABLE BOUNDARY TESTS
+        [TestMethod]
+        public void QuantityAvailableMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string QuantityAvailable = "-1";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityAvailableMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string QuantityAvailable = "0";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityAvailableMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string QuantityAvailable = "1";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityAvailableInvalidDataType()
+        {
+            //create a new instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //set the QuantityAvailable to non int data type
+            string QuantityAvailable = "this is not an integer!";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
 
     }
 

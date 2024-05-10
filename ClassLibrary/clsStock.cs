@@ -231,8 +231,42 @@ namespace ClassLibrary
                 Error = Error + "The authors name must be less than 50 characters : ";
             }
 
+            //VALIDATION FOR QUANTITY AVAILABLE
+            // Check if the quantityAvailableStr is not null or empty
+            if (string.IsNullOrEmpty(quantityAvailable))
+            {
+                // Record the error
+                Error = Error + "The quantity available must not be empty : ";
+            }
+            else
+            {
+                
+                try
+                {
+                    //convert string to int
+                    int quantityAvailableInt = Convert.ToInt32(quantityAvailable);
+
+                    // Check if the quantityAvailable is negative
+                    if (quantityAvailableInt < 0)
+                    {
+                        // Record the error
+                        Error = Error + "The quantity available cannot be less than 0 : ";
+                    }
+                }
+                catch (FormatException)
+                {
+                    // Record the error if quantityAvailableInt cannot be converted to an integer
+                    Error = Error + "The quantity available must be an number : ";
+                }
+            }
+
+
             //reuturn any error messages
             return Error;
+
+
+
+           
         }
     }
 }
