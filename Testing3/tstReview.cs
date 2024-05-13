@@ -119,7 +119,33 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AnSubmittedReview.Active, TestData);
         }
-       
+
+        [TestMethod]
+
+        public void FindMethodOK()
+        {
+            clsReview AnReview = new clsReview();
+            Boolean Found = false;
+            Int32 UserId = 21;
+            Found = AnReview.Find(UserId);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestReviewIdFound()
+        {
+            clsReview AnReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 UserId = 21;
+            Found = AnReview.Find(UserId);
+
+            if (AnReview.UserId != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
 
 
     }
