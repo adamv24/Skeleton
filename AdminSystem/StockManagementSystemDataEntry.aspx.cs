@@ -34,33 +34,53 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AStock = new clsStock();
 
         //capture the book name
-        AStock.BookName = txtBookName.Text;
-        //store the book name in the session object
-        Session["AStock"] = AStock;
-      
+        string BookName = txtBookName.Text;
+       
         //capture the book name
-        AStock.BookAuthor = txtBookAuthor.Text;
-        //store the book name in the session object
-        Session["AStock"] = AStock;
+        string BookAuthor = txtBookAuthor.Text;
 
-        AStock.Price = Convert.ToDecimal(txtPrice.Text);
-        //store the book name in the session object
-        Session["AStock"] = AStock;
+        //capture the price
+        string Price = txtPrice.Text;
 
-        AStock.DateAdded = Convert.ToDateTime(DateTime.Now);
-        //store the book name in the session object
-        Session["AStock"] = AStock;
+        //capture the date added
+        string DateAdded = txtDateAdded.Text;
 
-        AStock.QuantityAvailable = Convert.ToInt32(txtQuantityAvailable.Text);
-        //store the book name in the session object
-        Session["AStock"] = AStock;
+        //capture the quantiity available
+        string QuantityAvailable = txtQuantityAvailable.Text;
 
-        AStock.Active = chkIsAvailable.Checked;
-        //store the book name in the session object
-        Session["AStock"] = AStock;
-        
-        //navigate to the view page
-        Response.Redirect("StockManagementSystemViewer.aspx");
+        //capture if book is available
+        string Active = chkIsAvailable.Text;
+
+
+
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+        if (Error == "")
+        {
+            //capture the book name
+            AStock.BookName = BookName;
+            //capture the authors name
+            AStock.BookAuthor = BookAuthor;
+            //capture the price
+            AStock.Price = Convert.ToDecimal(Price);
+            //capture the date added
+            AStock.DateAdded = Convert.ToDateTime(DateAdded);
+            //capture the quantity available
+            AStock.QuantityAvailable = Convert.ToInt32(QuantityAvailable);
+
+            //store the stock in the session object
+            Session["AStock"] = AStock;
+            //navigate to the view page
+            Response.Redirect("StockManagementSystemViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
