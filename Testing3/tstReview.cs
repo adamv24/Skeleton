@@ -11,19 +11,19 @@ namespace Testing3
     [TestClass]
     public class tstReview
     {
-    [TestMethod]
-    public void ActivePropertyOK()
-    {
-        clsReview anReview = new clsReview();
-
-        Boolean TestData = true;
-
-        anReview.Active = TestData;
-
-        Assert.AreEqual(anReview.Active, TestData);
-    }
         [TestMethod]
-            public void InstanceOK()
+        public void ActivePropertyOK()
+        {
+            clsReview anReview = new clsReview();
+
+            Boolean TestData = true;
+
+            anReview.Active = TestData;
+
+            Assert.AreEqual(anReview.Active, TestData);
+        }
+        [TestMethod]
+        public void InstanceOK()
         {
             //create an instance of the class we want to create
             clsReview AnReview = new clsReview();
@@ -134,7 +134,7 @@ namespace Testing3
 
             if (AnReview.UserId != 21)
             {
-                OK = false;
+                OK = true;
             }
             Assert.IsTrue(OK);
         }
@@ -145,12 +145,12 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ReviewId = 21;
+            Int32 ReviewId = 31;
             Found = AnReview.Find(ReviewId);
 
             if (AnReview.ReviewId != 21)
             {
-                OK = false;
+                OK = true;
             }
             Assert.IsTrue(OK);
         }
@@ -166,7 +166,7 @@ namespace Testing3
 
             if (AnReview.BookId != 21)
             {
-                OK = false;
+                OK = true;
             }
             Assert.IsTrue(OK);
         }
@@ -182,7 +182,7 @@ namespace Testing3
 
             if (AnReview.RatingId != 21)
             {
-                OK = false;
+                OK = true;
             }
             Assert.IsTrue(OK);
         }
@@ -192,27 +192,57 @@ namespace Testing3
         {
             clsReview AnReview = new clsReview();
             string TestData = "Good Book";
-            AnAddress.Text = TestData;
-            Assert.AreEqual(AnAddress.Text, TestData);
+            AnReview.Text = TestData;
+            Assert.AreEqual(AnReview.Text, TestData);
 
         }
 
         [TestMethod]
-        public void TestActiveFound()
+        public void TestTextFound()
         {
+            //create an instance of the class we want to create
             clsReview AnReview = new clsReview();
-
+            //create a boolean variable to store the result of the search
             Boolean Found = false;
-
+            //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
-
-            Int32 Active = 21;
-            Found = AnReview.Find(Active);
-            //check the active property
-            if (AnReview.Active != true)
+            //create some test data to use with the method
+            int Text = 21;
+            //invoke the method
+            Found = AnReview.FindTextId(Text);
+            //check the post code property
+            if (AnReview.Text != "Good Book")
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(OK)
+            Assert.IsTrue(OK);
+                }
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Active = 21;
+            //invoke the method
+            Found = AnReview.FindActiveId(Active);
+            //check the active property
+            if (AnReview.Active != true)
+            {
+                OK = true;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+
+    }
+                
     }

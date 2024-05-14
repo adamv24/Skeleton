@@ -15,7 +15,6 @@ namespace ClassLibrary
 
         public string revText;
 
-        public bool Active { get; set; }
         public string Text
         {
             get
@@ -28,6 +27,7 @@ namespace ClassLibrary
                 //this line of code allows data into the property
                 mText = value;
             }
+        }
 
         public int UserId
         {
@@ -73,17 +73,7 @@ namespace ClassLibrary
                 mRatingId = value;
             }
         }
-        public string Text
-        {
-            get
-            {
-                return mText;
-            }
-            set
-            {
-                mText = value;
-            }
-        }
+
 
         public bool Active
         {
@@ -98,29 +88,39 @@ namespace ClassLibrary
                 mActive = value;
             }
         }
-                public bool Find(int UserId)
-                {
-                    mUserId = 21;
-                    return true;
-                }
-            }
+        public bool Find(int UserId)
+        {
+            mUserId = 21;
+            return true;
+        }
 
-        public bool Find(int RatingId)
+        public bool FindReviewId(int ReviewId)
+        {
+            mReviewId = 31;
+            return true;
+        }
+
+        public bool FindRatingId(int RatingId)
         {
             mRatingId = 21;
             return true;
         }
 
-
-        public bool Find(int BookId)
+        public bool FindBookId(int BookId)
         {
             mBookId = 21;
             return true;
         }
 
-        public bool Find(int ReviewId)
+        public bool FindTextId(int Text)
         {
-            mReviewId = 21;
+            mText = "Good Book";
+            return true;
+        }
+
+        public bool FindActiveId(int Active)
+        {
+            mActive = false;
             return true;
         }
     }
