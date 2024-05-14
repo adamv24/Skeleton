@@ -10,6 +10,7 @@ namespace ClassLibrary
         private Int32 mRatingId;
         private String mText;
         private Boolean mActive;
+        private DateTime mDateAdded;
 
 
 
@@ -28,6 +29,20 @@ namespace ClassLibrary
                 mText = value;
             }
         }
+        public DateTime DateAdded
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mDateAdded;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mDateAdded = value;
+            }
+        }
+
 
         public int UserId
         {
@@ -88,39 +103,55 @@ namespace ClassLibrary
                 mActive = value;
             }
         }
-        public bool Find(int UserId)
+        public bool Find(int userId)
         {
-            mUserId = 21;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@UserId", userId);
+            DB.Execute("sproc_tblReview_FilterByReviewId");
+            if (DB.Count == 1)
+            {
+                mUserId = Convert.ToInt32(DB.DataTable.Rows[0]["UserId"]);
+                mReviewId = Convert.ToInt32(DB.DataTable.Rows[0]["ReviewId"]);
+                mRatingId = Convert.ToInt32(DB.DataTable.Rows[0]["Rating"]);
+                mBookId = Convert.ToInt32(DB.DataTable.Rows[0]["BookId"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["ReviewSubmited"]);
+                mText = Convert.ToString(DB.DataTable.Rows[0]["ReviewText"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool FindReviewId(int ReviewId)
         {
-            mReviewId = 31;
+            mReviewId = 2;
             return true;
         }
 
         public bool FindRatingId(int RatingId)
         {
-            mRatingId = 21;
+            mRatingId = 4;
             return true;
         }
 
         public bool FindBookId(int BookId)
         {
-            mBookId = 21;
+            mBookId = 1;
             return true;
         }
 
         public bool FindTextId(int Text)
         {
-            mText = "Good Book";
+            mText = "I like this BOOK! It has a great storyline!";
             return true;
         }
 
         public bool FindActiveId(int Active)
         {
-            mActive = false;
+            mActive = true;
             return true;
         }
     }

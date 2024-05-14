@@ -43,6 +43,18 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AnReview.Text, TestData);
         }
+
+        public void DateAddedPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create some test data to assign to the property
+            DateTime TestData = DateTime.Now.Date;
+            //assign the data to the property
+            AnReview.DateAdded = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnReview.DateAdded, TestData);
+        }
         public void ReviewText1OK()
         {
             //create an instance of the class we want to create
@@ -74,7 +86,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsReview AnBookId = new clsReview();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            Int32 TestData = 5;
             //assign the data to the property
             AnBookId.BookId = TestData;
             //test to see that the two values are the same
@@ -87,7 +99,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsReview AnReviewId = new clsReview();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            Int32 TestData = 5;
             //assign the data to the property
             AnReviewId.ReviewId = TestData;
             //test to see that the two values are the same
@@ -118,7 +130,7 @@ namespace Testing3
         {
             clsReview AnReview = new clsReview();
             Boolean Found = false;
-            Int32 UserId = 21;
+            Int32 UserId = 6;
             Found = AnReview.Find(UserId);
             Assert.IsTrue(Found);
         }
@@ -129,12 +141,13 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 UserId = 21;
+            Int32 UserId = 6;
+            //invoke the method
             Found = AnReview.Find(UserId);
 
-            if (AnReview.UserId != 21)
+            if (AnReview.UserId != 6)
             {
-                OK = true;
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -145,12 +158,13 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ReviewId = 31;
-            Found = AnReview.Find(ReviewId);
+            Int32 UserId = 6;
+            //invoke the method
+            Found = AnReview.Find(UserId);
 
-            if (AnReview.ReviewId != 21)
+            if (AnReview.ReviewId != 2)
             {
-                OK = true;
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -161,12 +175,30 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 BookId = 21;
-            Found = AnReview.Find(BookId);
+            Int32 UserId = 6;
+            //invoke the method
+            Found = AnReview.Find(UserId);
 
-            if (AnReview.BookId != 21)
+            if (AnReview.BookId != 1)
             {
-                OK = true;
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateAddedIdFound()
+        {
+            clsReview AnReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 UserId = 6;
+            //invoke the method
+            Found = AnReview.Find(UserId);
+
+            if (AnReview.DateAdded != Convert.ToDateTime("05/01/2024"))
+            {
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -177,12 +209,13 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 RatingId = 21;
-            Found = AnReview.Find(RatingId);
+            Int32 UserId = 6;
+            //invoke the method
+            Found = AnReview.Find(UserId);
 
-            if (AnReview.RatingId != 21)
+            if (AnReview.RatingId != 4)
             {
-                OK = true;
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -207,11 +240,11 @@ namespace Testing3
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int Text = 21;
+            Int32 UserId = 6;
             //invoke the method
-            Found = AnReview.FindTextId(Text);
+            Found = AnReview.Find(UserId);
             //check the post code property
-            if (AnReview.Text != "Good Book")
+            if (AnReview.Text != "I like this BOOK! It has a great storyline!")
             {
                 OK = false;
             }
@@ -229,13 +262,13 @@ namespace Testing3
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Active = 21;
+            Int32 UserId = 6;
             //invoke the method
-            Found = AnReview.FindActiveId(Active);
+            Found = AnReview.Find(UserId);
             //check the active property
             if (AnReview.Active != true)
             {
-                OK = true;
+                OK = false;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);

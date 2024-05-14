@@ -22,6 +22,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnReview.ReviewId = Convert.ToInt32(txtReviewId.Text);
         AnReview.RatingId = Convert.ToInt32(txtReviewId.Text);
         AnReview.revText = txtReviewTextId.Text;
+        AnReview.DateAdded = Convert.ToDateTime(txtDateAddedId.Text);
 
 
 
@@ -50,7 +51,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void txtBookId_TextChanged(object sender, EventArgs e)
     {
+        clsReview AnReview = new clsReview();
+        Int32 UserId;
+        Boolean Found = false;
+        UserId = Convert.ToInt32(txtUser.Text);
+        Found = AnReview.Find(UserId);
 
+        if (Found == true)
+        {
+            txtBookId.Text = AnReview.BookId.ToString();
+            txtRatingId.Text = AnReview.RatingId.ToString();
+            txtReviewId.Text = AnReview.ReviewId.ToString();
+            txtReviewTextId.Text = AnReview.Text.ToString();
+            txtDateAddedId.Text = AnReview.DateAdded.ToString();
+
+        }
     }
 
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+
+    }
 }
