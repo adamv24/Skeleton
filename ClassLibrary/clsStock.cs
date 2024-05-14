@@ -270,7 +270,7 @@ namespace ClassLibrary
 
             //Other Validation
             //VALIDATION FOR Price 
-            // Check if the quantityAvailableStr is not null or empty
+            // Check if the price is not null or empty
             if (string.IsNullOrEmpty(price))
             {
                 // Record the error
@@ -278,33 +278,30 @@ namespace ClassLibrary
             }
             else
             {
-
                 try
                 {
+                    //parse the price string into a decimal
+                    decimal priceDecimal = decimal.Parse(price);
 
-                    //convert long to decimal
-                    decimal priceDecimal = Convert.ToDecimal(price);
-
-                    // Check if the quantityAvailable is negative
+                    // Check if the price is negative
                     if (priceDecimal < 0)
                     {
-                        // Record the error
-                        Error = Error + "The quantity available cannot be less than 0 : ";
-                    }
-
-                    // Check if the quantityAvailable is negative
-                    if (priceDecimal > 2147483647)
-                    {
-                        // Record the error
-                        Error = Error + "The priceDecimal cannot be more than 2147483647 : ";
+                        // Record the error if the price is negative
+                        Error = Error + "The price cannot be less than 0 : ";
                     }
                 }
                 catch (FormatException)
                 {
-                    // Record the error if quantityAvailableInt cannot be converted to an integer
-                    Error = Error + "The price must be a number : ";
+                    // Record the error if price cannot be parsed to decimal
+                    Error = Error + "The price must be a valid number : ";
+                }
+                catch (OverflowException)
+                {
+                    // Record the error if the price is too large to be stored in a decimal
+                    Error = Error + "The price is too large : ";
                 }
             }
+
 
             //reuturn any error messages
             return Error;
