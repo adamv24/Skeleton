@@ -97,26 +97,18 @@ namespace Testing3
         [TestMethod]
         public void RatingIdOK()
         {
-            //create an instance of the class we want to create
             clsReview AnRatingId = new clsReview();
-            //create some test data to assign to the property
             Int32 TestData = 1;
-            //assign the data to the property
             AnRatingId.RatingId = TestData;
-            //test to see that the two values are the same
             Assert.AreEqual(AnRatingId.RatingId, TestData);
         }
 
         [TestMethod]
         public void ReviewSubmittedOK()
         {
-            //create an instance of the class we want to create
             clsReview AnSubmittedReview = new clsReview();
-            //create some test data to assign to the property
             Boolean TestData = true;
-            //assign the data to the property
             AnSubmittedReview.Active = TestData;
-            //test to see that the two values are the same
             Assert.AreEqual(AnSubmittedReview.Active, TestData);
         }
 
@@ -132,7 +124,7 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void TestReviewIdFound()
+        public void TestUserIdFound()
         {
             clsReview AnReview = new clsReview();
             Boolean Found = false;
@@ -147,6 +139,80 @@ namespace Testing3
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
+        public void TestReviewIdFound()
+        {
+            clsReview AnReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewId = 21;
+            Found = AnReview.Find(ReviewId);
 
+            if (AnReview.ReviewId != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestBookIdFound()
+        {
+            clsReview AnReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 BookId = 21;
+            Found = AnReview.Find(BookId);
+
+            if (AnReview.BookId != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestRatingIdFound()
+        {
+            clsReview AnReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 RatingId = 21;
+            Found = AnReview.Find(RatingId);
+
+            if (AnReview.RatingId != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestTextOK()
+        {
+            clsReview AnReview = new clsReview();
+            string TestData = "Good Book";
+            AnAddress.Text = TestData;
+            Assert.AreEqual(AnAddress.Text, TestData);
+
+        }
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            clsReview AnReview = new clsReview();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 Active = 21;
+            Found = AnReview.Find(Active);
+            //check the active property
+            if (AnReview.Active != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK)
     }
-}
