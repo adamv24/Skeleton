@@ -105,5 +105,175 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AnAuthor.TotalBooksSold, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //create a boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 AuthorId = 21;
+            //invoke the method
+            Found = AnAuthor.Find(AuthorId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestAuthorIdFound()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 AuthorId = 21;
+            //invoke the method
+            Found = AnAuthor.Find(AuthorId);
+            //check the author id
+            if (AnAuthor.AuthorId != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAuthorNameFound()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 AuthorId = 21;
+            //invoke the method
+            Found = AnAuthor.Find(AuthorId);
+            //check the author name property
+            if (AnAuthor.AuthorName != "John Doe")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAuthorBiographyFound()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 AuthorId = 21;
+            //invoke the method
+            Found = AnAuthor.Find(AuthorId);
+            //check the author biography property
+            if (AnAuthor.AuthorBiography != "John Doe is a famous author...")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateJoinedFound()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 AuthorId = 21;
+            //invoke the method
+            Found = AnAuthor.Find(AuthorId);
+            //check the date joined property
+            if (AnAuthor.DateJoined != Convert.ToDateTime("01/01/2023"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestIsBestSellerFound()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 AuthorId = 21;
+            //invoke the method
+            Found = AnAuthor.Find(AuthorId);
+            //check the is best seller property
+            if (AnAuthor.IsBestSeller != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAverageRatingFound()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 AuthorId = 21;
+            //invoke the method
+            Found = AnAuthor.Find(AuthorId);
+            //check the average rating property
+            if (AnAuthor.AverageRating != 4.5m)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestTotalBooksSoldFound()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 AuthorId = 21;
+            //invoke the method
+            Found = AnAuthor.Find(AuthorId);
+            //check the total books sold property
+            if (AnAuthor.TotalBooksSold != 10000)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
     }
 }
