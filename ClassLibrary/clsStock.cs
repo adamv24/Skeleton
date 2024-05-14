@@ -243,8 +243,9 @@ namespace ClassLibrary
                 
                 try
                 {
+
                     //convert string to int
-                    int quantityAvailableInt = Convert.ToInt32(quantityAvailable);
+                    long quantityAvailableInt = Convert.ToInt64(quantityAvailable);
 
                     // Check if the quantityAvailable is negative
                     if (quantityAvailableInt < 0)
@@ -252,14 +253,58 @@ namespace ClassLibrary
                         // Record the error
                         Error = Error + "The quantity available cannot be less than 0 : ";
                     }
+
+                    // Check if the quantityAvailable is negative
+                    if (quantityAvailableInt > 2147483647)
+                    {
+                        // Record the error
+                        Error = Error + "The quantity available cannot be more than 2147483647 : ";
+                    }
                 }
                 catch (FormatException)
                 {
                     // Record the error if quantityAvailableInt cannot be converted to an integer
-                    Error = Error + "The quantity available must be an number : ";
+                    Error = Error + "The quantity available must be a number : ";
                 }
             }
 
+            //Other Validation
+            //VALIDATION FOR Price 
+            // Check if the quantityAvailableStr is not null or empty
+            if (string.IsNullOrEmpty(price))
+            {
+                // Record the error
+                Error = Error + "The price must not be empty : ";
+            }
+            else
+            {
+
+                try
+                {
+
+                    //convert long to decimal
+                    decimal priceDecimal = Convert.ToDecimal(price);
+
+                    // Check if the quantityAvailable is negative
+                    if (priceDecimal < 0)
+                    {
+                        // Record the error
+                        Error = Error + "The quantity available cannot be less than 0 : ";
+                    }
+
+                    // Check if the quantityAvailable is negative
+                    if (priceDecimal > 2147483647)
+                    {
+                        // Record the error
+                        Error = Error + "The priceDecimal cannot be more than 2147483647 : ";
+                    }
+                }
+                catch (FormatException)
+                {
+                    // Record the error if quantityAvailableInt cannot be converted to an integer
+                    Error = Error + "The price must be a number : ";
+                }
+            }
 
             //reuturn any error messages
             return Error;
