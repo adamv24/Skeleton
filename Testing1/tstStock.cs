@@ -646,6 +646,21 @@ namespace Testing1
 
         //QUANTITY AVAILABLE BOUNDARY TESTS
         [TestMethod]
+        public void QuantityAvailableExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string QuantityAvailable = "-1000";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
         public void QuantityAvailableMinLessOne()
         {
             //create an instance of the class we want to create
@@ -688,6 +703,84 @@ namespace Testing1
             Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void QuantityAvailableMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string QuantityAvailable = "2147483646";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityAvailableMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string QuantityAvailable = "2147483647";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void QuantityAvailableMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string QuantityAvailable = "2147483648";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityAvailableMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string QuantityAvailable = "";
+            QuantityAvailable = "1073741824";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityAvailableExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string QuantityAvailable = "5000000000";
+            //invoke the method
+            Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
