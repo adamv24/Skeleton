@@ -121,17 +121,31 @@ namespace ClassLibrary
         // Find method (placeholder)
         public bool Find(int authorId)
         {
-            // Placeholder implementation: Assume the author with the provided ID is found
-            // Replace this with the actual logic to retrieve author data from the database
-            mAuthorId = authorId;
-            mAuthorName = "John Doe";
-            mAuthorBiography = "John Doe is a famous author...";
-            mDateJoined = Convert.ToDateTime("01/01/2023");
-            mIsBestSeller = true;
-            mAverageRating = 4.5m;
-            mTotalBooksSold = 10000;
-
-            return true;
+            // Create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            // Add the parameter for the author id to search for
+            DB.AddParameter("@AuthorId", authorId);
+            // Execute the stored procedure
+            DB.Execute("sproc_tblAuthor_FilterByAuthorId");
+            // If one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                // Copy the data from the database to the private data members
+                mAuthorId = Convert.ToInt32(DB.DataTable.Rows[0]["AuthorId"]);
+                mAuthorName = Convert.ToString(DB.DataTable.Rows[0]["AuthorName"]);
+                mAuthorBiography = Convert.ToString(DB.DataTable.Rows[0]["AuthorBiography"]);
+                mDateJoined = Convert.ToDateTime(DB.DataTable.Rows[0]["DateJoined"]);
+                mIsBestSeller = Convert.ToBoolean(DB.DataTable.Rows[0]["IsBestseller"]);
+                mAverageRating = Convert.ToDecimal(DB.DataTable.Rows[0]["AverageRating"]);
+                mTotalBooksSold = Convert.ToInt32(DB.DataTable.Rows[0]["TotalBooksSold"]);
+                // Return that everything worked OK
+                return true;
+            }
+            else
+            {
+                // If no record was found
+                return false;
+            }
         }
     }
 }

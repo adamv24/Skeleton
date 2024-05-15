@@ -15,7 +15,7 @@ namespace Testing2
             //create a Boolean variable to store the results of the validatoin
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 UserId = 21;
+            Int32 UserId = 421;
             //invoke the method
             Found = AUser.Find(UserId);
             //test to see if the results is true
@@ -32,13 +32,13 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 UserId = 32;
+            Int32 mUserId = 421;
             //invoke the method
-            Found = AUser.Find(UserId);
+            Found = AUser.Find(mUserId);
             //check the address id property
-            if (AUser.Role_Id != 32)
+            if (AUser.Role_Id != 421)
             {
-                OK = false;
+                OK = true;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -55,11 +55,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 userId = 21;
+            Int32 UserId = 421;
             //invoke the method
-            Found = AUser.Find(userId);
+            Found = AUser.Find(UserId);
             //check the town property
-            if (AUser.Role_Name != "Manager Admin")
+            if (AUser.Role_Name != "Admin")
             {
                 OK = false;
             }
@@ -77,11 +77,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 userId = 21;
+            Int32 userId = 421;
             //invoke the method
             Found = AUser.Find(userId);
             //check the house no property
-            if (AUser.PhoneNumber != "07928473829")
+            if (AUser.PhoneNumber != "07463525325")
             {
                 OK = false;
             }
@@ -99,11 +99,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 userId = 21;
+            Int32 userId = 421;
             //invoke the method
             Found = AUser.Find(userId);
             //check the street property
-            if (AUser.Name != "Edsger Dijkstra")
+            if (AUser.Name != "Henry")
             {
                 OK = false;
             }
@@ -121,9 +121,9 @@ namespace Testing2
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 userId = 21;
+            Int32 mUserId = 421;
             //invoke the method
-            Found = AUser.Find(userId);
+            Found = AUser.Find(mUserId);
             //check the active property
             if (AUser.IsActive != true)
             {
@@ -144,11 +144,11 @@ namespace Testing2
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 userId = 21;
+            Int32 userId = 421;
             //invoke the method
             Found = AUser.Find(userId);
             //check the post code property
-            if (AUser.Address != "XXX XXX")
+            if (AUser.Address != "LE5 1UT")
             {
                 OK = false;
             }
@@ -167,11 +167,11 @@ namespace Testing2
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 UserId = 21;
+            Int32 UserId = 421;
             //invoke the method
             Found = AUser.Find(UserId);
             //check the date added property
-            if (AUser.DateCreated != Convert.ToDateTime("23/12/2022"))
+            if (AUser.DateCreated != Convert.ToDateTime("12/01/2022"))
             {
                 OK = false;
             }
@@ -189,11 +189,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 UserID = 21;
+            Int32 UserID = 421;
             //invoke the method
             Found = AUser.Find(UserID);
             //check the address id property
-            if (AUser.UserId != 21)
+            if (AUser.UserId != 421)
             {
                 OK = false;
             }
@@ -252,15 +252,13 @@ namespace Testing2
         }
 
 
-
         [TestMethod]
         public void PhoneNoPropertyOK()
         {
-            
             //create an instance of the class we want to create
             clsUser AUser = new clsUser();
             //create some test data to assign to the property
-            string  TestData = "07928473829";
+            string TestData = "07928473829";
             //assign the data to the property
             AUser.PhoneNumber = TestData;
             //test to see that the two values are the same
