@@ -8,8 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <fieldset>
-            <legend>Author Information</legend>
+       
             <table>
                 <tr>
                     <td><asp:Label ID="lblAuthorIdLabel" runat="server" Text="Author ID"></asp:Label></td>
@@ -31,9 +30,7 @@
                     <td colspan="2"><asp:CheckBox ID="chkIsBestseller" runat="server" Text="Is Bestseller" /></td>
                 </tr>
             </table>
-        </fieldset>
-        <fieldset>
-            <legend>Book Information</legend>
+    
             <table>
                 <tr>
                     <td><asp:Label ID="lblAverageRatingLabel" runat="server" Text="Average Rating"></asp:Label></td>
@@ -44,13 +41,14 @@
                     <td><asp:TextBox ID="txtTotalBooksSold" runat="server"></asp:TextBox></td>
                 </tr>
             </table>
-        </fieldset>
+        
         <div>
             <asp:Label ID="lblError" runat="server" Text="" ForeColor="Red"></asp:Label>
         </div>
         <div>
             <asp:Button ID="btnOk" runat="server" Text="Ok" OnClick="btnOk_Click" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" />
         </div>
     </form>
 </body>
