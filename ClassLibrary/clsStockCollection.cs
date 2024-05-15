@@ -45,35 +45,39 @@ namespace ClassLibrary
         //constructor for the class
         public clsStockCollection()
         {
-            //create the items of the test data
-            clsStock TestItem = new clsStock();
-            //set its properties
-            TestItem.IsbnID = 1;
-            TestItem.BookName = "a book name";
-            TestItem.BookAuthor = "the books author";
-            TestItem.Price = 2.99m; ;
-            TestItem.DateAdded = DateTime.Now;
-            TestItem.QuantityAvailable = 5;
-            TestItem.Active = true;
-            //add the test items to the test list
-            mStockList.Add(TestItem);
-            //re initialise the object for some new data
-            TestItem = new clsStock();
-            //set uts properties
-            TestItem.IsbnID = 2; ;
-            TestItem.BookName = "another book name";
-            TestItem.BookAuthor = "the books author";
-            TestItem.Price = 4.99m;
-            TestItem.DateAdded = DateTime.Now;
-            TestItem.QuantityAvailable = 3;
-            TestItem.Active = true;
-            //add the item to the test list
-            mStockList.Add(TestItem);
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record the count
+            Int32 RecordCount = 0;
+            //onject for the data connect
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_SelectAll");
+            //get the count of records
+            RecordCount = DB.Count;
+            //while there are recirds to process
+            while (Index < RecordCount)
+            {
+                //create the blank stock
+                clsStock AStock = new clsStock();
+                //read in the fields for the current records
+                AStock.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsAvailable"]);
+                AStock.IsbnID = Convert.ToInt32(DB.DataTable.Rows[Index]["IsbnId"]);
+                AStock.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                AStock.BookName = Convert.ToString(DB.DataTable.Rows[Index]["BookName"]);
+                AStock.BookAuthor = Convert.ToString(DB.DataTable.Rows[Index]["BookAuthor"]);
+                AStock.QuantityAvailable = Convert.ToInt32(DB.DataTable.Rows[Index]["QuantityAvailable"]);
+                AStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
+
+                //add the record to the private data member
+                mStockList.Add(AStock);
+                //point at the next records
+                Index++;
+            }
+
 
         }
         
-        
-
-
-            }
+ 
+    }
 }
