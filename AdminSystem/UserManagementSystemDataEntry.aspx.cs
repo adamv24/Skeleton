@@ -49,7 +49,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //store the address in the session object
         Session["anUser"] = anUser;
 
-        
+
         //capture the Is Active
         anUser.IsActive = chkActive.Checked;
         //store the address in the session object
@@ -64,5 +64,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Navigates to the view page
         Response.Redirect("UserManagementSystemViewer.aspx");
 
+    }
+
+    protected void btbFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the the stock class
+        clsUser AUser = new clsUser();
+        //create a variable to store the primary key
+        Int32 UserId;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary ket entered by the user
+        UserId = Convert.ToInt32(txtUserId.Text);
+        //find the record   
+        Found = AUser.Find(UserId);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtRoleName.Text = AUser.Role_Name;
+            txtName.Text = AUser.Name.ToString();
+            txtDateCreated.Text = AUser.DateCreated.ToString();
+            txtPhoneNumber.Text = AUser.PhoneNumber.ToString();
+            chkActive.Checked = AUser.IsActive;
+            txtAddress.Text = AUser.Address;
+            txtRoleId.Text = AUser.Role_Id.ToString();
+        }
     }
 }

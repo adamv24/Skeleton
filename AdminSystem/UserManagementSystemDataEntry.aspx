@@ -20,6 +20,7 @@
             <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 277px; top: 373px; position: absolute" Text="Cancel" />
         </p>
         <asp:Label ID="lblRoleId" runat="server" style="z-index: 1; left: 15px; top: 88px; position: absolute" Text="Role ID" width="77px"></asp:Label>
+        <asp:Button ID="btbFind" runat="server" OnClick="btbFind_Click" style="z-index: 1; left: 375px; top: 55px; position: absolute; height: 29px; width: 58px" Text="Find" />
         <p>
             <asp:Label ID="lblDateCreated" runat="server" style="z-index: 1; left: 17px; top: 248px; position: absolute; right: 1206px; height: 21px" Text="Date Created" width="77px"></asp:Label>
             <asp:TextBox ID="txtRoleName" runat="server" height="25px" style="z-index: 1; left: 139px; top: 289px; position: absolute; width: 168px"></asp:TextBox>
