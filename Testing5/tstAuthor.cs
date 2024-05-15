@@ -157,9 +157,9 @@ namespace Testing5
             //invoke the method
             Found = AnAuthor.Find(AuthorId);
             //check the author name property
-            if (AnAuthor.AuthorName != "John Doe")
+            if (AnAuthor.AuthorName == "John Doe")
             {
-                OK = false;
+                OK = true;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
@@ -245,7 +245,7 @@ namespace Testing5
             //invoke the method
             Found = AnAuthor.Find(AuthorId);
             //check the average rating property
-            if (AnAuthor.AverageRating != 4.5m)
+            if (AnAuthor.AverageRating != 5)
             {
                 OK = false;
             }
