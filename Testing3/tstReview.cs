@@ -14,13 +14,13 @@ namespace Testing3
         [TestMethod]
         public void ActivePropertyOK()
         {
-            clsReview anReview = new clsReview();
+            clsReview AnReview = new clsReview();
 
             Boolean TestData = true;
 
-            anReview.Active = TestData;
+            AnReview.Active = TestData;
 
-            Assert.AreEqual(anReview.Active, TestData);
+            Assert.AreEqual(AnReview.Active, TestData);
         }
         [TestMethod]
         public void InstanceOK()
