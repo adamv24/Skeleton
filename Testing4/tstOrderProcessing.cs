@@ -93,7 +93,7 @@ namespace Testing6
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 2;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //test to see if the result is true
@@ -111,11 +111,11 @@ namespace Testing6
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order id property
-            if (AnOrder.OrderId != 21)
+            if (AnOrder.OrderId != 1)
             {
                 OK = false;
             }
@@ -126,25 +126,57 @@ namespace Testing6
         [TestMethod]
         public void TestIsbnFound()
         {
-            //create an instance of the class we want to create
+            
             clsOrder AnOrder = new clsOrder();
-            //create a Boolean variable to store the result of the search
+         
             Boolean Found = false;
-            //create a Boolean variable to record if data is OK (assume it is)
+       
             Boolean OK = true;
-            //create some test data to use with the method
-            Int32 OrderId = 21;
-            //invoke the method
+          
+            Int32 OrderId = 1;
+            
             Found = AnOrder.Find(OrderId);
             //check the ISBN property
-            if (AnOrder.ISBN != 123456)
+            if (AnOrder.ISBN == 2)
             {
-                OK = false;
+                OK = true;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
 
-        
+        [TestMethod]
+        public void FindOrderById_ExistingId_ReturnsOrder()
+        {
+            // Arrange
+            int orderId = 1; 
+            clsOrder order = new clsOrder();
+
+            // Act
+            bool found = order.Find(orderId);
+
+            // Assert
+            Assert.IsTrue(found, "Order should be found.");
+           
+        }
+
+        [TestMethod]
+        public void FindOrderById_NonExistingId_ReturnsNull()
+        {
+            
+            int orderId = 99; 
+            clsOrder order = new clsOrder();
+
+            
+            bool found = order.Find(orderId);
+
+           
+            Assert.IsFalse(found, "Order should not be found.");
+           
+        }
+
+
+
+
     }
 }

@@ -1,5 +1,6 @@
-﻿// clsOrder.cs
-using System;
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace ClassLibrary
 {
@@ -91,17 +92,32 @@ namespace ClassLibrary
         }
 
         /****** FIND METHOD ******/
-        public bool Find(int orderId)
+        public bool Find(int OrderId)
         {
-            //set the private data members to the test data value
-            mOrderId = 21;
-            mISBN = 123456;
-            mUserId = 100;
-            mCreatedAt = DateTime.Now;
-            mStatus = "Started";
+            // Create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            // Add the parameter for the ISBN ID to search for
+            DB.AddParameter("@OrderId", OrderId);
+            // Execute the stored procedure
+            DB.Execute("sproc_tblOrder_FindById");
 
-            //always return true
-            return true;
+            // If one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                // Copy the data from the database to the private data members
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["Order_Id"]);
+                mISBN = Convert.ToInt32(DB.DataTable.Rows[0]["ISBN"]);
+                mUserId = Convert.ToInt32(DB.DataTable.Rows[0]["User_Id"]);
+                mStatus = Convert.ToString(DB.DataTable.Rows[0]["Status"]);
+
+                // Return that everything worked OK
+                return true;
+            }
+            else
+            {
+               
+                return false;
+            }
         }
     }
 }
