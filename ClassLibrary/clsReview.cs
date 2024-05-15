@@ -154,5 +154,23 @@ namespace ClassLibrary
             mActive = true;
             return true;
         }
+
+        public string Valid(int bookId, int reviewId, int rating, string reviewText, string DateAdded)
+        {
+            String Error = "";
+            if (bookId == 0)
+            {
+                Error = Error + "The Book Id Cannot Be Blank";
+            }
+            else if (bookId < 1)
+            {
+                Error = Error + "The Book Id Cannot Be less Than 1";
+            }
+            else if (bookId > 2147483647)
+            {
+                Error = Error + "The Book Id Cannot be Greater than 2147483647";
+            }
+            return Error;
+        }
     }
 }

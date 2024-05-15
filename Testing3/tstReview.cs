@@ -11,6 +11,12 @@ namespace Testing3
     [TestClass]
     public class tstReview
     {
+        int BookId = 1;
+        int ReviewId = 2;
+        int Rating = 4;
+        String ReviewText = "A Good Book";
+        String DateAdded = DateTime.Now.ToShortDateString();
+
         [TestMethod]
         public void ActivePropertyOK()
         {
@@ -273,7 +279,44 @@ namespace Testing3
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+        }
 
+        [TestMethod]
+        public void BookIdMinLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            int BookId = 0;
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BookIdMin()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            int BookId = 1;
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BookIdMinPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            int BookId = 2;
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+
+        }
 
 
     }
