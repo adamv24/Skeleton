@@ -26,9 +26,9 @@ namespace Testing3
         public void InstanceOK()
         {
             //create an instance of the class we want to create
-            clsReview AnReview = new clsReview();
+            clsReview AnReviews = new clsReview();
             //test to see that it exists
-            Assert.IsNotNull(AnReview);
+            Assert.IsNotNull(AnReviews);
         }
 
         [TestMethod]
