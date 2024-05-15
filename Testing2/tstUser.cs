@@ -8,6 +8,201 @@ namespace Testing2
     public class tstUser
     {
         [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsUser AUser = new clsUser();
+            //create a Boolean variable to store the results of the validatoin
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 UserId = 21;
+            //invoke the method
+            Found = AUser.Find(UserId);
+            //test to see if the results is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestRole_IdFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AUser = new clsUser();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 UserId = 32;
+            //invoke the method
+            Found = AUser.Find(UserId);
+            //check the address id property
+            if (AUser.Role_Id != 32)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestRole_NameFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AUser = new clsUser();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 userId = 21;
+            //invoke the method
+            Found = AUser.Find(userId);
+            //check the town property
+            if (AUser.Role_Name != "Manager Admin")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPhoneNoFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AUser = new clsUser();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 userId = 21;
+            //invoke the method
+            Found = AUser.Find(userId);
+            //check the house no property
+            if (AUser.PhoneNumber != "07928473829")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestNameFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AUser = new clsUser();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 userId = 21;
+            //invoke the method
+            Found = AUser.Find(userId);
+            //check the street property
+            if (AUser.Name != "Edsger Dijkstra")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AUser = new clsUser();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 userId = 21;
+            //invoke the method
+            Found = AUser.Find(userId);
+            //check the active property
+            if (AUser.IsActive != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestAddressFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AUser = new clsUser();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 userId = 21;
+            //invoke the method
+            Found = AUser.Find(userId);
+            //check the post code property
+            if (AUser.Address != "XXX XXX")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestDateCreatedFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AUser = new clsUser();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 UserId = 21;
+            //invoke the method
+            Found = AUser.Find(UserId);
+            //check the date added property
+            if (AUser.DateCreated != Convert.ToDateTime("23/12/2022"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestUserIdFound()
+        {
+            //create an instance of the class we want to create
+            clsUser AUser = new clsUser();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 UserID = 21;
+            //invoke the method
+            Found = AUser.Find(UserID);
+            //check the address id property
+            if (AUser.UserId != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
         public void InstanceOK()
         {
             //create an instance of the class we want to create
@@ -24,101 +219,80 @@ namespace Testing2
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
-            AUser.Active = TestData;
+            AUser.IsActive = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AUser.Active, TestData);
+            Assert.AreEqual(AUser.IsActive, TestData);
         }
 
         [TestMethod]
-        public void DateAddedPropertyOK()
+        public void DateCreatedPropertyOK()
         {
             //create an instance of the class we want to create
             clsUser AUser = new clsUser();
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
-            AUser.DateAdded = TestData;
+            AUser.DateCreated = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AUser.DateAdded, TestData);
+            Assert.AreEqual(AUser.DateCreated, TestData);
         }
 
+
         [TestMethod]
-        public void AddressIdPropertyOK()
+        public void UserIdPropertyOK()
         {
             //create an instance of the class we want to create
             clsUser AUser = new clsUser();
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AUser.AddressId = TestData;
+            AUser.UserId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AUser.AddressId, TestData);
+            Assert.AreEqual(AUser.UserId, TestData);
         }
 
+
+
         [TestMethod]
-        public void CountyCodePropertyOK()
+        public void PhoneNoPropertyOK()
         {
+            
             //create an instance of the class we want to create
             clsUser AUser = new clsUser();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            string  TestData = "07928473829";
             //assign the data to the property
-            AUser.CountyCode = TestData;
+            AUser.PhoneNumber = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AUser.CountyCode, TestData);
+            Assert.AreEqual(AUser.PhoneNumber, TestData);
         }
 
         [TestMethod]
-        public void HouseNoPropertyOK()
-        {
-            //create an instance of the class we want to create
-            clsUser AUser = new clsUser();
-            //create some test data to assign to the property
-            string TestData = "21b";
-            //assign the data to the property
-            AUser.HouseNo = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AUser.HouseNo, TestData);
-        }
-
-        [TestMethod]
-        public void PostCodePropertyOK()
+        public void AddressPropertyOK()
         {
             //create an instance of the class we want to create
             clsUser AUser = new clsUser();
             //create some test data to assign to the property
             string TestData = "LE1 4AB";
             //assign the data to the property
-            AUser.PostCode = TestData;
+            AUser.Address = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AUser.PostCode, TestData);
+            Assert.AreEqual(AUser.Address, TestData);
         }
 
         [TestMethod]
-        public void StreetPropertyOK()
+        public void NamePropertyOK()
         {
             //create an instance of the class we want to create
             clsUser AUser = new clsUser();
             //create some test data to assign to the property
-            string TestData = "Some Street";
+            string TestData = "Some Name";
             //assign the data to the property
-            AUser.Street = TestData;
+            AUser.Name = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AUser.Street, TestData);
+            Assert.AreEqual(AUser.Name, TestData);
         }
 
-        [TestMethod]
-        public void TownPropertyOK()
-        {
-            //create an instance of the class we want to create
-            clsUser AUser = new clsUser();
-            //create some test data to assign to the property
-            string TestData = "Leicester";
-            //assign the data to the property
-            AUser.Town = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AUser.Town, TestData);
-        }
 
         [TestMethod]
 
