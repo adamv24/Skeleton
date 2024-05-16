@@ -158,17 +158,39 @@ namespace ClassLibrary
         public string Valid(int bookId, int reviewId, int rating, string reviewText, string DateAdded)
         {
             String Error = "";
-            if (bookId == 0)
+            if (bookId == 0 || reviewId == 0)
             {
-                Error = Error + "The Book Id Cannot Be Blank";
+                Error = Error + "The Book Id OR reviewId Cannot Be Blank";
             }
-            else if (bookId < 1)
+            else if (bookId < 1 || reviewId < 1)
             {
-                Error = Error + "The Book Id Cannot Be less Than 1";
+                Error = Error + "The Book Id OR reviewId Cannot Be less Than 1";
             }
             else if (bookId > 2147483647)
             {
-                Error = Error + "The Book Id Cannot be Greater than 2147483647";
+                Error = Error + "The Book Id OR reviewId Cannot be Greater than 2147483647";
+            }
+            return Error;
+        }
+
+        public string Valid2(int bookId, int reviewId, string rating, string reviewText, string DateAdded)
+        {
+            String Error = "";
+            if (rating.Length == 0)
+            {
+                Error = Error + "The rating Cannot Be Blank";
+            }
+            else if (rating.Length < 1)
+            {
+                Error = Error + "The rating Cannot Be less Than 1";
+            }
+            else if (rating.Length >= 7 && )
+            {
+                Error = Error + "The rating Cannot be Greater than 6";
+            }
+            else if (rating.Length > 500)
+            {
+                Error = Error + "The rating Cannot be Greater than 500";
             }
             return Error;
         }
