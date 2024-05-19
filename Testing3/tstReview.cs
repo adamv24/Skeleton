@@ -508,7 +508,188 @@ namespace Testing3
             Assert.AreEqual(Error, "");
         }
 
+        /// <summary>
+        /// //
+        /// </summary>
 
+        
+
+        [TestMethod]
+        public void ReviewTextLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string Rating = "a";
+            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReviewTextMin()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewText = "a";
+            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReviewMinPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewText = "aa";
+            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReviewMaxLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewText = "aaaaa";
+            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReviewMax()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewText = "aaaaaa";
+            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ReviewMid()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewText = "aaa";
+            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ReviewMaxPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewText = "aaaaaaa";
+            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ReviewExtremeMax()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewText = "";
+            Rating = ReviewText.PadRight(400, 'a');
+            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsReview anReview = new clsReview();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsReview anReview = new clsReview();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+ public void DateAddedMin()
+        {
+            //create an instance of the class we want to create
+            clsReview anReview = new clsReview();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsReview anReview = new clsReview();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsReview anReview = new clsReview();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
                 
     }

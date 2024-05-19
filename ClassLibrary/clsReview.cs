@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 
 namespace ClassLibrary
 {
@@ -158,6 +159,7 @@ namespace ClassLibrary
         public string Valid(int bookId, int reviewId, int rating, string reviewText, string DateAdded)
         {
             String Error = "";
+            DateTime DateTemp;
             if (bookId == 0 || reviewId == 0)
             {
                 Error = Error + "The Book Id OR reviewId Cannot Be Blank";
@@ -170,8 +172,28 @@ namespace ClassLibrary
             {
                 Error = Error + "The Book Id OR reviewId Cannot be Greater than 2147483647";
             }
+            DateTime day = DateTime.Now;
+            try
+            {
+                DateTemp = Convert.ToDateTime(DateAdded);
+                if (DateTemp > day)
+                {
+                    Error = Error + "The date cannot be in the future";
+                }
+                if (DateTemp < day)
+                {
+                    Error = Error + "The date cannot be in the future";
+                }
+            }
+
+
+            catch
+            {
+                Error = Error + "Date was not valid or format";
+            }
             return Error;
         }
+        
 
         public string Valid2(int bookId, int reviewId, string rating, string reviewText, string DateAdded)
         {
@@ -184,13 +206,29 @@ namespace ClassLibrary
             {
                 Error = Error + "The rating Cannot Be less Than 1";
             }
-            else if (rating.Length >= 7 && )
+            else if (rating.Length >= 6 && rating.Length < 500) 
             {
-                Error = Error + "The rating Cannot be Greater than 6";
+                Error = Error + "The rating Cannot be Greater than 5";
             }
             else if (rating.Length > 500)
             {
                 Error = Error + "The rating Cannot be Greater than 500";
+            }
+            else if (reviewText.Length == 0)
+            {
+                Error = Error + "The review Cannot Be Blank";
+            }
+            else if (reviewText.Length < 1)
+            {
+                Error = Error + "The review Cannot Be less Than 1";
+            }
+            else if (reviewText.Length >= 51 && rating.Length < 500)
+            {
+                Error = Error + "The review Cannot be Greater than 50";
+            }
+            else if (reviewText.Length > 500)
+            {
+                Error = Error + "The review Cannot be Greater than 500";
             }
             return Error;
         }
