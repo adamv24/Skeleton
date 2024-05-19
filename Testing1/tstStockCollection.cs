@@ -96,12 +96,32 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void TwoRecordsPresent()
+        public void AddMethodOK()
         {
             //create an instance of the class we want to create
             clsStockCollection AllStock = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.IsbnID = 1;
+            TestItem.BookName = "a book name";
+            TestItem.BookAuthor = "the books author";
+            TestItem.Price = 2.99m;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.QuantityAvailable = 5;
+            TestItem.Active = true;
+            //set ThisStock to the est data
+            AllStock.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set the primary key to the test data
+            TestItem.IsbnID = PrimaryKey;
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
             //test to see that the two values are the same
-            Assert.AreEqual(AllStock.Count, 2);
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
 
 

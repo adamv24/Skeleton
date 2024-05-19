@@ -69,11 +69,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStock.DateAdded = Convert.ToDateTime(DateAdded);
             //capture the quantity available
             AStock.QuantityAvailable = Convert.ToInt32(QuantityAvailable);
-
-            //store the stock in the session object
-            Session["AStock"] = AStock;
-            //navigate to the view page
-            Response.Redirect("StockManagementSystemViewer.aspx");
+            //capture active
+            AStock.Active = chkIsAvailable.Checked;
+            //create a new instance of the adress collection
+            clsStockCollection StockList = new clsStockCollection();
+            //set the ThisStock property
+            StockList.ThisStock = AStock;
+            //add the new record
+            StockList.Add();
+            //redirect back to the list page
+            Response.Redirect("StockManagementSystemList.aspx");
         }
         else
         {
