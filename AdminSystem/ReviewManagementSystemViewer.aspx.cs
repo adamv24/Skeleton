@@ -22,6 +22,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("Review Id = " + AnReview.ReviewId + "<br>");
         Response.Write("Review Text = " + AnReview.revText + "<br>");
         Response.Write("DateAdded = " + AnReview.DateAdded + "<br>");
+        Response.Write("Rating = " + AnReview.RatingId + "<br>");
 
     }
 }

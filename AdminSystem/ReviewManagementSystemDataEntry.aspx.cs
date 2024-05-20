@@ -17,19 +17,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         clsReview AnReview = new clsReview();
 
-        AnReview.UserId = Convert.ToInt32(txtUser.Text);
-        AnReview.BookId = Convert.ToInt32(txtBookId.Text);
-        AnReview.ReviewId = Convert.ToInt32(txtReviewId.Text);
-        AnReview.RatingId = Convert.ToInt32(txtReviewId.Text);
-        AnReview.revText = txtReviewTextId.Text;
-        AnReview.DateAdded = Convert.ToDateTime(txtDateAddedId.Text);
+        int UserId = Convert.ToInt32(txtUser.Text);
+        int BookId = Convert.ToInt32(txtBookId.Text);
+        int ReviewId = Convert.ToInt32(txtReviewId.Text);
+        string RatingId = txtRatingId.Text;
+        string revText = txtReviewTextId.Text;
+        string DateAdded = txtDateAddedId.Text;
 
-
-
-
-        Session["AnReview"] = AnReview;
-        // navigater to the view page
-        Response.Redirect("ReviewManagementSystemViewer.aspx");
+        string Error = "";
+        Error = AnReview.Valid(BookId, ReviewId, RatingId, revText, DateAdded);
+        if (Error == "")
+        {
+            AnReview.BookId = BookId;
+            AnReview.ReviewId = ReviewId;
+            AnReview.RatingId = RatingId;
+            AnReview.revText = revText;
+            AnReview.DateAdded = Convert.ToDateTime(DateAdded);
+            Session["AnReview"] = AnReview;
+            // navigater to the view page
+            Response.Redirect("ReviewManagementSystemViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
   
@@ -71,6 +82,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        clsReview AnReview = new clsReview();
+        Int32 UserId;
+
+        Boolean Found = false;
+
+        UserId = Convert.ToInt32(txtUser.Text);
+
+        Found = AnReview.Find(UserId);
+        if (Found == true)
+        {
+            txtUser.Text = AnReview.UserId.ToString();
+            txtBookId.Text = AnReview.BookId.ToString();
+            txtReviewId.Text = AnReview.ReviewId.ToString();
+            txtDateAddedId.Text = AnReview.DateAdded.ToString();
+            txtReviewTextId.Text = AnReview.Text;
+            txtRatingId.Text= AnReview.RatingId.ToString();
+            txtCheck.Checked = AnReview.Active;
+        }
 
     }
 }

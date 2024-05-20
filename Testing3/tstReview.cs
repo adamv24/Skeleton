@@ -13,7 +13,7 @@ namespace Testing3
     {
         int BookId = 1;
         int ReviewId = 2;
-        int Rating = 4;
+        string Rating = "4";
         String ReviewText = "A Good Book";
         String DateAdded = DateTime.Now.ToShortDateString();
 
@@ -116,7 +116,7 @@ namespace Testing3
         public void RatingIdOK()
         {
             clsReview AnRatingId = new clsReview();
-            Int32 TestData = 1;
+            string TestData = "1";
             AnRatingId.RatingId = TestData;
             Assert.AreEqual(AnRatingId.RatingId, TestData);
         }
@@ -219,7 +219,7 @@ namespace Testing3
             //invoke the method
             Found = AnReview.Find(UserId);
 
-            if (AnReview.RatingId != 4)
+            if (AnReview.RatingId != "4")
             {
                 OK = false;
             }
@@ -336,6 +336,7 @@ namespace Testing3
             int BookId = 2147483647;
             Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
+
         }
 
         [TestMethod]
@@ -424,7 +425,7 @@ namespace Testing3
         {
             clsReview AnReview = new clsReview();
             String Error = "";
-            int ReviewId = 214748364;
+            int ReviewId = 2147483647;
             Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
@@ -435,7 +436,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string Rating = "a";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -445,7 +446,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string Rating = "a";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -455,7 +456,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string Rating = "aa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -465,7 +466,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string Rating = "aaaaa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -474,8 +475,8 @@ namespace Testing3
         {
             clsReview AnReview = new clsReview();
             String Error = "";
-            string Rating = "aaaaaa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            string Rating = "aaaa";
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -485,7 +486,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string Rating = "aaa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -493,8 +494,8 @@ namespace Testing3
         {
             clsReview AnReview = new clsReview();
             String Error = "";
-            string Rating = "aaaaaaa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            string Rating = "aaaa";
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -504,8 +505,8 @@ namespace Testing3
             String Error = "";
             string Rating = "";
             Rating = Rating.PadRight(400, 'a');
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
-            Assert.AreEqual(Error, "");
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Assert.AreNotEqual(Error, "");
         }
 
         /// <summary>
@@ -520,7 +521,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string Rating = "a";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -530,7 +531,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string ReviewText = "a";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -540,7 +541,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string ReviewText = "aa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -549,8 +550,8 @@ namespace Testing3
         {
             clsReview AnReview = new clsReview();
             String Error = "";
-            string ReviewText = "aaaaa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            string ReviewText = "aaaa";
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -559,8 +560,8 @@ namespace Testing3
         {
             clsReview AnReview = new clsReview();
             String Error = "";
-            string ReviewText = "aaaaaa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            string ReviewText = "aaa";
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
 
@@ -570,7 +571,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string ReviewText = "aaa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -579,7 +580,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string ReviewText = "aaaaaaa";
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -588,8 +589,8 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             String Error = "";
             string ReviewText = "";
-            Rating = ReviewText.PadRight(400, 'a');
-            Error = AnReview.Valid2(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            ReviewText = ReviewText.PadRight(40, 'a');
+            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -608,7 +609,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = anReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -628,7 +629,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = anReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -646,7 +647,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = anReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -666,7 +667,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = anReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -686,7 +687,7 @@ namespace Testing3
             //convert the date variable to a string variable
             string DateAdded = TestDate.ToString();
             //invoke the method
-            Error = AnReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
+            Error = anReview.Valid(BookId, ReviewId, Rating, ReviewText, DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
