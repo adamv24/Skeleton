@@ -69,5 +69,25 @@ namespace Testing3
             allReview.ReviewList = TestList;
             Assert.AreEqual(allReview.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsReviewCollection allReviews = new clsReviewCollection();
+            clsReview TestItem = new clsReview();
+            Int32 PrimaryKey = 0;
+            TestItem.Active = true;
+            TestItem.UserId = 1;
+            TestItem.ReviewId = 1;
+            TestItem.BookId = 1;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.RatingId = "3";
+            TestItem.Text = "1";
+            allReviews.ThisReview = TestItem;
+            PrimaryKey = allReviews.Add();
+            TestItem.UserId = PrimaryKey;
+            allReviews.ThisReview.Find(PrimaryKey);
+            Assert.AreEqual(allReviews.ThisReview, TestItem);
+        }
     }
 }

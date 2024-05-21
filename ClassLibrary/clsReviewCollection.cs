@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ClassLibrary
 {
@@ -61,30 +63,18 @@ namespace ClassLibrary
                 mThisReview = value;
             }
         }
-        public void AddMethodOK()
-        {
-            clsReviewCollection allReviews = new clsReviewCollection();
-            clsReview TestItem = new clsReview();
-
-            TestItem.Active = true;
-            TestItem.UserId = 1;
-            TestItem.ReviewId = 1;
-            TestItem.BookId = 1;
-            TestItem.DateAdded = DateTime.Now;
-            TestItem.RatingId = "3";
-            TestItem.Text = "1";
-            allReviews.ThisReview = TestItem;
-            PrimaryKey = allReviews.Add();
-            TestItem.UserId = PrimaryKey;
-            allReviews.ThisReview.Find(PrimaryKey);
-            Assert.AreEqual(allReviews.ThisReview, TestItem);
-        }
 
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@BookId", mThisReview.BookId);
-            DB.AddParameter(@ReviewId, )
+            DB.AddParameter("@ReviewId", mThisReview.ReviewId);
+            DB.AddParameter("@DateAdded", mThisReview.DateAdded);
+            DB.AddParameter("@Rating", mThisReview.RatingId);
+            DB.AddParameter("@ReviewText", mThisReview.Text);
+            DB.AddParameter("@ReviewSubmitted", mThisReview.Active);
+
+            return DB.Execute("sproc_tblReviews_Insert");
         }
     }
 
