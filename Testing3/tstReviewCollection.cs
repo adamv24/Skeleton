@@ -89,5 +89,36 @@ namespace Testing3
             allReviews.ThisReview.Find(PrimaryKey);
             Assert.AreEqual(allReviews.ThisReview, TestItem);
         }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            Int32 PrimaryKey = 0;
+            clsReviewCollection allReview = new clsReviewCollection();
+            clsReview TestItem = new clsReview();
+            TestItem.Active = true;
+            TestItem.UserId = 1;
+            TestItem.ReviewId = 1;
+            TestItem.BookId = 1;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.RatingId = "3";
+            TestItem.Text = "1";
+            allReview.ThisReview = TestItem;
+            PrimaryKey = allReview.Add();
+            TestItem.UserId = PrimaryKey;
+
+            TestItem.Active = false;
+            TestItem.UserId = 13;
+            TestItem.ReviewId = 12;
+            TestItem.BookId = 12;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.RatingId = "23";
+            TestItem.Text = "5";
+            allReview.ThisReview = TestItem;
+            allReview.Update();
+            allReview.ThisReview.Find(PrimaryKey);
+            Assert.AreEqual(allReview.ThisReview, TestItem);
+
+        }
     }
 }

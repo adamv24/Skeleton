@@ -67,6 +67,7 @@ namespace ClassLibrary
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@UserId", mThisReview.UserId);
             DB.AddParameter("@BookId", mThisReview.BookId);
             DB.AddParameter("@ReviewId", mThisReview.ReviewId);
             DB.AddParameter("@DateAdded", mThisReview.DateAdded);
@@ -75,6 +76,20 @@ namespace ClassLibrary
             DB.AddParameter("@ReviewSubmitted", mThisReview.Active);
 
             return DB.Execute("sproc_tblReviews_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@UserId", mThisReview.UserId);
+            DB.AddParameter("@BookId", mThisReview.BookId);
+            DB.AddParameter("@ReviewId", mThisReview.ReviewId);
+            DB.AddParameter("@DateAdded", mThisReview.DateAdded);
+            DB.AddParameter("@Rating", mThisReview.RatingId);
+            DB.AddParameter("@ReviewText", mThisReview.Text);
+            DB.AddParameter("@ReviewSubmitted", mThisReview.Active);
+
+            DB.Execute("sproc_tblReviews_Update");
         }
     }
 

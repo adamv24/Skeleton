@@ -30,4 +30,24 @@ public partial class _1_List : System.Web.UI.Page
         Session["UserId"] = -1;
         Response.Redirect("ReviewManagementSystemDataEntry.aspx");
     }
+
+    protected void lstReviewList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 UserId;
+        if (lstReviewList.SelectedIndex != -1)
+        {
+            UserId = Convert.ToInt32(lstReviewList.SelectedValue);
+            Session["UserId"] = UserId;
+            Response.Redirect("ReviewManagementSystemDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to edit";
+        }
+    }
 }

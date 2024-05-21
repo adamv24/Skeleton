@@ -8,8 +8,31 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 UserId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        UserId = Convert.ToInt32(Session["UserId"]);
+        if (IsPostBack == false)
+        {
+            if (UserId != -1)
+            {
+                DisplayAddress();
+            }
+            
+        }
+
+    }
+    void DisplayAddress()
+    {
+        clsReviewCollection ReviewBook = new clsReviewCollection();
+        ReviewBook.ThisReview.Find(UserId);
+        txtUser.Text = ReviewBook.ThisReview.UserId.ToString();
+        txtBookId.Text = ReviewBook.ThisReview.BookId.ToString();
+        txtReviewId.Text = ReviewBook.ThisReview.ReviewId.ToString();
+        txtRatingId.Text = ReviewBook.ThisReview.RatingId;
+        txtReviewTextId.Text = ReviewBook.ThisReview.Text;
+        txtDateAddedId.Text = ReviewBook.ThisReview.DateAdded.ToString();
+        txtCheck.Text = ReviewBook.ThisReview.ReviewSubmitted;
 
     }
     protected void Button1_Click(object sender, EventArgs e)
@@ -29,6 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnReview.Valid(BookId, ReviewId, RatingId, ReviewText, DateAdded);
         if (Error == "")
         {
+            AnReview.UserId = UserId;
             AnReview.BookId = BookId;
             AnReview.ReviewId = ReviewId;
             AnReview.RatingId = RatingId;
@@ -36,9 +60,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnReview.DateAdded = Convert.ToDateTime(DateAdded);
             AnReview.ReviewSubmitted = txtCheck.Text;
             clsReviewCollection ReviewList = new clsReviewCollection();
-            ReviewList.ThisReview = AnReview;
-            ReviewList.Add();
+
+            if (UserId == -1)
+            {
+                ReviewList.ThisReview = AnReview;
+                ReviewList.Add();
+            }
+            else
+            {
+                ReviewList.ThisReview.Find(UserId);
+                ReviewList.ThisReview = AnReview;
+                ReviewList.Update();
+            }
             Session["AnReview"] = AnReview;
+
             // navigater to the view page
             Response.Redirect("ReviewManagementSystemViewer.aspx");
         }
@@ -48,22 +83,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-  
-
-    protected void TextBox4_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void TextBox1_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void TextBox2_TextChanged(object sender, EventArgs e)
-    {
-
-    }
 
     protected void txtBookId_TextChanged(object sender, EventArgs e)
     {
