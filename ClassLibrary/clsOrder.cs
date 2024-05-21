@@ -119,5 +119,12 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+
+
+        public string Valid(string ISBN, string User_Id, string Created_At, string Status)
+        {
+            return "";
+        }
     }
 }
