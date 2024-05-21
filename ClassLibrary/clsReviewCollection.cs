@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace ClassLibrary
 {
     public class clsReviewCollection
     {
+        List<clsReview> mReviewList = new List<clsReview>();
+        clsReview mThisReview = new clsReview();
         public clsReviewCollection()
         {
             Int32 Index = 0;
@@ -47,8 +50,42 @@ namespace ClassLibrary
 
             }
         }
-        public clsReview ThisReview { get; set; }
+        public clsReview ThisReview
+        {
+            get
+            {
+                return mThisReview;
+            }
+            set
+            {
+                mThisReview = value;
+            }
+        }
+        public void AddMethodOK()
+        {
+            clsReviewCollection allReviews = new clsReviewCollection();
+            clsReview TestItem = new clsReview();
 
+            TestItem.Active = true;
+            TestItem.UserId = 1;
+            TestItem.ReviewId = 1;
+            TestItem.BookId = 1;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.RatingId = "3";
+            TestItem.Text = "1";
+            allReviews.ThisReview = TestItem;
+            PrimaryKey = allReviews.Add();
+            TestItem.UserId = PrimaryKey;
+            allReviews.ThisReview.Find(PrimaryKey);
+            Assert.AreEqual(allReviews.ThisReview, TestItem);
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@BookId", mThisReview.BookId);
+            DB.AddParameter(@ReviewId, )
+        }
     }
 
 
