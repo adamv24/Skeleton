@@ -8,6 +8,11 @@ namespace Testing6
     [TestClass]
     public class tstOrder
     {
+        string ISBN = "1";
+        string User_Id = "1";
+        string Created_At = DateTime.Now.ToShortDateString();
+        string Status = "active";
+
         /******************INSTANCE OF THE CLASS TEST******************/
         [TestMethod]
         public void InstanceOK()
@@ -175,8 +180,20 @@ namespace Testing6
            
         }
 
+     
 
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of a new classs
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            Assert.AreEqual(Error, "");
+        }
+
+        
 
     }
 }
