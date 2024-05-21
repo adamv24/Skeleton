@@ -8,9 +8,21 @@ using System.Web.UI.WebControls;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 IsbnId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the stock to be processed
+        IsbnId = Convert.ToInt32(Session["IsbnId"]);
+        // if this is the first time the page is displayed
+        if (IsPostBack == false)
+        {
+            //id this is not a new record
+            if (IsbnId != -1)
+            {
+                //update the current data for the record
+                DisplayStocks();
+            }
+        }
     }
 
     protected void TextBox3_TextChanged(object sender, EventArgs e)
@@ -33,9 +45,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
 
+
         //capture the book name
         string BookName = txtBookName.Text;
-       
+
         //capture the book name
         string BookAuthor = txtBookAuthor.Text;
 
@@ -59,6 +72,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
         if (Error == "")
         {
+            //capture the isbn id
+            AStock.IsbnID = IsbnId; //DON'T MISS THIS BIT !!!!!
             //capture the book name
             AStock.BookName = BookName;
             //capture the authors name
@@ -73,13 +88,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStock.Active = chkIsAvailable.Checked;
             //create a new instance of the adress collection
             clsStockCollection StockList = new clsStockCollection();
-            //set the ThisStock property
-            StockList.ThisStock = AStock;
-            //add the new record
-            StockList.Add();
+
+            //if this is a new record i.e. StockId = -1 then add the data
+            if (IsbnId == -1)
+            {
+                //set the ThisAdress property
+                StockList.ThisStock = AStock;
+                //add the new record
+                StockList.Add();
+            }
+
+            //otherwise it must be an update
+            else
+            {
+                //find te record to be an update
+                StockList.ThisStock.Find(IsbnId);
+                //set the ThisStock property
+                StockList.ThisStock = AStock;
+                //update the record
+                StockList.Update();
+            }
             //redirect back to the list page
             Response.Redirect("StockManagementSystemList.aspx");
+
         }
+
         else
         {
             //display the error message
@@ -111,5 +144,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtQuantityAvailable.Text = AStock.QuantityAvailable.ToString();
             chkIsAvailable.Checked = AStock.Active;
         }
+    }
+
+    void DisplayStocks()
+    {
+        //create an instance of the stock book
+        clsStockCollection StockBook = new clsStockCollection();
+        //find the record to update
+        StockBook.ThisStock.Find(IsbnId);
+        //display the data for the record
+        txtIsbnID.Text = StockBook.ThisStock.IsbnID.ToString();
+        txtBookName.Text = StockBook.ThisStock.BookName.ToString();
+        txtBookAuthor.Text = StockBook.ThisStock.BookAuthor.ToString();
+        txtPrice.Text = StockBook.ThisStock.Price.ToString();
+        txtDateAdded.Text = StockBook.ThisStock.DateAdded.ToString();
+        txtQuantityAvailable.Text = StockBook.ThisStock.QuantityAvailable.ToString();
+        chkIsAvailable.Checked = StockBook.ThisStock.Active;
+
     }
 }

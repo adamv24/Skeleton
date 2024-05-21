@@ -26,9 +26,9 @@ public partial class _1_List : System.Web.UI.Page
         //set the data source to the list of addressin the collection
         lstStockList.DataSource = Stocks.StockList;
         //set the name of the primary key
-        lstStockList.DataValueField = "BookAuthor";
+        lstStockList.DataValueField = "IsbnId";
         //set the data field to display
-        lstStockList.DataValueField = "BookName";
+        lstStockList.DataTextField = "BookName";
         //bind the data to the list
         lstStockList.DataBind();
     }
@@ -44,6 +44,21 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnEdit_Click(object sender, EventArgs e)
     {
-        
+        //variable to store the primary key value of the record to be edited
+        Int32 IsbnId;
+        //if the record has been selected from the list
+        if (lstStockList.SelectedIndex != -1)
+        {
+            //get the primary key of the record to edit
+            IsbnId = Convert.ToInt32(lstStockList.SelectedValue);
+            //store the data in the session object
+            Session["IsbnId"] = IsbnId;
+            //redirect to the edit page
+            Response.Redirect("StockManagementSystemDataEntry.aspx");
+        }
+        else //if no record has been selected
+        {
+            lblError.Text = "Please select a record from the list to edit";
+        }
     }
 }
