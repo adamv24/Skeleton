@@ -21,18 +21,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
         int BookId = Convert.ToInt32(txtBookId.Text);
         int ReviewId = Convert.ToInt32(txtReviewId.Text);
         string RatingId = txtRatingId.Text;
-        string revText = txtReviewTextId.Text;
+        string ReviewText = txtReviewTextId.Text;
         string DateAdded = txtDateAddedId.Text;
+        string ReviewSubmitted = txtCheck.Text;
 
         string Error = "";
-        Error = AnReview.Valid(BookId, ReviewId, RatingId, revText, DateAdded);
+        Error = AnReview.Valid(BookId, ReviewId, RatingId, ReviewText, DateAdded);
         if (Error == "")
         {
             AnReview.BookId = BookId;
             AnReview.ReviewId = ReviewId;
             AnReview.RatingId = RatingId;
-            AnReview.revText = revText;
+            AnReview.Text = ReviewText;
             AnReview.DateAdded = Convert.ToDateTime(DateAdded);
+            AnReview.ReviewSubmitted = txtCheck.Text;
+            clsReviewCollection ReviewList = new clsReviewCollection();
+            ReviewList.ThisReview = AnReview;
+            ReviewList.Add();
             Session["AnReview"] = AnReview;
             // navigater to the view page
             Response.Redirect("ReviewManagementSystemViewer.aspx");

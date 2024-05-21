@@ -68,9 +68,9 @@ namespace Testing3
             //create some test data to assign to the property
             string TestData = "Review Text";
             //assign the data to the property
-            AnReview.revText = TestData;
+            AnReview.Text = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnReview.revText, TestData);
+            Assert.AreEqual(AnReview.Text, TestData);
         }
 
         [TestMethod]

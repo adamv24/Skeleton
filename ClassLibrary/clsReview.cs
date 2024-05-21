@@ -15,7 +15,6 @@ namespace ClassLibrary
 
 
 
-        public string revText;
 
         public string Text
         {
@@ -104,6 +103,9 @@ namespace ClassLibrary
                 mActive = value;
             }
         }
+
+        public string ReviewSubmitted { get; set; }
+
         public bool Find(int userId)
         {
             clsDataConnection DB = new clsDataConnection();
