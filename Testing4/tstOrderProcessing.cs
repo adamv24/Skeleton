@@ -2,6 +2,7 @@
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
 
 namespace Testing6
 {
@@ -193,7 +194,589 @@ namespace Testing6
             Assert.AreEqual(Error, "");
         }
 
-        
+        [TestMethod]
+        public void UserIdMin()
+        {
+            //create an instance of the class we want to create
+            clsOrder anOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string User_id = "1"; //this should be ok
+                                  //invoke the method
+            Error = anOrder.Valid(ISBN, User_id, Created_At,Status);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UserIdMinMinus1()
+        {
+            //create an instance of the class we want to create
+            clsOrder anOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string User_id = "1"; //this should be ok
+                                  //invoke the method
+            Error = anOrder.Valid(ISBN, User_id, Created_At, Status);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void Created_AtExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string Created_At = TestDate.ToString();
+            //invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status); 
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Created_AtMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string Created_At = TestDate.ToString();
+            //invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Created_AtMin()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string Created_At = TestDate.ToString();
+            //invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Created_AtMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string Created_At = TestDate.ToString();
+            //invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Created_AtExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string Created_At = TestDate.ToString();
+            //invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void Created_AtInvalidDate()
+        {
+            //create a new instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //set the Created_At to non date value
+            string Created_At = "this is not a date!";
+            //invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StatusMinLessOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            // String variable to store any error message
+            string Error = "";
+
+            // This should fail
+            string Status = "";
+
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StatusMin()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            // String variable to store any error message
+            string Error = "";
+
+            // This should pass
+            string Status = "a";
+
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StatusMinPlusOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            // String variable to store any error message
+            string Error = "";
+
+            // This should pass
+            string Status = "aa";
+
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StatusMaxLessOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            // String variable to store any error message
+            string Error = "";
+
+            // This should pass
+            string Status = "";
+            Status = Status.PadRight(49, 'a');
+
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StatusMax()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            // String variable to store any error message
+            string Error = "";
+
+            // This should pass
+            string Status = "";
+            Status = Status.PadRight(50, 'a');
+
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StatusMaxPlusOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            // String variable to store any error message
+            string Error = "";
+
+            // This should fail
+            string Status = "";
+            Status = Status.PadRight(51, 'a');
+
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StatusMid()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            // String variable to store any error message
+            string Error = "";
+
+            // This should pass
+            string Status = "";
+            Status = Status.PadRight(25, 'a');
+
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNExtremeMin()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should fail
+            string ISBN = "-1000";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNMinLessOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should fail
+            string ISBN = "-1";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNMin()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string ISBN = "0";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNMinPlusOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string ISBN = "1";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNMaxLessOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string ISBN = "2147483646";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNMax()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string ISBN = "2147483647";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNMaxPlusOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should fail
+            string ISBN = "2147483648";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNMid()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string ISBN = "1073741824";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNExtremeMax()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should fail
+            string ISBN = "5000000000";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ISBNInvalidDataType()
+        {
+            // Create a new instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // Set the ISBN to a non-integer data type
+            string ISBN = "this is not an integer!";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void User_IdExtremeMin()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should fail
+            string User_Id = "-1000";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void User_IdMinLessOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should fail
+            string User_Id = "-1";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void User_IdMin()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string User_Id = "0";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void User_IdMinPlusOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string User_Id = "1";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void User_IdMaxLessOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string User_Id = "2147483646";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void User_IdMax()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string User_Id = "2147483647";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void User_IdPlusOne()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should fail
+            string User_Id = "2147483648";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void User_IdMid()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should pass
+            string User_Id = "1073741824";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void User_IdExtremeMax()
+        {
+            // Create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // This should fail
+            string User_Id = "5000000000";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void User_IdInvalidDataType()
+        {
+            // Create a new instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message
+            string Error = "";
+            // Set the ISBN to a non-integer data type
+            string User_Id = "this is not an integer!";
+            // Invoke the method
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
 
     }
 }
