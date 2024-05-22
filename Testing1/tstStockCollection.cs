@@ -195,6 +195,28 @@ namespace Testing1
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByBookNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsStockCollection AllStock = new clsStockCollection();
+            //create an instance of filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a blank string (should return all records);
+            FilteredStocks.ReportByBookName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStock.Count, FilteredStocks.Count);
+        }
 
+        [TestMethod]
+        public void ReportByBookNameNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a book name that doesnt exist
+            FilteredStocks.ReportByBookName("book that does not exist");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStocks.Count);
+        }
     }
 }

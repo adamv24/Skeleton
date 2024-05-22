@@ -59,35 +59,12 @@ namespace ClassLibrary
         //constructor for the class
         public clsStockCollection()
         {
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record the count
-            Int32 RecordCount = 0;
-            //onject for the data connect
+            //object for the data connect
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblStock_SelectAll");
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are recirds to process
-            while (Index < RecordCount)
-            {
-                //create the blank stock
-                clsStock AStock = new clsStock();
-                //read in the fields for the current records
-                AStock.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsAvailable"]);
-                AStock.IsbnID = Convert.ToInt32(DB.DataTable.Rows[Index]["IsbnId"]);
-                AStock.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
-                AStock.BookName = Convert.ToString(DB.DataTable.Rows[Index]["BookName"]);
-                AStock.BookAuthor = Convert.ToString(DB.DataTable.Rows[Index]["BookAuthor"]);
-                AStock.QuantityAvailable = Convert.ToInt32(DB.DataTable.Rows[Index]["QuantityAvailable"]);
-                AStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
-
-                //add the record to the private data member
-                mStockList.Add(AStock);
-                //point at the next records
-                Index++;
-            }
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -135,6 +112,52 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Delete");
         }
+
+        public void ReportByBookName(string BookName)
+        {
+            //filter the records based on a full or partial book name
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //senf the BookName parameter to the database
+            DB.AddParameter("@BookName", BookName);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByBookName");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populate the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of the records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mStockList = new List<clsStock>();
+            //while there are records to processs
+            while (Index < RecordCount)
+            {
+                //creat a blank stock object
+                clsStock AStock = new clsStock();
+                //read in the fields from the current record
+                AStock.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsAvailable"]);
+                AStock.IsbnID = Convert.ToInt32(DB.DataTable.Rows[Index]["IsbnId"]);
+                AStock.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                AStock.BookName = Convert.ToString(DB.DataTable.Rows[Index]["BookName"]);
+                AStock.BookAuthor = Convert.ToString(DB.DataTable.Rows[Index]["BookAuthor"]);
+                AStock.QuantityAvailable = Convert.ToInt32(DB.DataTable.Rows[Index]["QuantityAvailable"]);
+                AStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
+                //add the record to the private data member
+                mStockList.Add(AStock);
+                //point at the next record
+                Index++;
+
+            }
+        }
+
     }
 
     
