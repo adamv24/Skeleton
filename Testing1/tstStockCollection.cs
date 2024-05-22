@@ -195,6 +195,62 @@ namespace Testing1
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByBookNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsStockCollection AllStock = new clsStockCollection();
+            //create an instance of filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a blank string (should return all records);
+            FilteredStocks.ReportByBookName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStock.Count, FilteredStocks.Count);
+        }
+
+        [TestMethod]
+        public void ReportByBookNameNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a book name that doesnt exist
+            FilteredStocks.ReportByBookName("book that does not exist");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStocks.Count);
+        }
+
+        [TestMethod]
+        public void ReportByBookNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a book name that doesn't exist
+            FilteredStocks.ReportByBookName("mobile");
+            //check that the correct number of records are found
+            if(FilteredStocks.Count == 2)
+            {
+                //check to see that the first record is 14
+                if (FilteredStocks.StockList[0].IsbnID != 14)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 102
+                if (FilteredStocks.StockList[1].IsbnID != 102)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see hat there are no records
+            Assert.IsTrue(OK);
+        }
+
 
     }
+
 }
