@@ -218,5 +218,39 @@ namespace Testing1
             //test to see that there are no records
             Assert.AreEqual(0, FilteredStocks.Count);
         }
+
+        [TestMethod]
+        public void ReportByBookNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a book name that doesn't exist
+            FilteredStocks.ReportByBookName("mobile");
+            //check that the correct number of records are found
+            if(FilteredStocks.Count == 2)
+            {
+                //check to see that the first record is 14
+                if (FilteredStocks.StockList[0].IsbnID != 14)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 102
+                if (FilteredStocks.StockList[1].IsbnID != 102)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see hat there are no records
+            Assert.IsTrue(OK);
+        }
+
+
     }
+
 }

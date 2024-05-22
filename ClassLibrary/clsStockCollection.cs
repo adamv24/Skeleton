@@ -55,7 +55,9 @@ namespace ClassLibrary
             }
         }
 
-        
+
+    
+
         //constructor for the class
         public clsStockCollection()
         {
@@ -118,13 +120,14 @@ namespace ClassLibrary
             //filter the records based on a full or partial book name
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
-            //senf the BookName parameter to the database
+            //send the BookName parameter to the database
             DB.AddParameter("@BookName", BookName);
             //execute the stored procedure
             DB.Execute("sproc_tblStock_FilterByBookName");
             //populate the array list with the data table
             PopulateArray(DB);
         }
+
 
         void PopulateArray(clsDataConnection DB)
         {
@@ -137,7 +140,7 @@ namespace ClassLibrary
             RecordCount = DB.Count;
             //clear the private array list
             mStockList = new List<clsStock>();
-            //while there are records to processs
+            //while there are records to process
             while (Index < RecordCount)
             {
                 //creat a blank stock object
@@ -154,9 +157,10 @@ namespace ClassLibrary
                 mStockList.Add(AStock);
                 //point at the next record
                 Index++;
-
             }
         }
+
+
 
     }
 
