@@ -75,7 +75,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Session["AnReview"] = AnReview;
 
             // navigater to the view page
-            Response.Redirect("ReviewManagementSystemViewer.aspx");
+            Response.Redirect("ReviewManagementSystemList.aspx");
         }
         else
         {

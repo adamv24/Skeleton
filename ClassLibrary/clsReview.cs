@@ -128,35 +128,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool FindReviewId(int ReviewId)
-        {
-            mReviewId = 2;
-            return true;
-        }
-
-        public bool FindRatingId(int RatingId)
-        {
-            mRatingId = "4";
-            return true;
-        }
-
-        public bool FindBookId(int BookId)
-        {
-            mBookId = 1;
-            return true;
-        }
-
-        public bool FindTextId(int Text)
-        {
-            mText = "I like this BOOK! It has a great storyline!";
-            return true;
-        }
-
-        public bool FindActiveId(int Active)
-        {
-            mActive = true;
-            return true;
-        }
+       
 
         public string Valid(int bookId, int reviewId, string rating, string reviewText, string DateAdded)
         {

@@ -46,7 +46,7 @@ namespace Testing3
             TestReview.DateAdded = DateTime.Now;
             TestReview.RatingId = "3";
             TestReview.Text = "1";
-           
+
             allReview.ThisReview = TestReview;
             Assert.AreEqual(allReview.ThisReview, TestReview);
         }
@@ -91,6 +91,30 @@ namespace Testing3
         }
 
         [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsReviewCollection allReviews = new clsReviewCollection();
+            clsReview TestItem = new clsReview();
+            Int32 PrimaryKey = 0;
+            TestItem.Active = true;
+            TestItem.UserId = 2;
+            TestItem.ReviewId = 3;
+            TestItem.BookId = 4;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.RatingId = "3";
+            TestItem.Text = "Good Book";
+            allReviews.ThisReview = TestItem;
+            PrimaryKey = allReviews.Add();
+            TestItem.UserId = PrimaryKey;
+            allReviews.ThisReview.Find(PrimaryKey);
+            allReviews.Delete();
+            Boolean Found = allReviews.ThisReview.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+
+ 
+
+        [TestMethod]
         public void UpdateMethodOK()
         {
             Int32 PrimaryKey = 0;
@@ -120,5 +144,7 @@ namespace Testing3
             Assert.AreEqual(allReview.ThisReview, TestItem);
 
         }
+
+        
     }
 }
