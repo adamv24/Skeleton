@@ -82,4 +82,36 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete";
         }
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock object
+        clsStockCollection AStock = new clsStockCollection();
+        //retrieve the value of the book name from the presentation layer
+        AStock.ReportByBookName(txtFilter.Text);
+        //set the data source to the list of stocks in the collection
+        lstStockList.DataSource = AStock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "IsbnId";
+        lstStockList.DataTextField = "BookName";
+        //bind the data to the list
+        lstStockList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock object
+        clsStockCollection AStock = new clsStockCollection();
+        //set an empty string
+        AStock.ReportByBookName("");
+        //clear any existin filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to the list of stocks in the collection
+        lstStockList.DataSource= AStock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "IsbnId";
+        lstStockList.DataTextField = "BookName";
+        //bind the data to the list
+        lstStockList.DataBind();
+    }
 }
