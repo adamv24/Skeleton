@@ -58,9 +58,34 @@ namespace ClassLibrary
             }
         }
 
-        public bool FindUser(string userName, string password)
+        public bool FindUser(string UserName, string Password)
         {
-            throw new NotImplementedException();
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add parameter for the user username and password to search for
+            DB.AddParameter("@UserName", UserName);
+            DB.AddParameter("@Password", Password);
+
+            //execute the stored procedureS
+            DB.Execute("sproc_tblUsers_FindUserNamePW");
+            //if one record is found (there should be either one or none)
+            if(DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mUserID = Convert.ToInt32(DB.DataTable.Rows[0]["UserID"]);
+                mUserName = Convert.ToString(DB.DataTable.Rows[0]["UserName"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mDepartment = Convert.ToString(DB.DataTable.Rows[0]["Department"]);
+
+                //return true to confirm everything worked
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
+
     }
 }
