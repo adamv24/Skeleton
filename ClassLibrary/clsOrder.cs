@@ -115,7 +115,7 @@ namespace ClassLibrary
             }
             else
             {
-               
+
                 return false;
             }
         }
@@ -124,7 +124,126 @@ namespace ClassLibrary
 
         public string Valid(string ISBN, string User_Id, string Created_At, string Status)
         {
-            return "";
+            string error = "";
+
+            DateTime DateTemp;
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(Created_At);
+
+
+                if (DateTemp < DateComp)//compare the dateAdded with Date
+                {
+                    error = error + "The date cannot be in the past: ";
+                }
+
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    error = error + "The date cannot be in the future : ";
+                }
+
+            }
+            catch
+            {
+                //record the error
+                error = error + "The date was not a valid date";
+            }
+
+
+
+            //VALIDATION FOR BOOK AUTHOR
+            //is the bookAuthor blank
+            if (Status.Length == 0)
+            {
+                //record the error
+                error = error + "The authors name may not be blank : ";
+            }
+            //if the town is too long
+            if (Status.Length > 50)
+            {
+                //record the error
+                error = error + "The authors name must be less than 50 characters : ";
+            }
+
+            //USER_ID//
+            if (string.IsNullOrEmpty(User_Id))
+            {
+                // Record the error
+                error = error + "The quantity available must not be empty : ";
+            }
+            else
+            {
+
+                try
+                {
+
+                    //convert string to int
+                    long ISBNAvailableInt = Convert.ToInt64(User_Id);
+
+                    // Check if the quantityAvailable is negative
+                    if (ISBNAvailableInt < 0)
+                    {
+                        // Record the error
+                        error = error + "The ISBN available cannot be less than 0 : ";
+                    }
+
+                    // Check if the quantityAvailable is negative
+                    if (ISBNAvailableInt > 2147483647)
+                    {
+                        // Record the error
+                        error = error + "The ISBN available cannot be more than 2147483647 : ";
+                    }
+                }
+                catch (FormatException)
+                {
+                    // Record the error if quantityAvailableInt cannot be converted to an integer
+                    error = error + "The ISBN available must be a number : ";
+                }
+            }
+
+
+
+            //VALIDATION FOR ISBN AVAILABLE
+            // Check if the ISBN is not null or empty
+            if (string.IsNullOrEmpty(ISBN))
+            {
+                // Record the error
+                error = error + "The quantity available must not be empty : ";
+            }
+            else
+            {
+
+                try
+                {
+
+                    //convert string to int
+                    long ISBNAvailableInt = Convert.ToInt64(ISBN);
+
+                    // Check if the quantityAvailable is negative
+                    if (ISBNAvailableInt < 0)
+                    {
+                        // Record the error
+                        error = error + "The ISBN available cannot be less than 0 : ";
+                    }
+
+                    // Check if the quantityAvailable is negative
+                    if (ISBNAvailableInt > 2147483647)
+                    {
+                        // Record the error
+                        error = error + "The ISBN available cannot be more than 2147483647 : ";
+                    }
+                }
+                catch (FormatException)
+                {
+                    // Record the error if quantityAvailableInt cannot be converted to an integer
+                    error = error + "The ISBN available must be a number : ";
+                }
+            }
+            return error;
         }
     }
 }
