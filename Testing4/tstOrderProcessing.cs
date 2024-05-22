@@ -132,15 +132,15 @@ namespace Testing6
         [TestMethod]
         public void TestIsbnFound()
         {
-            
+
             clsOrder AnOrder = new clsOrder();
-         
+
             Boolean Found = false;
-       
+
             Boolean OK = true;
-          
+
             Int32 OrderId = 1;
-            
+
             Found = AnOrder.Find(OrderId);
             //check the ISBN property
             if (AnOrder.ISBN == 2)
@@ -155,7 +155,7 @@ namespace Testing6
         public void FindOrderById_ExistingId_ReturnsOrder()
         {
             // Arrange
-            int orderId = 1; 
+            int orderId = 1;
             clsOrder order = new clsOrder();
 
             // Act
@@ -163,25 +163,25 @@ namespace Testing6
 
             // Assert
             Assert.IsTrue(found, "Order should be found.");
-           
+
         }
 
         [TestMethod]
         public void FindOrderById_NonExistingId_ReturnsNull()
         {
-            
-            int orderId = 99; 
+
+            int orderId = 99;
             clsOrder order = new clsOrder();
 
-            
+
             bool found = order.Find(orderId);
 
-           
+
             Assert.IsFalse(found, "Order should not be found.");
-           
+
         }
 
-     
+
 
 
         [TestMethod]
@@ -204,7 +204,7 @@ namespace Testing6
             //create some test data to pass to the method
             string User_id = "1"; //this should be ok
                                   //invoke the method
-            Error = anOrder.Valid(ISBN, User_id, Created_At,Status);
+            Error = anOrder.Valid(ISBN, User_id, Created_At, Status);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -239,7 +239,7 @@ namespace Testing6
             //convert the date variable to a string variable
             string Created_At = TestDate.ToString();
             //invoke the method
-            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status); 
+            Error = AnOrder.Valid(ISBN, User_Id, Created_At, Status);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }

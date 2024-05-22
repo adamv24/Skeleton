@@ -115,7 +115,7 @@ namespace ClassLibrary
             }
             else
             {
-               
+
                 return false;
             }
         }
@@ -153,7 +153,7 @@ namespace ClassLibrary
                 error = error + "The date was not a valid date";
             }
 
-           
+
 
             //VALIDATION FOR BOOK AUTHOR
             //is the bookAuthor blank
