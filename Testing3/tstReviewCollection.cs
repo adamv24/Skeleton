@@ -112,7 +112,23 @@ namespace Testing3
             Assert.IsFalse(Found);
         }
 
- 
+        [TestMethod]
+        public void ReportByReviewTextMethodOK()
+        {
+            clsReviewCollection allReviews = new clsReviewCollection();
+            clsReviewCollection FilteredReviews = new clsReviewCollection();
+            FilteredReviews.ReportByReviewText("");
+            Assert.AreEqual(allReviews.Count, FilteredReviews.Count);
+        }
+
+        [TestMethod]
+        public void ReportByReviewTextNoneFound()
+        {
+            clsReviewCollection FilteredReviews = new clsReviewCollection();
+            FilteredReviews.ReportByReviewText("text that dont exist");
+            Assert.AreEqual(0, FilteredReviews.Count);
+        }
+        
 
         [TestMethod]
         public void UpdateMethodOK()
@@ -144,6 +160,7 @@ namespace Testing3
             Assert.AreEqual(allReview.ThisReview, TestItem);
 
         }
+
 
         
     }

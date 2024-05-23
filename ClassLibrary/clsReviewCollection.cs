@@ -12,24 +12,9 @@ namespace ClassLibrary
         clsReview mThisReview = new clsReview();
         public clsReviewCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblBookReviews_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsReview anReview = new clsReview();
-                anReview.UserId = Convert.ToInt32(DB.DataTable.Rows[0]["UserId"]);
-                anReview.ReviewId = Convert.ToInt32(DB.DataTable.Rows[0]["ReviewId"]);
-                anReview.RatingId = Convert.ToString(DB.DataTable.Rows[0]["Rating"]);
-                anReview.BookId = Convert.ToInt32(DB.DataTable.Rows[0]["BookId"]);
-                anReview.Active = Convert.ToBoolean(DB.DataTable.Rows[0]["ReviewSubmited"]);
-                anReview.Text = Convert.ToString(DB.DataTable.Rows[0]["ReviewText"]);
-                anReview.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
-                mReviewlist.Add(anReview);
-                Index++;
-            }
+            PopulateArray(DB);
         }
 
         //private data member for the list
@@ -43,13 +28,14 @@ namespace ClassLibrary
                 mReviewlist = value;
             }
         }
-        public int Count { get
+        public int Count 
+        { get
             {
                 return mReviewlist.Count;
             }
             set
             {
-
+                
             }
         }
         public clsReview ThisReview
@@ -91,11 +77,40 @@ namespace ClassLibrary
             DB.Execute("sproc_tblReviews_Update");
         }
 
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mReviewList = new List<clsReview>();
+            while (Index < RecordCount)
+            {
+                clsReview anReview = new clsReview();
+                anReview.UserId = Convert.ToInt32(DB.DataTable.Rows[Index]["UserId"]);
+                anReview.ReviewId = Convert.ToInt32(DB.DataTable.Rows[Index]["ReviewId"]);
+                anReview.RatingId = Convert.ToString(DB.DataTable.Rows[Index]["Rating"]);
+                anReview.BookId = Convert.ToInt32(DB.DataTable.Rows[Index]["BookId"]);
+                anReview.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["ReviewSubmited"]);
+                anReview.Text = Convert.ToString(DB.DataTable.Rows[Index]["ReviewText"]);
+                anReview.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                mReviewlist.Add(anReview);
+                Index++;
+            }
+        }
+
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@UserId", mThisReview.UserId);
             DB.Execute("sproc_tblReview_Delete");
+        }
+
+        public void ReportByReviewText(string ReviewText)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ReviewText", ReviewText);
+            DB.Execute("sproc_tblReviews_FilterByReviewText");
+            PopulateArray(DB);
         }
     }
 

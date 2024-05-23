@@ -15,7 +15,7 @@
 <body style="height: 367px; width: 528px">
     
     <form id="form1" runat="server">
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 13px; top: 17px; position: absolute; height: 28px; width: 56px;" Text="User Id"></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 13px; top: 17px; position: absolute; height: 28px; width: 56px; right: 668px;" Text="User Id"></asp:Label>
         <asp:Label ID="Label4" runat="server" style="z-index: 1; left: 13px; top: 205px; position: absolute" Text="Review Text" height="21px"></asp:Label>
         <asp:Label ID="Label5" runat="server" style="z-index: 1; left: 8px; top: 112px; position: absolute" Text="Review Id" height="21px"></asp:Label>
         <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 12px; top: 68px; position: absolute; height: 21px" Text="Book Id"></asp:Label>

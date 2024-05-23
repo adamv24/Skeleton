@@ -136,7 +136,7 @@ namespace Testing3
         {
             clsReview AnReview = new clsReview();
             Boolean Found = false;
-            Int32 UserId = 6;
+            Int32 UserId = 17;
             Found = AnReview.Find(UserId);
             Assert.IsTrue(Found);
         }
@@ -147,11 +147,11 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 UserId = 6;
+            Int32 UserId = 17;
             //invoke the method
             Found = AnReview.Find(UserId);
 
-            if (AnReview.UserId != 6)
+            if (AnReview.UserId != 17)
             {
                 OK = false;
             }
@@ -164,11 +164,11 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 UserId = 6;
+            Int32 UserId = 17;
             //invoke the method
             Found = AnReview.Find(UserId);
 
-            if (AnReview.ReviewId != 2)
+            if (AnReview.ReviewId != 1)
             {
                 OK = false;
             }
@@ -181,7 +181,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 UserId = 6;
+            Int32 UserId = 17;
             //invoke the method
             Found = AnReview.Find(UserId);
 
@@ -198,7 +198,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 UserId = 6;
+            Int32 UserId = 17;
             //invoke the method
             Found = AnReview.Find(UserId);
 
@@ -215,7 +215,7 @@ namespace Testing3
             clsReview AnReview = new clsReview();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 UserId = 6;
+            Int32 UserId = 17;
             //invoke the method
             Found = AnReview.Find(UserId);
 
@@ -246,11 +246,11 @@ namespace Testing3
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 UserId = 6;
+            Int32 UserId = 17;
             //invoke the method
             Found = AnReview.Find(UserId);
             //check the post code property
-            if (AnReview.Text != "I like this BOOK! It has a great storyline!")
+            if (AnReview.Text != "Nice")
             {
                 OK = false;
             }
@@ -268,7 +268,7 @@ namespace Testing3
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 UserId = 6;
+            Int32 UserId = 17;
             //invoke the method
             Found = AnReview.Find(UserId);
             //check the active property
