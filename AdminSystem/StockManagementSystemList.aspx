@@ -25,6 +25,9 @@
         <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" OnClick="btnClearFilter_Click" />
            
         
+        <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" Text="Return to Main Menu" />
+           
+        
         <p>  <asp:Label ID="lblError" runat="server"></asp:Label></p>
 
     </form>
