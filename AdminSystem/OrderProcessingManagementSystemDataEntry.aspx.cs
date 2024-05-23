@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IdentityModel.Protocols.WSTrust;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -52,9 +53,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             // Find the record
             Found = order.Find(OrderId);
+            string error = order.Valid(order.ISBN.ToString(), order.UserId.ToString(), order.CreatedAt.ToString(), order.Status);
+
 
             // If found
-            if (Found == true)
+            if (error=="")
             {
                 // Display the values of the properties in the form
                 txtISBN.Text = order.ISBN.ToString();
