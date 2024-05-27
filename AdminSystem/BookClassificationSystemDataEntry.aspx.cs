@@ -18,27 +18,63 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             // Create a new instance of clsAuthor
             clsAuthor AnAuthor = new clsAuthor();
+
             // Capture the author name
-            AnAuthor.AuthorName = txtAuthorName.Text;
-            // Optionally update other properties as needed
-            AnAuthor.AuthorBiography = txtAuthorBiography.Text;
-            AnAuthor.DateJoined = Convert.ToDateTime(txtDateJoined.Text);
-            AnAuthor.IsBestSeller = chkIsBestseller.Checked;
-            AnAuthor.AverageRating = decimal.Parse(txtAverageRating.Text);
-            AnAuthor.TotalBooksSold = Convert .ToInt32(txtTotalBooksSold.Text);
+            string AuthorName = txtAuthorName.Text;
 
+            // Capture the author biography
+            string AuthorBiography = txtAuthorBiography.Text;
 
+            // Capture the date joined
+            string DateJoined = txtDateJoined.Text;
 
+            // Capture the is bestseller checkbox
+            string IsBestSeller = chkIsBestseller.Checked.ToString();
 
-            // Store the author in the session object
-            Session["AnAuthor"] = AnAuthor;
+            // Capture the average rating
+            string AverageRating = txtAverageRating.Text;
 
+            // Capture the total books sold
+            string TotalBooksSold = txtTotalBooksSold.Text;
 
+            // Variable to store any error messages
+            string Error = "";
 
-            // Navigate to the view page
-            Response.Redirect("BookClassificationSystemViewer.aspx");
+            // Validate the data
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+
+            if (Error != "")
+            {
+                // Display the error message
+                lblError.Text = Error;
+            }
+            else
+            {
+                // Capture the author name
+                AnAuthor.AuthorName = AuthorName;
+
+                // Capture the author biography
+                AnAuthor.AuthorBiography = AuthorBiography;
+
+                // Capture the date joined
+                AnAuthor.DateJoined = Convert.ToDateTime(DateJoined);
+
+                // Capture the is bestseller checkbox
+                AnAuthor.IsBestSeller = chkIsBestseller.Checked;
+
+                // Capture the average rating
+                AnAuthor.AverageRating = decimal.Parse(AverageRating);
+
+                // Capture the total books sold
+                AnAuthor.TotalBooksSold = Convert.ToInt32(TotalBooksSold);
+
+                // Store the author in the session object
+                Session["AnAuthor"] = AnAuthor;
+
+                // Navigate to the view page
+                Response.Redirect("BookClassificationSystemViewer.aspx");
+            }
         }
-
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
