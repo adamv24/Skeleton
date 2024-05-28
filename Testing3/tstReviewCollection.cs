@@ -113,20 +113,43 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void ReportByReviewTextMethodOK()
+        public void ReportByTextMethodOK()
         {
             clsReviewCollection allReviews = new clsReviewCollection();
-            clsReviewCollection FilteredReviews = new clsReviewCollection();
-            FilteredReviews.ReportByReviewText("");
-            Assert.AreEqual(allReviews.Count, FilteredReviews.Count);
+            clsReviewCollection filteredReview = new clsReviewCollection();
+            filteredReview.ReportByRevText("");
+            Assert.AreEqual(allReviews.Count, filteredReview.Count);
         }
 
         [TestMethod]
-        public void ReportByReviewTextNoneFound()
+        public void ReportByRevTextNoneFoundOK() {
+            clsReviewCollection filteredReviews = new clsReviewCollection();
+            filteredReviews.ReportByRevText("xxx xxx");
+            Assert.AreEqual(0, filteredReviews.Count);
+        }
+
+        [TestMethod]
+        public void ReportByReviewTextTestDataFound()
         {
-            clsReviewCollection FilteredReviews = new clsReviewCollection();
-            FilteredReviews.ReportByReviewText("text that dont exist");
-            Assert.AreEqual(0, FilteredReviews.Count);
+            clsReviewCollection filteredReviews = new clsReviewCollection();
+            Boolean OK = true;
+            filteredReviews.ReportByRevText("Nice");
+            if(filteredReviews.Count == 2)
+            {
+                if (filteredReviews.ReviewList[0].UserId != 17)
+                {
+                    OK = false;
+                }
+                if (filteredReviews.ReviewList[1].UserId != 18)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
         
 

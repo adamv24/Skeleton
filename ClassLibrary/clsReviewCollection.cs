@@ -9,6 +9,7 @@ namespace ClassLibrary
     public class clsReviewCollection
     {
         List<clsReview> mReviewList = new List<clsReview>();
+
         clsReview mThisReview = new clsReview();
         public clsReviewCollection()
         {
@@ -17,21 +18,19 @@ namespace ClassLibrary
             PopulateArray(DB);
         }
 
-        //private data member for the list
-        List<clsReview> mReviewlist = new List<clsReview>();
         public List<clsReview> ReviewList { get
             {
-                return mReviewlist;
+                return mReviewList;
             }
             set
             {
-                mReviewlist = value;
+                mReviewList = value;
             }
         }
         public int Count 
         { get
             {
-                return mReviewlist.Count;
+                return mReviewList.Count;
             }
             set
             {
@@ -93,7 +92,7 @@ namespace ClassLibrary
                 anReview.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["ReviewSubmited"]);
                 anReview.Text = Convert.ToString(DB.DataTable.Rows[Index]["ReviewText"]);
                 anReview.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
-                mReviewlist.Add(anReview);
+                mReviewList.Add(anReview);
                 Index++;
             }
         }
@@ -112,7 +111,13 @@ namespace ClassLibrary
             DB.Execute("sproc_tblReviews_FilterByReviewText");
             PopulateArray(DB);
         }
+
+        public void ReportByRevText(string ReviewText)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ReviewText", ReviewText);
+            DB.Execute("sproc_tblReviews_FilterByRevText");
+            PopulateArray(DB);
+        }
     }
-
-
 }
