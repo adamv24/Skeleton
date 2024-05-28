@@ -17,8 +17,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsUser
         clsUser anUser = new clsUser();
-
-
+        //create a new instance of clsUser
+        string Name = txtName.Text;
+        string Role_Name = txtRoleName.Text;
+        string Address = txtAddress.Text;
+        string DateCreated = txtDateCreated.Text;
+        string PhoneNumber = txtPhoneNumber.Text;
+        string Active = chkActive.Text;
+        string Error = "";
+        Error = anUser.Valid(Name, Address, DateCreated, PhoneNumber, Active, Role_Name);
+        if (Error == "")
+        {
+            anUser.Name = Name;
+            anUser.Role_Name = Role_Name;
+            anUser.Address = Address;
+            anUser.DateCreated = Convert.ToDateTime(DateCreated);
+            anUser.PhoneNumber = PhoneNumber;
+            Session["anUser"] = anUser;
+            Response.Redirect("UserManagementSystemViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
         //capture the address
         anUser.Address = txtAddress.Text;
         //store the address in the session object
