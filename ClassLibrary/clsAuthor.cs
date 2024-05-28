@@ -148,9 +148,7 @@ namespace ClassLibrary
             }
         }
 
-
-
-        // Valid method
+        //valid method
         public string Valid(string authorName, string authorBiography, string dateJoined, string averageRating, string totalBooksSold)
         {
             // Initialize an empty error string
@@ -229,11 +227,10 @@ namespace ClassLibrary
             // Return the concatenated error string
             return Error;
         }
-        // Valid method
-        public string Valid(string authorId, string authorName, string authorBiography, string dateJoined, string averageRating, string totalBooksSold)
-        {
-            return "";
-        }
+
+
+
+
 
 
     }

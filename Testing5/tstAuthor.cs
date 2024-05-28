@@ -23,7 +23,7 @@ namespace Testing5
             // String variable to store any error message
             String Error = "";
             // Invoke the method
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -312,7 +312,7 @@ namespace Testing5
             // Convert the date to a string
             string DateJoined = TestDate.ToString();
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -331,7 +331,7 @@ namespace Testing5
             // Convert the date to a string
             string DateJoined = TestDate.ToString();
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -348,7 +348,7 @@ namespace Testing5
             // Convert the date to a string
             string DateJoined = TestDate.ToString();
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -367,7 +367,7 @@ namespace Testing5
             // Convert the date to a string
             string DateJoined = TestDate.ToString();
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -386,7 +386,7 @@ namespace Testing5
             // Convert the date to a string
             string DateJoined = TestDate.ToString();
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -401,7 +401,7 @@ namespace Testing5
             // Use an invalid date string
             string DateJoined = "this is not a date";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -418,7 +418,7 @@ namespace Testing5
             // Create test data with the author name being less than the minimum allowed length
             string AuthorName = "";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -433,7 +433,7 @@ namespace Testing5
             // Create test data with the author name being the minimum allowed length
             string AuthorName = "a";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -448,7 +448,7 @@ namespace Testing5
             // Create test data with the author name being one character more than the minimum allowed length
             string AuthorName = "aa";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -463,7 +463,7 @@ namespace Testing5
             // Create test data with the author name being one character less than the maximum allowed length
             string AuthorName = new string('a', 24);
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -478,7 +478,7 @@ namespace Testing5
             // Create test data with the author name being the maximum allowed length
             string AuthorName = new string('a', 25);
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -493,7 +493,7 @@ namespace Testing5
             // Create test data with the author name being one character more than the maximum allowed length
             string AuthorName = new string('a', 26);
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -508,7 +508,7 @@ namespace Testing5
             // Create test data with the author name being a mid-range length
             string AuthorName = new string('a', 12);
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -525,7 +525,7 @@ namespace Testing5
             // Create test data with the author biography being less than the minimum allowed length
             string AuthorBiography = "";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -540,7 +540,7 @@ namespace Testing5
             // Create test data with the author biography being the minimum allowed length
             string AuthorBiography = "a";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -555,7 +555,7 @@ namespace Testing5
             // Create test data with the author biography being one character more than the minimum allowed length
             string AuthorBiography = "aa";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -570,7 +570,7 @@ namespace Testing5
             // Create test data with the author biography being one character less than the maximum allowed length
             string AuthorBiography = new string('a', 499); // Assuming a max length of 500 for the example
                                                            // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -585,7 +585,7 @@ namespace Testing5
             // Create test data with the author biography being the maximum allowed length
             string AuthorBiography = new string('a', 500); // Assuming a max length of 500 for the example
                                                            // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -600,7 +600,7 @@ namespace Testing5
             // Create test data with the author biography being one character more than the maximum allowed length
             string AuthorBiography = new string('a', 501); // Assuming a max length of 500 for the example
                                                            // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -615,7 +615,7 @@ namespace Testing5
             // Create test data with the author biography being a mid-range length
             string AuthorBiography = new string('a', 250); // Assuming a max length of 500 for the example
                                                            // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -632,7 +632,7 @@ namespace Testing5
             // Create test data with the average rating being less than the minimum allowed value
             string AverageRating = "-0.1";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -647,7 +647,7 @@ namespace Testing5
             // Create test data with the average rating being the minimum allowed value
             string AverageRating = "0";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -662,7 +662,7 @@ namespace Testing5
             // Create test data with the average rating being one unit more than the minimum allowed value
             string AverageRating = "0.1";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -677,7 +677,7 @@ namespace Testing5
             // Create test data with the average rating being one unit less than the maximum allowed value
             string AverageRating = "4.9";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -692,7 +692,7 @@ namespace Testing5
             // Create test data with the average rating being the maximum allowed value
             string AverageRating = "5";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -707,7 +707,7 @@ namespace Testing5
             // Create test data with the average rating being one unit more than the maximum allowed value
             string AverageRating = "5.1";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -722,7 +722,7 @@ namespace Testing5
             // Create test data with the average rating being a mid-range value
             string AverageRating = "2.5";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -739,7 +739,7 @@ namespace Testing5
             // Create test data with the total books sold being less than the minimum allowed value (negative number)
             string TotalBooksSold = "-1";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }
@@ -754,7 +754,7 @@ namespace Testing5
             // Create test data with the total books sold being the minimum allowed value (zero)
             string TotalBooksSold = "0";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -769,7 +769,7 @@ namespace Testing5
             // Create test data with the total books sold being one unit more than the minimum allowed value
             string TotalBooksSold = "1";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -784,7 +784,7 @@ namespace Testing5
             // Create test data with a valid total books sold value
             string TotalBooksSold = "999999";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -799,7 +799,7 @@ namespace Testing5
             // Create test data with the total books sold being a mid-range value
             string TotalBooksSold = "500000";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
@@ -814,7 +814,7 @@ namespace Testing5
             // Use an invalid total books sold value (non-integer)
             string TotalBooksSold = "one hundred";
             // Invoke the Valid method with the test data
-            Error = AnAuthor.Valid(AuthorId, AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
             // Assert that the error message is not blank (indicating an error was found)
             Assert.AreNotEqual(Error, "");
         }

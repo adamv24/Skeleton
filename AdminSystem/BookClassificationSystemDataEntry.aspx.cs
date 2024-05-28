@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -43,12 +44,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // Validate the data
             Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
 
-            if (Error != "")
-            {
-                // Display the error message
-                lblError.Text = Error;
-            }
-            else
+
+            if (Error == "")
             {
                 // Capture the author name
                 AnAuthor.AuthorName = AuthorName;
@@ -74,6 +71,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 // Navigate to the view page
                 Response.Redirect("BookClassificationSystemViewer.aspx");
             }
+            else
+            {
+                // Display the error message
+                lblError.Text = Error;
+            }
+           
         }
     }
 
