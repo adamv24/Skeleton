@@ -25,7 +25,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string PhoneNumber = txtPhoneNumber.Text;
         string Active = chkActive.Text;
         string Error = "";
-        Error = anUser.Valid(Name, Address, DateCreated, PhoneNumber, Active, Role_Name);
+        Error = anUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
         if (Error == "")
         {
             anUser.Name = Name;

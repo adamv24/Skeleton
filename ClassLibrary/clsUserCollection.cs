@@ -4,5 +4,6 @@ namespace ClassLibrary
 {
     public class clsUserCollection
     {
+        public List<clsUser> UserList { get; set; }
     }
 }
