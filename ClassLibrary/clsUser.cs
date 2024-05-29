@@ -99,6 +99,8 @@ namespace ClassLibrary
             }
         }
 
+        public int Count { get; set; }
+
         public bool Find(int userId)
         {
             //create an insttance of the data connecton
