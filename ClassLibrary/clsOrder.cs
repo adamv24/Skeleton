@@ -29,16 +29,15 @@ namespace ClassLibrary
         {
             get
             {
-                //this line of code sends data out of the property
+                // Return the value of the private data member mIsBestSeller
                 return mIsValid;
             }
             set
             {
-                //this line of code allows data into the property
+                // Set the value of the private data member mIsBestSeller
                 mIsValid = value;
             }
         }
-
         //private data member for the ISBN property
         private Int32 mISBN;
         //ISBN public property

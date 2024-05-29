@@ -76,7 +76,7 @@ namespace Testing4
             TestItem.OrderId = 1;
             TestItem.Status = "valid";
             TestItem.UserId = 2;
-            TestItem.CreatedAt = null;
+            TestItem.CreatedAt = DateTime.Now;
             TestItem.IsValid = true;
             //add the item to the test list
             TestList.Add(TestItem);
