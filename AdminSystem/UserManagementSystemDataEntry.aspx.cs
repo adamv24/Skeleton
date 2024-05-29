@@ -55,10 +55,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //store the address in the session object
         Session["anUser"] = anUser;
 
-        //capture the RoleId
-        anUser.Role_Id = Convert.ToInt32(txtRoleId.Text);
-        //store the address in the session object
-        Session["anUser"] = anUser;
+  
 
         //capture the Date Created
         anUser.DateCreated = Convert.ToDateTime(txtDateCreated.Text);
@@ -109,7 +106,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtPhoneNumber.Text = AUser.PhoneNumber.ToString();
             chkActive.Checked = AUser.IsActive;
             txtAddress.Text = AUser.Address;
-            txtRoleId.Text = AUser.Role_Id.ToString();
         }
     }
 }

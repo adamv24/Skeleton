@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace Testing2
@@ -14,8 +15,6 @@ namespace Testing2
         private string DateCreated = DateTime.Now.Date.ToString();
         private string PhoneNumber = "074828385748";
         private string Role_Name = "nAME";
-        private string Role_Id = "1223";
-
 
         [TestMethod]
         public void PhoneNoMinLessOne()
@@ -25,9 +24,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string PhoneNumber = "0874637489";
+            string PhoneNumber = "000000000";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -40,9 +39,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string PhoneNumber = "1234567891";
+            string PhoneNumber = "0000000001";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -57,7 +56,7 @@ namespace Testing2
             //create some test data to pass to the method
             string PhoneNumber = "";
             PhoneNumber = PhoneNumber.PadRight(17, '2');    //this should fail
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -72,7 +71,7 @@ namespace Testing2
             //create some test data to pass to the method
             string PhoneNumber = ""; //this should be ok
             PhoneNumber = PhoneNumber.PadRight(15, '4');    //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -87,7 +86,7 @@ namespace Testing2
             //create some test data to pass to the method
             string PhoneNumber = ""; //this should be ok
             PhoneNumber = PhoneNumber.PadRight(16, '4');    //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -101,7 +100,7 @@ namespace Testing2
             //create some test data to pass to the method
             string PhoneNumber = ""; //this should be ok
             PhoneNumber = PhoneNumber.PadRight(8, '4');    //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -114,11 +113,10 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string PhoneNumber = "";
-            PhoneNumber = PhoneNumber.PadRight(11, '4');    //this should fail
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            string PhoneNumber = "00000000011";
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -131,7 +129,7 @@ namespace Testing2
             //create some test data to pass to the method
             string PhoneNumber = "";
             PhoneNumber = PhoneNumber.PadRight(500, '4');    //this should fail
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -147,7 +145,7 @@ namespace Testing2
             string PhoneNumber = "";
             PhoneNumber = PhoneNumber.PadRight(19, '4');
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -162,7 +160,7 @@ namespace Testing2
             //create some test data to pass to the method
             string PhoneNumber = "a";
             PhoneNumber = PhoneNumber.PadRight(10, '4');
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -177,7 +175,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Name = "aa"; //this should be ok
                                 //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -192,7 +190,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Name = ""; //this should be ok
             Name = Name.PadRight(49, 'a');    //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -207,7 +205,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Name = ""; //this should be ok
             Name = Name.PadRight(50, 'a');    //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -222,7 +220,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Name = ""; //this should be ok
             Name = Name.PadRight(25, 'a');    //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -237,7 +235,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Name = ""; 
             Name = Name.PadRight(51, 'a');    //this should fail
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -252,7 +250,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Name = ""; //this should be ok
             Name = Name.PadRight(500, 'a');    //this should fail
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -273,7 +271,7 @@ namespace Testing2
             //convert the date variable to a string varaible
             string DateCreated = TestDate.ToString();
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -294,7 +292,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string DateCreated = TestDate.ToString();
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -313,7 +311,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string DateCreated = TestDate.ToString();
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -334,7 +332,7 @@ namespace Testing2
             //convert the date variable to a string variable
             string DateCreated = TestDate.ToString();
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -355,22 +353,23 @@ namespace Testing2
             //convert the date variable to a string variable
             string DateCreated = TestDate.ToString();
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
+
         [TestMethod]
-        public void DateCreatedInvalidDate()
+        public void DateAddedInvalidDate()
         {
-            //create an instance of the class we want to create
+            //create a new instance of the class we want to create
             clsUser AUser = new clsUser();
             //string variable to store any error message
             String Error = "";
-            //set the DateAdded to a non date value
+            //set the DateAdded to non date value
             string DateCreated = "this is not a date!";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -385,10 +384,12 @@ namespace Testing2
             //this should fail
             string Address = "";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+
+
 
 
         [TestMethod]
@@ -401,7 +402,7 @@ namespace Testing2
             //this should pass
             string Address = "a";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -414,9 +415,9 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Address = "aa";
+            string Address = "aaaaaaa";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -429,9 +430,10 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Address = "aaaaaaaa";
+            string address = "";
+            address = address.PadRight(13, 'a');
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -444,9 +446,10 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Address = "aaaaaaaaa";
+            string address = "";
+            address = address.PadRight(15, 'a');
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -459,11 +462,12 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string Address = "aaaaaaaaaa";
+            string address = "";
+            address = address.PadRight(10, 'a');
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -476,7 +480,7 @@ namespace Testing2
             //this should pass
             string Address = "aaaa";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -491,7 +495,7 @@ namespace Testing2
             //this should fail
             string Role_Name = "";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -506,7 +510,7 @@ namespace Testing2
             //this should pass
             string Role_Name = "a";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -521,7 +525,7 @@ namespace Testing2
             //this should pass
             string Role_Name = "aa";
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -537,13 +541,13 @@ namespace Testing2
             string Role_Name = "";
             Role_Name = Role_Name.PadRight(49, 'a');
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void TownMax()
+        public void RolaNameMax()
         {
             //create an instance of the class we want to create
             clsUser AUser = new clsUser();
@@ -553,7 +557,7 @@ namespace Testing2
             string Role_Name = "";
             Role_Name = Role_Name.PadRight(50, 'a');
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -569,7 +573,7 @@ namespace Testing2
             string Role_Name = "";
             Role_Name = Role_Name.PadRight(51, 'a');
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -585,7 +589,7 @@ namespace Testing2
             string Role_Name = "";
             Role_Name = Role_Name.PadRight(25, 'a');
             //invoke the method
-            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name, Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -598,7 +602,7 @@ namespace Testing2
             // String variable to store any error message
             String Error = "";
             // Invoke the method
-            Error = AUser.Valid(DateCreated,Address,Name,PhoneNumber,Role_Name,Role_Id);
+            Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             // Test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -618,28 +622,7 @@ namespace Testing2
             Assert.IsTrue(Found);
         }
 
-        [TestMethod]
-        public void TestRole_IdFound()
-        {
-            //create an instance of the class we want to create
-            clsUser AUser = new clsUser();
-            //create a Boolean variable to store the result of the search
-            Boolean Found = false;
-            //create a Boolean variable to record if the data is OK (assume it is)
-            Boolean OK = true;
-            //create some test data to use with the method
-            Int32 mUserId = 421;
-            //invoke the method
-            Found = AUser.Find(mUserId);
-            //check the address id property
-            if (AUser.Role_Id != 421)
-            {
-                OK = true;
-            }
-            //test to see that the result is correct
-            Assert.IsTrue(OK);
-        }
-
+  
 
         [TestMethod]
         public void TestRole_NameFound()
@@ -887,20 +870,6 @@ namespace Testing2
             Assert.AreEqual(AUser.Name, TestData);
         }
 
-
-        [TestMethod]
-
-        public void IsRoleIDOK()
-        {
-            //create an instance of the class we want to create
-            clsUser AUser = new clsUser();
-            //create some test data to assign to the property
-            int TestData = 1;
-            //assign the data to the property
-            AUser.Role_Id = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AUser.Role_Id, TestData);
-        }
 
         [TestMethod]
 

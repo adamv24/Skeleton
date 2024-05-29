@@ -622,6 +622,7 @@ namespace Testing1
             String Error = "";
             //this should fail
             string BookAuthor = "";
+            BookAuthor = BookAuthor.PadRight(51, 'a');
             //invoke the method
             Error = AStock.Valid(BookName, BookAuthor, Price, DateAdded, QuantityAvailable);
             //test to see that the result is correct
