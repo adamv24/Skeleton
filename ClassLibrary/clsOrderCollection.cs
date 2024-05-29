@@ -6,27 +6,7 @@ namespace Testing4
 {
     public class clsOrderCollection
     {
-        public clsOrderCollection()
-        {
-             Int32 index = 0;
-             Int32 recordCount = 0;
-             clsDataConnection db = new clsDataConnection();
-             db.Execute("sproc_tblOrder_SelectAll");
-             recordCount = db.Count;
-             while (index < recordCount)
-             {
-                 clsOrder anOrder = new clsOrder();
-                 anOrder.ISBN = Convert.ToInt32(db.DataTable.Rows[index]["ISBN"]);
-                 anOrder.Status = Convert.ToString(db.DataTable.Rows[index]["Status"]);
-                 anOrder.IsValid = Convert.ToBoolean(db.DataTable.Rows[index]["IsValid"]);
-                 anOrder.OrderId = Convert.ToInt32(db.DataTable.Rows[index]["OrderId"]);
-                 anOrder.UserId = Convert.ToInt32(db.DataTable.Rows[index]["UserId"]);
-                 anOrder.CreatedAt = Convert.ToDateTime(db.DataTable.Rows[index]["CreatedAt"]);
-                 mOrderList.Add(anOrder);
-                 index++;
-            }
-            
-        }
+  
 
 
 
@@ -79,6 +59,28 @@ namespace Testing4
                 //set the private data
                 mThisOrder = value;
             }
+        }
+
+        public clsOrderCollection()
+        {
+            Int32 index = 0;
+            Int32 recordCount = 0;
+            clsDataConnection db = new clsDataConnection();
+            db.Execute("sproc_tblOrder_SelectAll");
+            recordCount = db.Count;
+            while (index < recordCount)
+            {
+                clsOrder anOrder = new clsOrder();
+                anOrder.ISBN = Convert.ToInt32(db.DataTable.Rows[index]["ISBN"]);
+                anOrder.Status = Convert.ToString(db.DataTable.Rows[index]["Status"]);
+                anOrder.IsValid = Convert.ToBoolean(db.DataTable.Rows[index]["Is_Valid"]);
+                anOrder.OrderId = Convert.ToInt32(db.DataTable.Rows[index]["Order_Id"]);
+                anOrder.UserId = Convert.ToInt32(db.DataTable.Rows[index]["User_Id"]);
+                anOrder.CreatedAt = Convert.ToDateTime(db.DataTable.Rows[index]["Created_At"]);
+                mOrderList.Add(anOrder);
+                index++;
+            }
+
         }
 
     }
