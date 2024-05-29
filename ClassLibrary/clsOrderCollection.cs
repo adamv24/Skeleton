@@ -82,6 +82,40 @@ namespace Testing4
             }
 
         }
+        public int Add()
+        {
+            //adds a record to the database based on the the valuess of the mThisOrder
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameter for the stored procedure
+            DB.AddParameter("@ISBN", mThisOrder.ISBN);
+            DB.AddParameter("@User_Id", mThisOrder.UserId);
+            DB.AddParameter("@Is_Valid", mThisOrder.IsValid);
+            DB.AddParameter("@Created_At", mThisOrder.CreatedAt);
+            DB.AddParameter("@Status", mThisOrder.Status);
+
+
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
+        }
+
+        public void Update()
+        {
+            //update an existing record based on the values of thisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the new stored procedure
+            DB.AddParameter("@ISBN", mThisOrder.ISBN);
+            DB.AddParameter("@Status", mThisOrder.Status);
+            DB.AddParameter("@Is_Valid", mThisOrder.IsValid);
+            DB.AddParameter("@Created_At", mThisOrder.CreatedAt);
+            DB.AddParameter("@User_Id", mThisOrder.UserId);
+            DB.AddParameter("@Order_Id", mThisOrder.OrderId);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_Update");
+        }
 
     }
 }
