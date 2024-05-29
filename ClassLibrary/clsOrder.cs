@@ -22,6 +22,22 @@ namespace ClassLibrary
                 mOrderId = value;
             }
         }
+        //private data member for the order id property
+        private bool mIsValid;
+        //OrderId public property
+        public bool IsValid
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mIsValid;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mIsValid = value;
+            }
+        }
 
         //private data member for the ISBN property
         private Int32 mISBN;
