@@ -40,7 +40,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         clsReview AnReview = new clsReview();
 
-        int UserId = Convert.ToInt32(txtUser.Text);
         int BookId = Convert.ToInt32(txtBookId.Text);
         int ReviewId = Convert.ToInt32(txtReviewId.Text);
         string RatingId = txtRatingId.Text;

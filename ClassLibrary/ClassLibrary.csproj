@@ -51,6 +51,7 @@
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsReview.cs" />
     <Compile Include="clsReviewCollection.cs" />
+    <Compile Include="clsReviewUser.cs" />
     <Compile Include="clsStock.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

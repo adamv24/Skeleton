@@ -15,11 +15,14 @@
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 80px; top: 392px; position: absolute" Text="Edit" />
         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 156px; top: 392px; position: absolute" Text="Delete" />
         <p>
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 18px; top: 495px; position: absolute; height: 19px"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 26px; top: 546px; position: absolute; height: 19px"></asp:Label>
         </p>
         <p>
             &nbsp;</p>
-            <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 22px; top: 446px; position: absolute" Text="Label"></asp:Label>
+            <asp:Label ID="lblTextHere" runat="server" style="z-index: 1; left: 22px; top: 446px; position: absolute" Text="Enter Text Here"></asp:Label>
+        <asp:TextBox ID="txtTextIdHere" runat="server" style="z-index: 1; top: 445px; position: absolute; left: 142px"></asp:TextBox>
+        <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" style="z-index: 1; left: 30px; top: 489px; position: absolute" Text="Apply Filter" />
+        <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" style="z-index: 1; left: 158px; top: 490px; position: absolute" Text="Clear Filter" />
     </form>
 </body>
 </html>
