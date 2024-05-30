@@ -116,6 +116,16 @@ namespace Testing4
             //execute the stored procedure
             DB.Execute("sproc_tblOrder_Update");
         }
+        public void Delete()
+        {
+            //delete the record pointed to by thisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Order_Id", mThisOrder.OrderId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_Delete");
+        }
 
     }
 }
