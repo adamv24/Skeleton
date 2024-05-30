@@ -11,11 +11,11 @@
         <div>
             <asp:ListBox ID="lstOrderList" runat="server" Height="573px" Width="563px"></asp:ListBox>
         </div>
-        <p>
-            <asp:Button ID="btnAdd" runat="server"  Text="Add" />
-            <asp:Button ID="btnEdit" runat="server" Text="Edit" />
-            <asp:Button ID="btnDelete" runat="server" Text="Delete" />
-        </p>
+       <p>
+      <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+      <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+      <asp:Button ID="btnDelete" runat="server" Text="Delete" />
+  </p>
        <p>
         <asp:Label ID="lblEnterOrderId" runat="server" Text="Enter an OrderId   "></asp:Label>
        </p>
