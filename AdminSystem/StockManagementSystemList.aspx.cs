@@ -127,9 +127,4 @@ public partial class _1_List : System.Web.UI.Page
         //redirect back to the main menu
         Response.Redirect("TeamMainMenu.aspx");
     }
-
-    protected void lstStockList_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
 }
