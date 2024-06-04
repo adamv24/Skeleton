@@ -99,7 +99,7 @@ namespace Testing6
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 2;
+            Int32 OrderId = 3;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //test to see if the result is true
@@ -117,11 +117,11 @@ namespace Testing6
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 OrderId = 3;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the order id property
-            if (AnOrder.OrderId != 1)
+            if (AnOrder.OrderId != 3)
             {
                 OK = false;
             }
@@ -155,7 +155,7 @@ namespace Testing6
         public void FindOrderById_ExistingId_ReturnsOrder()
         {
             // Arrange
-            int orderId = 1;
+            int orderId = 3;
             clsOrder order = new clsOrder();
 
             // Act

@@ -1,19 +1,18 @@
 ﻿using ClassLibrary;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Testing4
 {
     public class clsOrderCollection
     {
-  
-
-
 
         //private data member for the list
         List<clsOrder> mOrderList = new List<clsOrder>();
         //private member data for thisStock
         clsOrder mThisOrder = new clsOrder();
+     
 
         public List<clsOrder> OrderList
         {
@@ -63,24 +62,12 @@ namespace Testing4
 
         public clsOrderCollection()
         {
-            Int32 index = 0;
-            Int32 recordCount = 0;
-            clsDataConnection db = new clsDataConnection();
-            db.Execute("sproc_tblOrder_SelectAll");
-            recordCount = db.Count;
-            while (index < recordCount)
-            {
-                clsOrder anOrder = new clsOrder();
-                anOrder.ISBN = Convert.ToInt32(db.DataTable.Rows[index]["ISBN"]);
-                anOrder.Status = Convert.ToString(db.DataTable.Rows[index]["Status"]);
-                anOrder.IsValid = Convert.ToBoolean(db.DataTable.Rows[index]["Is_Valid"]);
-                anOrder.OrderId = Convert.ToInt32(db.DataTable.Rows[index]["Order_Id"]);
-                anOrder.UserId = Convert.ToInt32(db.DataTable.Rows[index]["User_Id"]);
-                anOrder.CreatedAt = Convert.ToDateTime(db.DataTable.Rows[index]["Created_At"]);
-                mOrderList.Add(anOrder);
-                index++;
-            }
-
+            //object for the data connect
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
         public int Add()
         {
@@ -127,5 +114,48 @@ namespace Testing4
             DB.Execute("sproc_tblOrder_Delete");
         }
 
+
+
+        public void ReportByStatus(string Status)
+        {
+            //filter the records based on a full or partial book name
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the BookName parameter to the database
+            DB.AddParameter("@Status", Status);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByStatus");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection db)
+        {
+            //populate the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of the records
+            RecordCount = db.Count;
+            //clear the private array list
+            mOrderList = new List<clsOrder>();
+            //while there are records to process
+            while (index < RecordCount)
+            {
+                //creat a blank stock object
+                clsOrder anOrder = new clsOrder();
+                //read in the fields from the current record
+                anOrder.ISBN = Convert.ToInt32(db.DataTable.Rows[index]["ISBN"]);
+                anOrder.Status = Convert.ToString(db.DataTable.Rows[index]["Status"]);
+                anOrder.IsValid = Convert.ToBoolean(db.DataTable.Rows[index]["Is_Valid"]);
+                anOrder.OrderId = Convert.ToInt32(db.DataTable.Rows[index]["Order_Id"]);
+                anOrder.UserId = Convert.ToInt32(db.DataTable.Rows[index]["User_Id"]);
+                anOrder.CreatedAt = Convert.ToDateTime(db.DataTable.Rows[index]["Created_At"]);
+                //add the record to the private data member
+                mOrderList.Add(anOrder);
+                //point at the next record
+                index++;
+            }
+        }
     }
 }
