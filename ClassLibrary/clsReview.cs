@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 
 namespace ClassLibrary
 {
@@ -7,14 +8,13 @@ namespace ClassLibrary
         private Int32 mUserId;
         private Int32 mReviewId;
         private Int32 mBookId;
-        private Int32 mRatingId;
+        private string mRatingId;
         private String mText;
         private Boolean mActive;
         private DateTime mDateAdded;
 
 
 
-        public string revText;
 
         public string Text
         {
@@ -77,7 +77,7 @@ namespace ClassLibrary
                 mReviewId = value;
             }
         }
-        public int RatingId
+        public string RatingId
         {
             get
             {
@@ -103,6 +103,9 @@ namespace ClassLibrary
                 mActive = value;
             }
         }
+
+        public string ReviewSubmitted { get; set; }
+
         public bool Find(int userId)
         {
             clsDataConnection DB = new clsDataConnection();
@@ -112,7 +115,7 @@ namespace ClassLibrary
             {
                 mUserId = Convert.ToInt32(DB.DataTable.Rows[0]["UserId"]);
                 mReviewId = Convert.ToInt32(DB.DataTable.Rows[0]["ReviewId"]);
-                mRatingId = Convert.ToInt32(DB.DataTable.Rows[0]["Rating"]);
+                mRatingId = Convert.ToString(DB.DataTable.Rows[0]["Rating"]);
                 mBookId = Convert.ToInt32(DB.DataTable.Rows[0]["BookId"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["ReviewSubmited"]);
                 mText = Convert.ToString(DB.DataTable.Rows[0]["ReviewText"]);
@@ -125,52 +128,80 @@ namespace ClassLibrary
             }
         }
 
-        public bool FindReviewId(int ReviewId)
-        {
-            mReviewId = 2;
-            return true;
-        }
+       
 
-        public bool FindRatingId(int RatingId)
-        {
-            mRatingId = 4;
-            return true;
-        }
-
-        public bool FindBookId(int BookId)
-        {
-            mBookId = 1;
-            return true;
-        }
-
-        public bool FindTextId(int Text)
-        {
-            mText = "I like this BOOK! It has a great storyline!";
-            return true;
-        }
-
-        public bool FindActiveId(int Active)
-        {
-            mActive = true;
-            return true;
-        }
-
-        public string Valid(int bookId, int reviewId, int rating, string reviewText, string DateAdded)
+        public string Valid(int bookId, int reviewId, string rating, string reviewText, string DateAdded)
         {
             String Error = "";
-            if (bookId == 0)
+            DateTime DateTemp;
+            if (bookId == 0 || reviewId == 0)
             {
-                Error = Error + "The Book Id Cannot Be Blank";
+                Error = Error + "The Book Id OR reviewId Cannot Be Blank";
             }
-            else if (bookId < 1)
+            else if (bookId < 1 || reviewId < 1)
             {
-                Error = Error + "The Book Id Cannot Be less Than 1";
+                Error = Error + "The Book Id OR reviewId Cannot Be less Than 1";
             }
-            else if (bookId > 2147483647)
+            if (bookId > 2147483647 || reviewId > 2147483647)
             {
-                Error = Error + "The Book Id Cannot be Greater than 2147483647";
+                Error = Error + "The Book Id OR reviewId Cannot be Greater than 2147483647";
+            }
+            if (rating.Length == 0)
+            {
+                Error = Error + "The rating Cannot Be Blank";
+            }
+            if (rating.Length < 1)
+            {
+                Error = Error + "The rating Cannot Be less Than 1";
+            }
+            if (rating.Length >= 6 && rating.Length < 500)
+            {
+                Error = Error + "The rating Cannot be Greater than 5";
+            }
+            if (rating.Length > 500)
+            {
+                Error = Error + "The rating Cannot be Greater than 500";
+            }
+            if (reviewText.Length == 0)
+            {
+                Error = Error + "The review Cannot Be Blank";
+            }
+            if (reviewText.Length < 1)
+            {
+                Error = Error + "The review Cannot Be less Than 1";
+            }
+            if (reviewText.Length >= 51 && rating.Length < 500)
+            {
+                Error = Error + "The review Cannot be Greater than 50";
+            }
+            if (reviewText.Length > 500)
+            {
+                Error = Error + "The review Cannot be Greater than 500";
+            }
+        
+
+            DateTime day = DateTime.Now.Date;
+            try
+            {
+                DateTemp = Convert.ToDateTime(DateAdded);
+                if (DateTemp < day)
+                {
+                    Error = Error + "The date cannot be in the past";
+                }
+                if (DateTemp > day)
+                {
+                    Error = Error + "The date cannot be in the future";
+                }
+            }
+
+            catch
+            {
+                Error = Error + "Date was not valid or format";
             }
             return Error;
+        
         }
+
+        
     }
 }

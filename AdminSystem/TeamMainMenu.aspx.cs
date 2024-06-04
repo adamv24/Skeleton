@@ -11,10 +11,4 @@ public partial class TeamMainMenu : System.Web.UI.Page
     {
 
     }
-
-    protected void btnStock_Click(object sender, EventArgs e)
-    {
-        //redirect the user to the stock management login page
-        Response.Redirect("StockManagementSystemLogin.aspx");
-    }
 }

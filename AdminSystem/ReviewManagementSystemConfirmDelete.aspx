@@ -10,6 +10,9 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" style="z-index: 1; left: 36px; top: 154px; position: absolute; width: 71px" Text="Yes" />
+        <asp:Button ID="btnNo" runat="server" OnClick="btnNo_Click" style="z-index: 1; left: 183px; top: 152px; position: absolute; width: 71px" Text="No" />
+        <asp:Label ID="lblDelRec" runat="server" style="z-index: 1; left: 24px; top: 85px; position: absolute" Text="Are you sure you want to delete this record?"></asp:Label>
     </form>
 </body>
 </html>
