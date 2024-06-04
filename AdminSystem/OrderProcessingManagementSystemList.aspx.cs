@@ -18,8 +18,14 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayOrder();
         }
+        //create a new instance of clsStockUser
+        clsStockUser AnUser = new clsStockUser();
+        //get the data from the session object
+        AnUser = (clsStockUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
 
-    
+
     }
 
     void DisplayOrder()
@@ -116,7 +122,7 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
     {
-        //redirect back to the main menu
-        
+        Response.Redirect("TeamMainMenu.aspx");
+
     }
 }
