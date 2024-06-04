@@ -25,15 +25,12 @@
      .header h1 {
          color: #1e90ff;
      }
+
      .form-group {
          margin-bottom: 15px;
      }
-     .form-group label {
-         display: block;
-         margin-bottom: 5px;
-         color: #1e90ff;
-     }
-     .form-group input {
+     
+     .form-group input{
          display: block;
          width: 100%;
          padding: 8px;
@@ -45,20 +42,13 @@
          text-align: center;
          margin: 20px 0;
      }
-     .form-actions button {
-         margin: 0 5px;
-         padding: 10px 20px;
-         color: white;
-         border: none;
-         border-radius: 4px;
-     }
-     .form-actions button:hover {
-         background-color: #1c86ee;
-     }
+     
      .error-message {
          color: #ff3300;
          text-align: center;
      }
+
+     
  </style>
 
 </head>
@@ -80,7 +70,7 @@
                 <asp:Label ID="lblError" runat="server"></asp:Label>
             </div>
             <div class="form-actions">
-                <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" />
+                <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" cssClass ="btn"/>
                 <asp:Button ID="lblCancel" runat="server" Text="Cancel" OnClick="lblCancel_Click" />
             </div>
         </div>
