@@ -9,6 +9,12 @@
 <body>
     <form id="form1" runat="server">
         <div>
+        <h3>Book Main Menu</h3>
+        <asp:Button ID="btnStock" runat="server" OnClick="btnStock_Click" Text="Stock" />
+        <asp:Button ID="btnUser" runat="server" Text="User" />
+        <asp:Button ID="btnReview" runat="server" Text="Review" />
+        <asp:Button ID="btnOrderProcessing" runat="server" Text="Order Processing" />
+        <asp:Button ID="btnBookClassification" runat="server" Text="Book Classification" />      
         </div>
         <asp:Label ID="lblMainReview" runat="server" Font-Size="X-Large" style="z-index: 1; left: 148px; top: 87px; position: absolute; height: 22px" Text="Review Book Main Menu"></asp:Label>
         <asp:Button ID="btnStockManagement" runat="server" OnClick="btnStockManagement_Click" style="z-index: 1; left: 215px; top: 170px; position: absolute" Text="Stock Management" />

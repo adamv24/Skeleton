@@ -48,12 +48,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsAuthor.cs" />
+    <Compile Include="clsAuthorCollection.cs" />
     <Compile Include="clsDataConnection.cs" />
+    <Compile Include="clsOrderCollection.cs" />
     <Compile Include="clsReview.cs" />
     <Compile Include="clsReviewCollection.cs" />
     <Compile Include="clsReviewUser.cs" />
+    <Compile Include="clsOrder.cs" />
     <Compile Include="clsStock.cs" />
+    <Compile Include="clsStockCollection.cs" />
+    <Compile Include="clsStockUser.cs" />
     <Compile Include="clsUser.cs" />
+    <Compile Include="clsUserCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
