@@ -60,5 +60,21 @@ namespace Testing3
             Assert.IsTrue(Found);
         }
 
+        [TestMethod]
+        public void TestUserNamePWFound()
+        {
+            clsReviewUser anRUser = new clsReviewUser();
+            Boolean Found = false;
+            Boolean OK = true;
+            string UserName = "Andre";
+            string Password = "ProneDre";
+            Found = anRUser.FindUser(UserName, Password);
+            if (anRUser.UserName != UserName && anRUser.Password != Password)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
     }
 }

@@ -50,8 +50,8 @@ namespace ClassLibrary
         public bool FindUser(string userName, string password)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@UserName", UserName);
-            DB.AddParameter("@Password", Password);
+            DB.AddParameter("@UserName", userName);
+            DB.AddParameter("@Password", password);
             DB.Execute("sproc_tblUsers_FindUserNamePW");
             if (DB.Count == 1)
             {
