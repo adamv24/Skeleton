@@ -11,6 +11,8 @@
         margin: 20px;
         background-color: #f0f8ff;
         color: #333;
+
+
     }
     .container {
         max-width: 600px;
@@ -42,11 +44,9 @@
     .form-actions button {
         margin: 0 5px;
         padding: 10px 20px;
-        background-color: #1e90ff; 
         color: white;
         border: none;
         border-radius: 4px;
-        cursor: pointer;
     }
     .form-actions button:hover {
         background-color: #1c86ee;
@@ -57,7 +57,7 @@
     }
 
     .checkbox-group {
-    display: flex;
+     display: flex;
      align-items: center;
     }
 
@@ -103,7 +103,7 @@
             </div>
             <div class="form-actions">
                 <asp:Button ID="btnOk" runat="server" Text="Ok" OnClick="btnOk_Click" />
-                <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+                <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
                 <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" />
             </div>
         </div>

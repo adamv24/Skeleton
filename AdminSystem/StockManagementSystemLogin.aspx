@@ -16,7 +16,6 @@
          margin: 0 auto;
          padding: 20px;
          background-color: #fff;
-         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
          border-radius: 8px;
      }
      .header {
@@ -49,11 +48,9 @@
      .form-actions button {
          margin: 0 5px;
          padding: 10px 20px;
-         background-color: #1e90ff;
          color: white;
          border: none;
          border-radius: 4px;
-         cursor: pointer;
      }
      .form-actions button:hover {
          background-color: #1c86ee;

@@ -162,4 +162,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         chkIsAvailable.Checked = StockBook.ThisStock.Active;
 
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StockManagementSystemList.aspx");
+    }
 }

@@ -24,9 +24,6 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the User Id for this entry 
         Response.Write(anUser.UserId);
 
-        //display the Role Id for this entry 
-        Response.Write(anUser.Role_Id);
-
         //display the phone number for this entry 
         Response.Write(anUser.PhoneNumber);
 

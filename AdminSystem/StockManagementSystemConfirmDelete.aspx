@@ -47,8 +47,8 @@
             </div>
             <div class="confirmation-message">Are you sure you want to delete this record?</div>
             <div class="btn-container">
-                <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" CssClass="btn" />
-                <asp:Button ID="btnNo" runat="server" Text="No" OnClick="btnNo_Click" CssClass="btn" />
+                <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" />
+                <asp:Button ID="btnNo" runat="server" Text="No" OnClick="btnNo_Click"  />
             </div>
         </div>
     </form>
