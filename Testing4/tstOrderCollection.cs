@@ -182,5 +182,31 @@ namespace Testing4
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+        
+        [TestMethod]
+        public void ReportByStatusMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create an instance of filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //apply a blank string (should return all records);
+            FilteredOrders.ReportByStatus("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportBystatusNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //apply a book name that doesnt exist
+            FilteredOrders.ReportByStatus("isdaguygt478yuhgrwexist");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+
+
     }
 }

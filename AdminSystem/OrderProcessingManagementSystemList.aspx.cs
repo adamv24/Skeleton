@@ -80,5 +80,43 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please select a record from the list to edit";
         }
+
+    }
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock object
+        clsOrderCollection anOrder = new clsOrderCollection();
+        //retrieve the value of the book name from the presentation layer
+        anOrder.ReportByStatus(txtFilter.Text);
+        //set the data source to the list of stocks in the collection
+        lstOrderList.DataSource = anOrder.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderId";
+        lstOrderList.DataTextField = "ISBN";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock object
+        clsOrderCollection anOrder = new clsOrderCollection();
+        //set an empty string
+        anOrder.ReportByStatus("");
+        //clear any existin filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to the list of stocks in the collection
+        lstOrderList.DataSource = anOrder.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "Order_Id";
+        lstOrderList.DataTextField = "ISBN";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main menu
+        
     }
 }
