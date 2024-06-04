@@ -11,4 +11,14 @@ public partial class TeamMainMenu : System.Web.UI.Page
     {
 
     }
+
+    protected void btnBookReviews_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ReviewBookLogin.aspx");
+    }
+
+    protected void btnStockManagement_Click(object sender, EventArgs e)
+    {
+
+   }
 }
