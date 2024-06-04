@@ -33,7 +33,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             anUser.Address = Address;
             anUser.DateCreated = Convert.ToDateTime(DateCreated);
             anUser.PhoneNumber = PhoneNumber;
-            Session["anUser"] = anUser;
+            clsUserCollection UserList = new clsUserCollection();
+            UserList.ThisUser = anUser;
+            UserList.Add();
+
+
+
             Response.Redirect("UserManagementSystemViewer.aspx");
         }
         else

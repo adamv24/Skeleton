@@ -89,7 +89,7 @@ namespace ClassLibrary
             DB.AddParameter("@RoleName", mThisUser.Role_Name);
 
             //execture the query returning the primary key value
-            return DB.Execute("Ssproc_tblUser_Insert");
+            return DB.Execute("sproc_tblUser_Insert");
 
 
 
