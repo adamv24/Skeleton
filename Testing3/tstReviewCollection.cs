@@ -140,7 +140,7 @@ namespace Testing3
                 {
                     OK = false;
                 }
-                if (filteredReviews.ReviewList[1].UserId != 18)
+                if (filteredReviews.ReviewList[1].UserId != 19)
                 {
                     OK = false;
                 }
