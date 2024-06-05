@@ -11,25 +11,19 @@
         <div>
         <h3>Book Main Menu</h3>
         <asp:Button ID="btnStock" runat="server" OnClick="btnStock_Click" Text="Stock" />
-        <asp:Button ID="btnUser" runat="server" Text="User" />
-        <asp:Button ID="btnReview" runat="server" Text="Review" />
-        <asp:Button ID="btnOrderProcessing" runat="server" Text="Order Processing" />
-        <asp:Button ID="btnBookClassification" runat="server" Text="Book Classification" />      
+        <asp:Button ID="btnUser" runat="server" Text="User" OnClick="btnUser_Click" />
+        <asp:Button ID="btnReview" runat="server" Text="Review" OnClick="btnReview_Click" />
+        <asp:Button ID="btnOrderProcessing" runat="server" Text="Order Processing" OnClick="btnOrderProcessing_Click" />
+        <asp:Button ID="btnBookClassification" runat="server" Text="Book Classification" OnClick="btnBookClassification_Click" />      
         </div>
-        <asp:Label ID="lblMainReview" runat="server" Font-Size="X-Large" style="z-index: 1; left: 148px; top: 87px; position: absolute; height: 22px" Text="Review Book Main Menu"></asp:Label>
-        <asp:Button ID="btnStockManagement" runat="server" OnClick="btnStockManagement_Click" style="z-index: 1; left: 215px; top: 170px; position: absolute" Text="Stock Management" />
         <p>
-            <asp:Button ID="btnBookClassification" runat="server" style="z-index: 1; left: 318px; top: 215px; position: absolute" Text="Book Classification" />
-        </p>
+            &nbsp;</p>
         <p>
-            <asp:Button ID="btnUserManagement" runat="server" style="z-index: 1; top: 173px; position: absolute; left: 405px" Text="User Management" />
-        </p>
+            &nbsp;</p>
         <p>
-            <asp:Button ID="btnOrderProcessing" runat="server" style="z-index: 1; left: 128px; top: 213px; position: absolute" Text="Order Processing" />
-        </p>
+            &nbsp;</p>
         <p>
-            <asp:Button ID="btnBookReviews" runat="server" OnClick="btnBookReviews_Click" style="z-index: 1; left: 79px; top: 169px; position: absolute" Text="Book Reviews" />
-        </p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
