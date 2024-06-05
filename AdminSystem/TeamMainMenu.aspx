@@ -16,14 +16,7 @@
         <asp:Button ID="btnOrderProcessing" runat="server" Text="Order Processing" OnClick="btnOrderProcessing_Click" />
         <asp:Button ID="btnBookClassification" runat="server" Text="Book Classification" OnClick="btnBookClassification_Click" />      
         </div>
-        <p>
-            &nbsp;</p>
-        <p>
-            &nbsp;</p>
-        <p>
-            &nbsp;</p>
-        <p>
-            &nbsp;</p>
+     
     </form>
 </body>
 </html>
