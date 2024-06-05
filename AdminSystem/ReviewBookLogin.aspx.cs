@@ -24,6 +24,8 @@ public partial class ReviewBookLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
         Found = anUser.FindUser(UserName, Password);
 
+        Session["anUser"] = anUser;
+
         if (txtUserName.Text == "")
         {
             lblError.Text = "Enter a Username";
