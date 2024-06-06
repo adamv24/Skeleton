@@ -175,5 +175,37 @@ namespace Testing2
             //test to see if thisUser matches the test data
             Assert.AreEqual(AllUsers.ThisUser, TestItem);
         }
+
+        [TestMethod]
+        public void DeleteMethodOk()
+        {
+            //create an instance of the class we want to create
+            clsUserCollection AllUsers = new clsUserCollection();
+            //create the item of test data
+            clsUser TestItem = new clsUser();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.IsActive = true;
+            TestItem.Name = "Test";
+            TestItem.Address = "LE2 1HB";
+            TestItem.Role_Name = "ADMIN";
+            TestItem.PhoneNumber = "1234567890";
+            TestItem.DateCreated = DateTime.Now;
+            //set ThisUser to the test data
+            AllUsers.ThisUser = TestItem;
+            //add the record
+            PrimaryKey = AllUsers.Add();
+            //set the primarty key of the test data
+            TestItem.UserId = PrimaryKey;
+            //find the record
+            AllUsers.ThisUser.Find(PrimaryKey);
+            //delete the record
+            AllUsers.Delete();
+            //now find the record
+            Boolean Found = AllUsers.ThisUser.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
     }
 }

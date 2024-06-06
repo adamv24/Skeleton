@@ -17,7 +17,8 @@
         </div>
 
         <p>
-            &nbsp;</p>
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 144px; top: 583px; position: absolute" Text="Delete" />
+        </p>
         <p>
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 78px; top: 583px; position: absolute; height: 25px; width: 42px" Text="Edit" />
         </p>
