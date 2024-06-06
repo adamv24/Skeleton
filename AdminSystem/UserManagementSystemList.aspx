@@ -22,7 +22,19 @@
         <p>
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 78px; top: 583px; position: absolute; height: 25px; width: 42px" Text="Edit" />
         </p>
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 24px; top: 624px; position: absolute; height: 22px; width: 48px" Text="lblError"></asp:Label>
+       <p>
+        <asp:Label ID="lblEnterBookName" runat="server" Text="Enter a Book Name   "></asp:Label>
+        <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
+       </p>
+
+        <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filter" OnClick="btnApplyFilter_Click" />
+        <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" OnClick="btnClearFilter_Click" />
+           
+        
+        <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" Text="Return to Main Menu" />
+           
+        
+        <p>  <asp:Label ID="lblError" runat="server"></asp:Label></p>
 
     </form>
 </body>

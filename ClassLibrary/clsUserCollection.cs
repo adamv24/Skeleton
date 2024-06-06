@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
@@ -52,26 +53,12 @@ namespace ClassLibrary
 
         public clsUserCollection()
         {
-            Int32 index = 0;
-            Int32 recordCount = 0;
+           
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblUser_SelectAll");
-            recordCount = DB.Count;
-            while (index < recordCount)
-            {
-                clsUser AUser = new clsUser();
+            //populate the array list with data table
+            PopulateArray(DB);  
 
-                AUser.UserId = Convert.ToInt32(DB.DataTable.Rows[index]["UserId"]);
-                AUser.Name = Convert.ToString(DB.DataTable.Rows[index]["Name"]);
-                AUser.PhoneNumber = Convert.ToString(DB.DataTable.Rows[index]["PhoneNumber"]);
-                AUser.Address = Convert.ToString(DB.DataTable.Rows[index]["Address"]);
-                AUser.DateCreated = Convert.ToDateTime(DB.DataTable.Rows[index]["DateCreated"]);
-                AUser.IsActive = Convert.ToBoolean(DB.DataTable.Rows[index]["IsActive"]);
-                AUser.Role_Name = Convert.ToString(DB.DataTable.Rows[index]["RoleName"]);
-
-                mUserList.Add(AUser);
-                index++;
-            }
   
         }
 
@@ -120,6 +107,48 @@ namespace ClassLibrary
             DB.Execute("sproc_tblUser_Delete");
 
 
+        }
+
+        public void ReportByName(string Name)
+        {
+            //filters the records based on a full or partial name
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the name paramter to the database
+            DB.AddParameter("@Name", Name);
+            //execute the stored procedure
+            DB.Execute("sproc_tblUser_FilterByName");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the paramter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mUserList = new List<clsUser>();
+            //WHILE THERE ARE RECORDS TO PROCESS
+            while (Index < RecordCount)
+            {
+                clsUser AUser = new clsUser();
+
+                AUser.UserId = Convert.ToInt32(DB.DataTable.Rows[Index]["UserId"]);
+                AUser.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                AUser.PhoneNumber = Convert.ToString(DB.DataTable.Rows[Index]["PhoneNumber"]);
+                AUser.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
+                AUser.DateCreated = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateCreated"]);
+                AUser.IsActive = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsActive"]);
+                AUser.Role_Name = Convert.ToString(DB.DataTable.Rows[Index]["RoleName"]);
+
+                mUserList.Add(AUser);
+                Index++;
+            }
         }
     }
 }

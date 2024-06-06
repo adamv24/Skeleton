@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Testing4;
 
 namespace Testing2
@@ -207,5 +208,62 @@ namespace Testing2
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportByNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsUserCollection AllUsers = new clsUserCollection();
+            //create an instance of the filtered data
+            clsUserCollection FilteredUsers = new clsUserCollection();
+            //apply a blank string (should return all records)
+            FilteredUsers.ReportByName("");
+            //test to ssee that the two values are the same
+            Assert.AreEqual(AllUsers.Count, FilteredUsers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsUserCollection FilteredUsers = new clsUserCollection();
+            //apply a post code that doesnt exist
+            FilteredUsers.ReportByName("xxx xxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredUsers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            //craete an instance of the filtered data
+            clsUserCollection FilteredUsers = new clsUserCollection();
+            //variable to store the outcode
+            Boolean OK = true;
+            //apply a post code that doesnt exist
+            FilteredUsers.ReportByName("yyy yyy");
+            //check that the correct nubmer of records are found
+            if (FilteredUsers.Count == 2)
+            {
+                //check to see that the first record is 25
+                if (FilteredUsers.UserList[0].UserId != 479)
+                {
+                    OK = false;
+                }
+                //check to see that the frist record is 26
+                if (FilteredUsers.UserList[1].UserId != 485)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see hat there are no records
+            Assert.IsTrue(OK);
+        }
+
+  
     }
 }
