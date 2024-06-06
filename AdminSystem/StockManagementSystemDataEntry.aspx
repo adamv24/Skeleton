@@ -23,10 +23,16 @@
             <asp:TextBox ID="txtQuantityAvailable" runat="server" style="z-index: 1; top: 288px; position: absolute; left: 104px;" width="128px"></asp:TextBox>
             <asp:CheckBox ID="chkIsAvailable" runat="server" style="z-index: 1; left: 10px; top: 330px; position: absolute" Text="Is Available" />
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 360px; position: absolute" Text=""></asp:Label>
-            <asp:Button ID="btnOk" runat="server" style="z-index: 1; left: 50px; top: 390px; position: absolute" Text="Ok" OnClick="btnOk_Click" />
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 100px; top: 390px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 207px; top: 439px; position: absolute; height: 38px; width: 64px;" Text="Cancel" />
             <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 280px; top: 65px; position: absolute" Text="Find" OnClick="btnFind_Click" />
         </div>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnOk" runat="server" style="z-index: 1; left: 102px; top: 441px; position: absolute; height: 37px; width: 67px;" Text="Ok" OnClick="btnOk_Click" />
+            </p>
     </form>
 </body>
 </html>
