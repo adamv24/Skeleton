@@ -32,6 +32,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // Find the record to update
         AnAuthor.Find(AuthorId);
         // Display the data for this record
+        txtAuthorId.Text = AnAuthor.AuthorId.ToString();
         txtAuthorName.Text = AnAuthor.AuthorName;
         txtAuthorBiography.Text = AnAuthor.AuthorBiography;
         txtDateJoined.Text = AnAuthor.DateJoined.ToString("yyyy-MM-dd");
