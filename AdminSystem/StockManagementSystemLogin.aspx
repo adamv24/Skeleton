@@ -48,6 +48,34 @@
          text-align: center;
      }
 
+     .form-actions .btn-login {
+        background-color: #1e90ff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .form-actions .btn-login:hover {
+        background-color: #0c7cd5;
+    }
+
+    .form-actions .btn-cancel {
+        background-color: #ff3300;
+        margin-left: 10px;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .form-actions .btn-cancel:hover {
+    background-color: #cc2900;
+    }
+
      
  </style>
 
@@ -56,7 +84,7 @@
     <form id="form1" runat="server">
         <div class="container">
             <div class="header">
-                <h1>Login</h1>
+                <h1>Stock Management System Login</h1>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblUserName" runat="server" Text="User Name:"></asp:Label>
@@ -70,8 +98,8 @@
                 <asp:Label ID="lblError" runat="server"></asp:Label>
             </div>
             <div class="form-actions">
-                <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" cssClass ="btn"/>
-                <asp:Button ID="lblCancel" runat="server" Text="Cancel" OnClick="lblCancel_Click" />
+                <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" cssClass ="btn btn-login"/>
+                <asp:Button ID="lblCancel" runat="server" Text="Cancel" OnClick="lblCancel_Click" CssClass ="btn btn-cancel" />
             </div>
         </div>
     </form>
