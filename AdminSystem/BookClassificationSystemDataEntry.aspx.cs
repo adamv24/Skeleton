@@ -74,6 +74,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             if (Error == "")
             {
                 // Capture the author details
+                AnAuthor.AuthorId = AuthorId;
                 AnAuthor.AuthorName = AuthorName;
                 AnAuthor.AuthorBiography = AuthorBiography;
                 AnAuthor.DateJoined = Convert.ToDateTime(DateJoined);
@@ -96,7 +97,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 {
                     // Otherwise, it must be an update
                     // Get the primary key value from the session object
-                    AuthorId = Convert.ToInt32(Session["AuthorId"]);
+                   
                     // Find the record to update
                     AuthorList.ThisAuthor.Find(AuthorId);
                     // Set the ThisAuthor property
@@ -106,7 +107,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 }
 
                 // Redirect back to the list page
-                Response.Redirect("AuthorList.aspx");
+                Response.Redirect("BookClassificationSystemList.aspx");
             }
             
             else
@@ -141,5 +142,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtAverageRating.Text = AnAuthor.AverageRating.ToString();
             txtTotalBooksSold.Text = AnAuthor.TotalBooksSold.ToString();
         }
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

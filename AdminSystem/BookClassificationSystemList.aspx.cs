@@ -16,6 +16,13 @@ public partial class _1_List : System.Web.UI.Page
             // update the list box
             DisplayAuthors();
         }
+
+        // Create a new instance of clsAuthorUser
+        clsAuthorUser AnUser = new clsAuthorUser();
+        // Get data from the session object
+        AnUser = (clsAuthorUser)Session["AnUser"];
+        // Display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
 
     void DisplayAuthors()
@@ -82,5 +89,45 @@ public partial class _1_List : System.Web.UI.Page
             // Display an error message
             lblError.Text = "Please select a record from the list to delete";
         }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the author collection object
+        clsAuthorCollection AnAuthorCollection = new clsAuthorCollection();
+        // Retrieve the value of the author name from the presentation layer
+        AnAuthorCollection.ReportByAuthorName(txtFilter.Text);
+        // Set the data source to the list of authors in the collection
+        lstAuthorsList.DataSource = AnAuthorCollection.AuthorList;
+        // Set the name of the primary key
+        lstAuthorsList.DataValueField = "AuthorId";
+        // Set the name of the field to display
+        lstAuthorsList.DataTextField = "AuthorName";
+        // Bind the data to the list
+        lstAuthorsList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the author collection object
+        clsAuthorCollection AnAuthorCollection = new clsAuthorCollection();
+        // Set an empty string to clear the filter
+        AnAuthorCollection.ReportByAuthorName("");
+        // Clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        // Set the data source to the list of authors in the collection
+        lstAuthorsList.DataSource = AnAuthorCollection.AuthorList;
+        // Set the name of the primary key
+        lstAuthorsList.DataValueField = "AuthorId";
+        // Set the name of the field to display
+        lstAuthorsList.DataTextField = "AuthorName";
+        // Bind the data to the list
+        lstAuthorsList.DataBind();
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect to main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

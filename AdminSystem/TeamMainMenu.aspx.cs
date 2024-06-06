@@ -29,7 +29,7 @@ public partial class TeamMainMenu : System.Web.UI.Page
 
     protected void btnBookClassification_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("BookClassificationSystemLogin.aspx");
     }
 
     protected void btnOrderProcessing_Click(object sender, EventArgs e)

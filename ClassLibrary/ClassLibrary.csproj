@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="clsAuthor.cs" />
     <Compile Include="clsAuthorCollection.cs" />
+    <Compile Include="clsAuthorUser.cs" />
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsOrderCollection.cs" />
     <Compile Include="clsReview.cs" />
