@@ -20,20 +20,22 @@ public partial class TeamMainMenu : System.Web.UI.Page
     protected void btnStock_Click(object sender, EventArgs e)
     {
         Response.Redirect("StockManagementSystemLogin.aspx");
+
     }
 
     protected void btnUser_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("UserManagementSystemLogin.aspx");
     }
 
     protected void btnBookClassification_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("BookClassificationSystemLogin.aspx");
     }
 
     protected void btnOrderProcessing_Click(object sender, EventArgs e)
     {
+        Response.Redirect("OrderProcessingManagementSystemLogin.aspx");
 
     }
 }

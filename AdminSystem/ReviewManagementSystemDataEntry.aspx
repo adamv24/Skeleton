@@ -5,12 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style type="text/css">
-        #form1 {
-            height: 442px;
-            width: 705px;
-        }
-    </style>
+        <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f0f8ff;
+        color: #333;
+
+
+    }
+ 
+</style>
 </head>
 <body style="height: 367px; width: 528px">
     
