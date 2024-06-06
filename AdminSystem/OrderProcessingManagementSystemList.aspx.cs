@@ -1,4 +1,4 @@
-﻿
+﻿ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +24,6 @@ public partial class _1_List : System.Web.UI.Page
         AnUser = (clsStockUser)Session["AnUser"];
         //display the user name
         Response.Write("Logged in as: " + AnUser.UserName);
-
-
     }
 
     void DisplayOrder()
@@ -38,6 +36,7 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataValueField = "OrderId";
         //set the data field to display
         lstOrderList.DataTextField = "ISBN";
+        
         //bind the data to the list
         lstOrderList.DataBind();
     }
@@ -99,6 +98,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstOrderList.DataValueField = "OrderId";
         lstOrderList.DataTextField = "ISBN";
+       
         //bind the data to the list
         lstOrderList.DataBind();
     }
@@ -125,4 +125,28 @@ public partial class _1_List : System.Web.UI.Page
         Response.Redirect("TeamMainMenu.aspx");
 
     }
+
+    protected void btnApplyFilter_Click1(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnClearFilter_Click1(object sender, EventArgs e)
+    {
+        //create an instance of the stock object
+        clsOrderCollection anOrder = new clsOrderCollection();
+        //set an empty string
+        anOrder.ReportByStatus("");
+        //clear any existin filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to the list of stocks in the collection
+        lstOrderList.DataSource = anOrder.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderId";
+        lstOrderList.DataTextField = "ISBN";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
+
+    
 }

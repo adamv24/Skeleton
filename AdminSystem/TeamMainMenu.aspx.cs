@@ -35,7 +35,7 @@ public partial class TeamMainMenu : System.Web.UI.Page
 
     protected void btnOrderProcessing_Click(object sender, EventArgs e)
     {
-        Response.Redirect("OrderProcessingManagementSystemLogin.aspx");
+        Response.Redirect("OrderLogin.aspx");
 
     }
 }
