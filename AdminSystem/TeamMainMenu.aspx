@@ -53,7 +53,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            <h3>Book Main Menu</h3>
+            <h3>ATC Book Store Main Menu</h3>
             <asp:Button ID="btnStock" runat="server" OnClick="btnStock_Click" Text="Stock" CssClass="btn" />
             <asp:Button ID="btnUser" runat="server" Text="User" OnClick="btnUser_Click" CssClass="btn" />
             <asp:Button ID="btnReview" runat="server" Text="Review" OnClick="btnReview_Click" CssClass="btn" />
