@@ -513,6 +513,21 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+        public void AuthorNameExtremeMax()
+        {
+            // Create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            // String variable to store any error message
+            string Error = "";
+            // Create test data with the author name being an extremely high length
+            string AuthorName = new string('a', 50); // Assuming an extreme max length for the example
+                                                     // Invoke the Valid method with the test data
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            // Assert that the error message is not blank (indicating an error was found)
+            Assert.AreNotEqual(Error, "");
+        }
+
         //AUTHORBIOGRAPHY TESTS
 
         [TestMethod]
@@ -620,7 +635,38 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+        public void AuthorBiographyExtremeMax()
+        {
+            // Create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            // String variable to store any error message
+            string Error = "";
+            // Create test data with the author biography being an extremely high length
+            string AuthorBiography = new string('a', 1000); // Assuming a max length of 500 for the example
+                                                            // Invoke the Valid method with the test data
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            // Assert that the error message is not blank (indicating an error was found)
+            Assert.AreNotEqual(Error, "");
+        }
+
         //AVERAGERATING TESTS
+
+        [TestMethod]
+        public void AverageRatingExtremeMin()
+        {
+            // Create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            // String variable to store any error message
+            string Error = "";
+            // Create test data with the average rating being an extremely low value
+            string AverageRating = "-1"; // Extreme minimum value for the example
+                                         // Invoke the Valid method with the test data
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            // Assert that the error message is not blank (indicating an error was found)
+            Assert.AreNotEqual(Error, "");
+        }
+
 
         [TestMethod]
         public void AverageRatingMinLessOne()
@@ -726,6 +772,22 @@ namespace Testing5
             // Assert that the error message is blank (indicating no error was found)
             Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void AverageRatingExtremeMax()
+        {
+            // Create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            // String variable to store any error message
+            string Error = "";
+            // Create test data with the average rating being an extremely high value
+            string AverageRating = "10.0"; // Assuming an extreme max value for the example
+                                           // Invoke the Valid method with the test data
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            // Assert that the error message is not blank (indicating an error was found)
+            Assert.AreNotEqual(Error, "");
+        }
+
 
         //TOTALBOOKSSOLD TESTS
 
