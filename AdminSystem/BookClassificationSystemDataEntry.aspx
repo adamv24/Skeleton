@@ -134,7 +134,7 @@
             </div>
             <div class="form-actions">
                 <asp:Button ID="btnOk" runat="server" Text="Ok" OnClick="btnOk_Click" CssClass="btn" />
-                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-cancel" />
+                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-cancel" OnClick="btnCancel_Click" />
                 <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" CssClass="btn" />
             </div>
             <div class="form-actions">
