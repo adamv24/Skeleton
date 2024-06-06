@@ -68,6 +68,7 @@
             </div>
             <div class="form-group">
                 <asp:ListBox ID="lstOrderList" runat="server" Height="573px" Width="563px"></asp:ListBox>
+          
             </div>
             <div class="form-actions">
                 <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" CssClass="btn" />
@@ -79,8 +80,8 @@
                 <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
             </div>
             <div class="form-actions">
-                <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filter" CssClass="btn" />
-                <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" CssClass="btn" />
+                <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filter" CssClass="btn" OnClick="btnApplyFilter_Click" />
+                <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" CssClass="btn" OnClick="btnClearFilter_Click1" />
                 <asp:Button ID="btnReturnToMainMenu" OnClick ="btnReturnToMainMenu_Click" runat="server" Text="Return to Main Menu" CssClass="btn" />
             </div>
             <div class="error-message">

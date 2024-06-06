@@ -11,9 +11,21 @@ using Testing4;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the stock to be processed
+        OrderId = Convert.ToInt32(Session["Order_Id"]);
+        // if this is the first time the page is displayed
+        if (IsPostBack == false)
+        {
+            //id this is not a new record
+            if (OrderId != -1)
+            {
+                //update the current data for the record
+                DisplayOrders();
+            }
+        }
     }
 
     protected void TextBox3_TextChanged(object sender, EventArgs e)
@@ -118,6 +130,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 lblStatusValue.Text = "Order not found";
             }
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrderProcessingManagementSystemList.aspx");
+    }
+
+    void DisplayOrders()
+    {
+        //create an instance of the stock book
+        clsOrderCollection Order = new clsOrderCollection();
+        //find the record to update
+        Order.ThisOrder.Find(OrderId);
+        //display the data for the record
+        txtOrderId.Text = Order.ThisOrder.OrderId.ToString();
+        txtISBN.Text = Order.ThisOrder.ISBN.ToString();
+        txtUserId.Text = Order.ThisOrder.UserId.ToString();
+        txtCreatedAt.Text = Order.ThisOrder.CreatedAt.ToString();
+        txtStatus.Text = Order.ThisOrder.Status.ToString();
+        chkIsAvailable.Checked = Order.ThisOrder.IsValid;
+
+
     }
 }
 
