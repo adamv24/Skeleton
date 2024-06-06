@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BookClassificationSystemList.aspx.cs" Inherits="_1_List" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Book Classification System</title>
@@ -54,9 +53,16 @@
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
+            margin: 5px;
         }
         .form-actions .btn:hover {
             background-color: #1c86ee;
+        }
+        .form-actions .btn-delete {
+            background-color: #ff3300;
+        }
+        .form-actions .btn-delete:hover {
+            background-color: #cc2900;
         }
     </style>
 </head>
@@ -64,7 +70,7 @@
     <form id="form1" runat="server">
         <div class="container">
             <div class="header">
-                <h1>Book Classification System</h1>
+                <h1>Author List</h1>
             </div>
             <div class="form-group">
                 <asp:ListBox ID="lstAuthorsList" runat="server" Height="573px" Width="563px"></asp:ListBox>
@@ -72,10 +78,19 @@
             <div class="form-actions">
                 <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" CssClass="btn" />
                 <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" CssClass="btn" />
-                <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" CssClass="btn" />
+                <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" CssClass="btn btn-delete" />
             </div>
-          
-            
+            <div class="form-group">
+                <asp:Label ID="lblEnterAuthorName" runat="server" Text="Enter an Author Name:" AssociatedControlID="txtFilter"></asp:Label>
+                <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
+            </div>
+            <div class="form-actions">
+                <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filter" OnClick="btnApplyFilter_Click" CssClass="btn" />
+                <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" OnClick="btnClearFilter_Click" CssClass="btn" />
+            </div>
+            <div class="form-actions">
+                <asp:Button ID="btnReturn" runat="server" Text="Return to Main Menu" OnClick="btnReturn_Click" CssClass="btn" />
+            </div>
             <div class="error-message">
                 <asp:Label ID="lblError" runat="server"></asp:Label>
             </div>
@@ -83,3 +98,6 @@
     </form>
 </body>
 </html>
+
+        
+  

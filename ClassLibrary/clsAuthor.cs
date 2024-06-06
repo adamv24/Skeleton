@@ -218,6 +218,12 @@ namespace ClassLibrary
                 {
                     Error += "The total books sold cannot be negative : "; // Append error message
                 }
+                // Check if the quantityAvailable is negative
+                if (TotalBooksSoldTemp > 2147483647)
+                {
+                    // Record the error
+                    Error = Error + "The total books sold cannot be more than 2147483647 : ";
+                }
             }
             catch
             {

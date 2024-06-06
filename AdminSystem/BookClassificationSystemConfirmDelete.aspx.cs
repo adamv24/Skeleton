@@ -24,7 +24,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         // Delete the record
         AuthorBook.Delete();
         // Redirect back to the main page
-        Response.Redirect(" BookClassificationSystemList.aspx");
+        Response.Redirect("BookClassificationSystemList.aspx");
     }
 
     protected void btnNo_Click(object sender, EventArgs e)

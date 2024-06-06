@@ -199,7 +199,7 @@ namespace Testing5
             // Create an instance of the filtered data
             clsAuthorCollection FilteredAuthors = new clsAuthorCollection();
             // Apply a blank string (should return all records)
-            FilteredAuthors.ReportByAuthorName("yyy yyy");
+            FilteredAuthors.ReportByAuthorName("");
             // Test to see that the two values are the same
             Assert.AreEqual(AllAuthors.Count, FilteredAuthors.Count);
         }
@@ -210,7 +210,7 @@ namespace Testing5
             // Create an instance of the class we want to create
             clsAuthorCollection FilteredAuthors = new clsAuthorCollection();
             // Apply an author name that doesn't exist
-            FilteredAuthors.ReportByAuthorName("");
+            FilteredAuthors.ReportByAuthorName("xxx xxx");
             // Test to see that there are no records
             Assert.AreEqual(0, FilteredAuthors.Count);
         }

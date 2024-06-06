@@ -730,78 +730,138 @@ namespace Testing5
         //TOTALBOOKSSOLD TESTS
 
         [TestMethod]
+        public void TotalBooksSoldExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //string variable to store any error message
+            String Error = "";
+            //test data with an extremely low value (far below zero)
+            string TotalBooksSold = "-1000";
+            //invoke the method
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
         public void TotalBooksSoldMinLessOne()
         {
-            // Create an instance of the class we want to create
+            //create an instance of the class we want to create
             clsAuthor AnAuthor = new clsAuthor();
-            // String variable to store any error message
-            string Error = "";
-            // Create test data with the total books sold being less than the minimum allowed value (negative number)
+            //string variable to store any error message
+            String Error = "";
+            //test data with the total books sold being less than the minimum allowed value (negative number)
             string TotalBooksSold = "-1";
-            // Invoke the Valid method with the test data
+            //invoke the method
             Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
-            // Assert that the error message is not blank (indicating an error was found)
+            //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
         public void TotalBooksSoldMin()
         {
-            // Create an instance of the class we want to create
+            //create an instance of the class we want to create
             clsAuthor AnAuthor = new clsAuthor();
-            // String variable to store any error message
-            string Error = "";
-            // Create test data with the total books sold being the minimum allowed value (zero)
+            //string variable to store any error message
+            String Error = "";
+            //test data with the total books sold being the minimum allowed value (zero)
             string TotalBooksSold = "0";
-            // Invoke the Valid method with the test data
+            //invoke the method
             Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
-            // Assert that the error message is blank (indicating no error was found)
+            //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
         public void TotalBooksSoldMinPlusOne()
         {
-            // Create an instance of the class we want to create
+            //create an instance of the class we want to create
             clsAuthor AnAuthor = new clsAuthor();
-            // String variable to store any error message
-            string Error = "";
-            // Create test data with the total books sold being one unit more than the minimum allowed value
+            //string variable to store any error message
+            String Error = "";
+            //test data with the total books sold being one unit more than the minimum allowed value
             string TotalBooksSold = "1";
-            // Invoke the Valid method with the test data
+            //invoke the method
             Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
-            // Assert that the error message is blank (indicating no error was found)
+            //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void TotalBooksSoldValidNumber()
+        public void TotalBooksSoldMaxLessOne()
         {
-            // Create an instance of the class we want to create
+            //create an instance of the class we want to create
             clsAuthor AnAuthor = new clsAuthor();
-            // String variable to store any error message
-            string Error = "";
-            // Create test data with a valid total books sold value
-            string TotalBooksSold = "999999";
-            // Invoke the Valid method with the test data
+            //string variable to store any error message
+            String Error = "";
+            //test data with the total books sold being just below the maximum allowed value
+            string TotalBooksSold = "2147483646";
+            //invoke the method
             Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
-            // Assert that the error message is blank (indicating no error was found)
+            //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalBooksSoldMax()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //string variable to store any error message
+            String Error = "";
+            //test data with the total books sold being the maximum allowed value
+            string TotalBooksSold = "2147483647";
+            //invoke the method
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalBooksSoldMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //string variable to store any error message
+            String Error = "";
+            //test data with the total books sold being just above the maximum allowed value
+            string TotalBooksSold = "2147483648";
+            //invoke the method
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
         public void TotalBooksSoldMid()
         {
-            // Create an instance of the class we want to create
+            //create an instance of the class we want to create
             clsAuthor AnAuthor = new clsAuthor();
-            // String variable to store any error message
-            string Error = "";
-            // Create test data with the total books sold being a mid-range value
-            string TotalBooksSold = "500000";
-            // Invoke the Valid method with the test data
+            //string variable to store any error message
+            String Error = "";
+            //test data with the total books sold being a mid-range value
+            string TotalBooksSold = "1073741824";
+            //invoke the method
             Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
-            // Assert that the error message is blank (indicating no error was found)
+            //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalBooksSoldExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsAuthor AnAuthor = new clsAuthor();
+            //string variable to store any error message
+            String Error = "";
+            //test data with an extremely high value
+            string TotalBooksSold = "5000000000";
+            //invoke the method
+            Error = AnAuthor.Valid(AuthorName, AuthorBiography, DateJoined, AverageRating, TotalBooksSold);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
