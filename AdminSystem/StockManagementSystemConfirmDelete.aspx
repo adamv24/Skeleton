@@ -35,6 +35,30 @@
         text-align: center;
         margin-top: 20px; 
     }
+
+       
+    .btn {
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 0 5px;
+        transition: background-color 0.3s;
+    }
+    .btn-yes{
+        background-color: #1e90ff;
+    }
+
+    .btn-yes:hover {
+        background-color: #0c7cd5;
+    }
+    .btn-no {
+        background-color: #ff3300;
+    }
+    .btn-no:hover {
+        background-color: #cc2900;
+    }
    
 </style>
 </head>
@@ -47,8 +71,8 @@
             </div>
             <div class="confirmation-message">Are you sure you want to delete this record?</div>
             <div class="btn-container">
-                <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" />
-                <asp:Button ID="btnNo" runat="server" Text="No" OnClick="btnNo_Click"  />
+                <asp:Button ID="btnYes" runat="server" Text="Yes" OnClick="btnYes_Click" cssClass="btn btn-yes"/>
+                <asp:Button ID="btnNo" runat="server" Text="No" OnClick="btnNo_Click" cssClass="btn btn-no" />
             </div>
         </div>
     </form>

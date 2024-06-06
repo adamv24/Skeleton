@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Stock Management System Data Entry</title>
-    <style>
+  <style>
     body {
         font-family: Arial, sans-serif;
         margin: 20px;
@@ -28,8 +28,9 @@
         display: inline-block;
         margin-bottom: 5px;
         color: #1e90ff;
+        
     }
-    .form-group input, .form-group button {
+    .form-group input {
         display: block;
         width: 100%;
         padding: 8px;
@@ -41,16 +42,30 @@
         text-align: center;
         margin: 10px 0;
     }
-    .form-actions button {
-        margin: 0 5px;
-        padding: 10px 20px;
-        color: white;
-        border: none;
-        border-radius: 4px;
+
+    .form-actions .btn {
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s;
     }
-    .form-actions button:hover {
-        background-color: #1c86ee;
+
+    .form-actions .btn:hover {
+    background-color: #0c7cd5;
     }
+
+    .form-actions .btn-cancel {
+    background-color: #ff3300;
+    }
+
+    .form-actions .btn-cancel:hover {
+    background-color: #cc2900;
+    }
+
     .error-message {
         color: red;
         text-align: center;
@@ -102,9 +117,9 @@
                 <asp:Label ID="lblError" runat="server"></asp:Label>
             </div>
             <div class="form-actions">
-                <asp:Button ID="btnOk" runat="server" Text="Ok" OnClick="btnOk_Click" />
-                <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
-                <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" />
+                <asp:Button ID="btnOk" runat="server" Text="Ok" OnClick="btnOk_Click" CssClass="btn btn-ok" />
+                <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CssClass="btn btn-cancel" />
+                <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" CssClass="btn btn-find"/>
             </div>
         </div>
     </form>
