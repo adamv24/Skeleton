@@ -9,9 +9,35 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 AuthorId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Get the number of the author to be processed
+        AuthorId = Convert.ToInt32(Session["AuthorId"]);
+        if (IsPostBack == false)
+        {
+            // If this is not a new record
+            if (AuthorId != -1)
+            {
+                // Display the current data for the record
+                DisplayAuthor();
+            }
+        }
+    }
 
+    private void DisplayAuthor()
+    {
+        // Create an instance of the Author class
+        clsAuthor AnAuthor = new clsAuthor();
+        // Find the record to update
+        AnAuthor.Find(AuthorId);
+        // Display the data for this record
+        txtAuthorName.Text = AnAuthor.AuthorName;
+        txtAuthorBiography.Text = AnAuthor.AuthorBiography;
+        txtDateJoined.Text = AnAuthor.DateJoined.ToString("yyyy-MM-dd");
+        chkIsBestseller.Checked = AnAuthor.IsBestSeller;
+        txtAverageRating.Text = AnAuthor.AverageRating.ToString();
+        txtTotalBooksSold.Text = AnAuthor.TotalBooksSold.ToString();
     }
 
     protected void btnOk_Click(object sender, EventArgs e)
@@ -47,30 +73,42 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             if (Error == "")
             {
-                // Capture the author name
+                // Capture the author details
                 AnAuthor.AuthorName = AuthorName;
-
-                // Capture the author biography
                 AnAuthor.AuthorBiography = AuthorBiography;
-
-                // Capture the date joined
                 AnAuthor.DateJoined = Convert.ToDateTime(DateJoined);
-
-                // Capture the is bestseller checkbox
                 AnAuthor.IsBestSeller = chkIsBestseller.Checked;
-
-                // Capture the average rating
-                AnAuthor.AverageRating = decimal.Parse(AverageRating);
-
-                // Capture the total books sold
+                AnAuthor.AverageRating = Convert.ToDecimal(AverageRating);
                 AnAuthor.TotalBooksSold = Convert.ToInt32(TotalBooksSold);
 
-                // Store the author in the session object
-                Session["AnAuthor"] = AnAuthor;
+                // Create a new instance of the author collection
+                clsAuthorCollection AuthorList = new clsAuthorCollection();
 
-                // Navigate to the view page
-                Response.Redirect("BookClassificationSystemViewer.aspx");
+                // If this is a new record i.e., AuthorId = -1 then add the data
+                if (AuthorId == -1)
+                {
+                    // Set the ThisAuthor property
+                    AuthorList.ThisAuthor = AnAuthor;
+                    // Add the new record
+                    AuthorList.Add();
+                }
+                else
+                {
+                    // Otherwise, it must be an update
+                    // Get the primary key value from the session object
+                    AuthorId = Convert.ToInt32(Session["AuthorId"]);
+                    // Find the record to update
+                    AuthorList.ThisAuthor.Find(AuthorId);
+                    // Set the ThisAuthor property
+                    AuthorList.ThisAuthor = AnAuthor;
+                    // Update the record
+                    AuthorList.Update();
+                }
+
+                // Redirect back to the list page
+                Response.Redirect("AuthorList.aspx");
             }
+            
             else
             {
                 // Display the error message
