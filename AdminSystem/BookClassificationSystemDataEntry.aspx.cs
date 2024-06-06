@@ -2,6 +2,7 @@
 using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Services;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -128,20 +129,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Int32 AuthorId;
         //create a variable to store the result of the find operation
         Boolean Found = false;
-        //get the primary key entered by the user
-        AuthorId = Convert.ToInt32(txtAuthorId.Text);
-        //find the record
-        Found = AnAuthor.Find(AuthorId);
-        //if found 
-        if (Found == true)
+        if (txtAuthorId.Text != "")
         {
-            // Display the values of the properties in the form
-            txtAuthorName.Text = AnAuthor.AuthorName;
-            txtAuthorBiography.Text = AnAuthor.AuthorBiography;
-            txtDateJoined.Text = AnAuthor.DateJoined.ToString();
-            chkIsBestseller.Checked = AnAuthor.IsBestSeller;
-            txtAverageRating.Text = AnAuthor.AverageRating.ToString();
-            txtTotalBooksSold.Text = AnAuthor.TotalBooksSold.ToString();
+            //get the primary key entered by the user
+            AuthorId = Convert.ToInt32(txtAuthorId.Text);
+            //find the record
+            Found = AnAuthor.Find(AuthorId);
+
+            //if found 
+            if (Found)
+            {
+                // Display the values of the properties in the form
+                txtAuthorName.Text = AnAuthor.AuthorName;
+                txtAuthorBiography.Text = AnAuthor.AuthorBiography;
+                txtDateJoined.Text = AnAuthor.DateJoined.ToString();
+                chkIsBestseller.Checked = AnAuthor.IsBestSeller;
+                txtAverageRating.Text = AnAuthor.AverageRating.ToString();
+                txtTotalBooksSold.Text = AnAuthor.TotalBooksSold.ToString();
+            }
+        }
+        else
+        {
+            lblError.Text = "Enter an AuthorID to find";
         }
     }
 
