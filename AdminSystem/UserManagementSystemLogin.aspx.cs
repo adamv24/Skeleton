@@ -46,7 +46,7 @@ public partial class UserManagementSystemLogin : System.Web.UI.Page
         else if (Found == true)
         {
             //redirect to the list page
-            Response.Redirect("OrderProcessingManagementSystemList.aspx");
+            Response.Redirect("UserManagementSystemList.aspx");
         }
         else if (Found == false)
         {
