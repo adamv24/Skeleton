@@ -14,6 +14,8 @@ namespace ClassLibrary
         private string mPhoneNumber;
         private string mRole_Name;
 
+
+
         public Int32 UserId
         {
             get
@@ -130,7 +132,7 @@ namespace ClassLibrary
             }
         }
 
-        
+
 
         //DateCreated, Address, Name, PhoneNumber, Role_Name
 

@@ -233,7 +233,7 @@ namespace Testing2
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Name = ""; 
+            string Name = "";
             Name = Name.PadRight(51, 'a');    //this should fail
             Error = AUser.Valid(DateCreated, Address, Name, PhoneNumber, Role_Name);
             //test to see that the result is correct
@@ -622,7 +622,7 @@ namespace Testing2
             Assert.IsTrue(Found);
         }
 
-  
+
 
         [TestMethod]
         public void TestRole_NameFound()
