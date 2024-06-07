@@ -5,94 +5,71 @@
 <head runat="server">
     <title>User Management System</title>
     <style>
-        /* Basic styles for the body to center the form and set background color */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        /* Container for the user management system */
-        .user-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-        }
-
-        /* Header styles */
-        .user-container h1 {
-            margin-top: 0;
+            margin: 20px;
+            background-color: #f0f8ff;
             color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            color: #1e90ff;
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-top: 0;
         }
-
-        /* Style for ListBox */
-        .user-container .user-list {
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            display: block;
             width: 100%;
-            height: 400px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
-
-        /* Styles for the input fields */
-        .user-container input[type="text"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .form-actions {
+            text-align: center;
+            margin: 20px 0;
         }
-
-        /* Style for buttons */
-        .user-container .button {
+        .error-message {
+            color: #ff3300;
+            text-align: center;
+        }
+        .form-actions .btn {
             background-color: #007bff;
-            color: #fff;
+            color: white;
             padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            text-decoration: none;
             margin: 5px;
         }
-
-        /* Hover effect for buttons */
-        .user-container .button:hover {
+        .form-actions .btn:hover {
             background-color: #0056b3;
         }
-
-        /* Error message style */
-        .user-container .error {
-            color: #FF3300;
-            margin-top: 10px;
+        .form-actions .btn-delete {
+            background-color: #ff3300;
         }
-
-        /* Label styles */
-        .user-container .label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
+        .form-actions .btn-delete:hover {
+            background-color: #cc2900;
         }
-
-        /* Additional button styles */
-        .user-container .btn-return {
-            margin-top: 20px;
+        .btn-return {
             background-color: #28a745;
         }
-
-        /* Hover effect for return button */
-        .user-container .btn-return:hover {
+        .btn-return:hover {
             background-color: #218838;
         }
     </style>
@@ -100,34 +77,37 @@
 <body>
     <form id="form1" runat="server">
         <!-- Container for the user management system -->
-        <div class="user-container">
-            <h1>User Management System</h1>
-
+        <div class="container">
+            <div class="header">
+                <h1>User Management System</h1>
+            </div>
             <!-- User ListBox -->
-            <asp:ListBox ID="lstUserList" runat="server" CssClass="user-list"></asp:ListBox>
-
+            <div class="form-group">
+                <asp:ListBox ID="lstUserList" runat="server" CssClass="user-list"></asp:ListBox>
+            </div>
             <!-- Buttons for Add, Edit, and Delete -->
-            <p>
-                <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" CssClass="button" />
-                <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" CssClass="button" />
-                <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" CssClass="button" />
-            </p>
-
+            <div class="form-actions">
+                <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" CssClass="btn" />
+                <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" CssClass="btn" />
+                <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" CssClass="btn btn-delete" />
+            </div>
             <!-- Filter Section -->
-            <p>
+            <div class="form-group">
                 <asp:Label ID="lblEnterName" runat="server" Text="Enter a Name" CssClass="label"></asp:Label>
                 <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
-            </p>
-            <p>
-                <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filter" OnClick="btnApplyFilter_Click" CssClass="button" />
-                <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" OnClick="btnClearFilter_Click" CssClass="button" />
-            </p>
-
+            </div>
+            <div class="form-actions">
+                <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filter" OnClick="btnApplyFilter_Click" CssClass="btn" />
+                <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" OnClick="btnClearFilter_Click" CssClass="btn" />
+            </div>
             <!-- Return to Main Menu button -->
-            <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" Text="Return to Main Menu" CssClass="button btn-return" />
-
+            <div class="form-actions">
+                <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" Text="Return to Main Menu" CssClass="btn btn-return" />
+            </div>
             <!-- Error message label -->
-            <p><asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label></p>
+            <div class="error-message">
+                <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
+            </div>
         </div>
     </form>
 </body>
